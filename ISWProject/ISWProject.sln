@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{38B7F6C1-707C-44A2-A3BA-C906B9215803}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{84FB8BB4-A2D4-4FD9-99A7-45C463607EC1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagazineLib", "ClassLibrary\MagazineLib.csproj", "{84FB8BB4-A2D4-4FD9-99A7-45C463607EC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
