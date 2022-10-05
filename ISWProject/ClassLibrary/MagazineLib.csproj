@@ -41,8 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogic\Entities\Magazine.cs" />
+    <Compile Include="BusinessLogic\Entities\User.cs" />
     <Compile Include="BusinessLogic\Entities\Person.cs" />
     <Compile Include="Persistence\Entities\Magazine.cs" />
+    <Compile Include="Persistence\Entities\User.cs" />
     <Compile Include="Persistence\Entities\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -16,5 +16,11 @@ namespace Magazine.Entities
             this.Name = Name;
             this.Surname = Surname;
         }
+
+        public ICollection<Paper> CoAuthoredPapers
+        {
+            get;
+            set;
+        }
     }
 }
