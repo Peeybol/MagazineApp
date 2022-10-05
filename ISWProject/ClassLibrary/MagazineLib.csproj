@@ -47,8 +47,8 @@
     <Compile Include="Persistence\Entities\Magazine.cs" />
     <Compile Include="Persistence\Entities\Area.cs" />
     <Compile Include="Persistence\Entities\Person.cs" />
+    <Compile Include="Persistence\Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

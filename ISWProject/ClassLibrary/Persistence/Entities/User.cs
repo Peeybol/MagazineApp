@@ -35,3 +35,4 @@ namespace Magazine.Entities
 
     }
 }
+
