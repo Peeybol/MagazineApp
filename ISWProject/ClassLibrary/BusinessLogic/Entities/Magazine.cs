@@ -8,7 +8,7 @@ namespace Magazine.Entities
     {
         public Magazine()
         {
-            Areas = new ICollection<Area>();
+            Areas = new List<Area>();
         }
 
         public Magazine(int Id, string Name):this()
