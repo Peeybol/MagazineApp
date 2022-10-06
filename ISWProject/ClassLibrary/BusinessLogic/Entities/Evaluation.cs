@@ -8,7 +8,6 @@ namespace Magazine.Entities
     {
         public Evaluation()
         {
-            Paper = new Paper();
         }
         public Evaluation(Boolean Accepted, String Comments, DateTime Date, int Id):this()
         {

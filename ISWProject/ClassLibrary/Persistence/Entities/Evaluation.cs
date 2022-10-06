@@ -26,10 +26,5 @@ namespace Magazine.Entities
             get;
             set;
         }
-        public virtual Paper Paper
-        {
-            get;
-            set;
-        }
     }
 }
