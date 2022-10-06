@@ -32,6 +32,7 @@ namespace Magazine.Entities
             set;
         }
 
+        public
 
     }
 }

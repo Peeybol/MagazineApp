@@ -41,10 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogic\Entities\Area.cs" />
+    <Compile Include="BusinessLogic\Entities\Evaluation.cs" />
     <Compile Include="BusinessLogic\Entities\Issue.cs" />
     <Compile Include="BusinessLogic\Entities\Magazine.cs" />
+    <Compile Include="BusinessLogic\Entities\Paper.cs" />
     <Compile Include="BusinessLogic\Entities\User.cs" />
     <Compile Include="BusinessLogic\Entities\Person.cs" />
+    <Compile Include="Persistence\Entities\Evaluation.cs" />
     <Compile Include="Persistence\Entities\Issue.cs" />
     <Compile Include="Persistence\Entities\Magazine.cs" />
     <Compile Include="Persistence\Entities\Area.cs" />
