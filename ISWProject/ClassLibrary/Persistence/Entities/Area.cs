@@ -7,6 +7,20 @@ namespace Magazine.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
+        public virtual ICollection<Paper> Papers
+        {
+            get;
+            set;
+        }
+        public virtual ICollection<Paper> EvaluationPending
+        {
+            get;
+            set;
+        }
+        public virtual ICollection<Paper> PublicationPending
+        {
+            get;
+            set;
+        }
     }
 }
