@@ -18,13 +18,13 @@ namespace Magazine.Entities
             set;
         }
 
-        public DateTime UpldoadDate
+        public DateTime UploadDate
         {
             get;
             set;
         }
 
-        public virtual Evaluation Evaluation //No funciona pq no esta la clase Evaluation
+        public virtual Evaluation Evaluation
         {
             get;
             set;

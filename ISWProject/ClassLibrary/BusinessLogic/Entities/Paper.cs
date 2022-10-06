@@ -9,15 +9,15 @@ namespace Magazine.Entities
     {
         public Paper()
         {
-            CoAuthors = new ICollection<Person>;
+            CoAuthors = new List<Person>();
         }
 
         public Paper(int id, string title, DateTime uploadTime):this() {
-            Id = id;
-            Title = title;
-            UploadTime = uploadTime;
-            Responsible = new User();
-            BelongingArea = new Area();
+            this.Id = id;
+            this.Title = title;
+            this.UploadDate = uploadTime;
+            this.Responsible = new User();
+            this.BelongingArea = new Area();
         }
     }
 }
