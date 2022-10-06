@@ -19,6 +19,10 @@ namespace Magazine.Entities
             get;
             set;
         }
-
+        public User ChiefEditor
+        {
+            get;
+            set;
+        }
     }
 }

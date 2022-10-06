@@ -8,19 +8,14 @@ namespace Magazine.Entities
     {
         public Magazine()
         {
-            ChiefEditor = new User();
+            Areas = new ICollection<Area>();
         }
 
-        public User ChiefEditor
-        {
-            get;
-            set;
-        }
-
-        public Magazine(int Id, string Name)
+        public Magazine(int Id, string Name):this()
         {
             this.Id = Id;
             this.Name = Name;
+            ChiefEditor = new User();
         }
     }
 }
