@@ -11,5 +11,10 @@ namespace Magazine.Entities
 
         public string Surname   { get; set; }
 
+        public virtual ICollection<Paper> CoAuthoredPapers
+        {
+            get;
+            set;
+        }
     }
 }
