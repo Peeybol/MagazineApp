@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Magazine.Entities
 {
-    public partial class User
+    public partial class User : Person
     {
         public bool Alerted
         {
@@ -32,7 +32,23 @@ namespace Magazine.Entities
             set;
         }
 
-        public
+        public virtual ICollection<Paper> MainAuthoredPapers
+        {
+            get;
+            set;
+        }
+
+        public virtual Area Area
+        {
+            get;
+            set;
+        }
+
+        public virtual Magazine Magazine
+        {
+            get;
+            set;
+        }
 
     }
 }

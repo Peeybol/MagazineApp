@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Magazine.Entities
 {
-    public partial class Person
+    public partial class Person 
     {
         public Person()
         {
@@ -17,10 +17,6 @@ namespace Magazine.Entities
             this.Surname = Surname;
         }
 
-        public ICollection<Paper> CoAuthoredPapers
-        {
-            get;
-            set;
-        }
+        
     }
 }
