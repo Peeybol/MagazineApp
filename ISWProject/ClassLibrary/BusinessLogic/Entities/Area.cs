@@ -17,6 +17,8 @@ namespace Magazine.Entities
         {
             this.Id = Id;
             this.Name = Name;
+            this.Editor = new User();
+            this.Magazine = new Magazine();
         }
     }
 }

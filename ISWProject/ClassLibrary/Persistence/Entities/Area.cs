@@ -22,5 +22,16 @@ namespace Magazine.Entities
             get;
             set;
         }
+        public virtual Magazine Magazine
+        {
+            get;
+            set;
+        }
+        
+        public virtual User Editor
+        {
+            get;
+            set;
+        }
     }
 }
