@@ -19,7 +19,7 @@ namespace Magazine.Entities
             get;
             set;
         }
-        public User ChiefEditor
+        public virtual User ChiefEditor
         {
             get;
             set;

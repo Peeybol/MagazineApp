@@ -12,12 +12,12 @@ namespace Magazine.Entities
             CoAuthors = new List<Person>();
         }
 
-        public Paper(int id, string title, DateTime uploadTime):this() {
-            this.Id = id;
+        public Paper(string title, DateTime uploadTime, Area BelongingArea, User Responsible):this() {
             this.Title = title;
             this.UploadDate = uploadTime;
-            this.Responsible = new User();
-            this.BelongingArea = new Area();
+            this.Responsible = Responsible;
+            this.BelongingArea = BelongingArea;
+            CoAuthors.Add(Responsible);
         }
     }
 }

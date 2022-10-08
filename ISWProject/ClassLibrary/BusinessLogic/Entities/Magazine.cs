@@ -9,13 +9,13 @@ namespace Magazine.Entities
         public Magazine()
         {
             Areas = new List<Area>();
+            Issues = new List<Issue>();
         }
 
-        public Magazine(int Id, string Name):this()
+        public Magazine(string Name, User ChiefEditor):this()
         {
-            this.Id = Id;
             this.Name = Name;
-            ChiefEditor = new User();
+            this.ChiefEditor = ChiefEditor;
         }
     }
 }

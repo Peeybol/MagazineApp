@@ -11,11 +11,10 @@ namespace Magazine.Entities
             PublishedPapers = new List<Paper>();
         }
 
-        public Issue (int Id, int Number, DateTime PublicationDate, Magazine Magazine):this()
+        public Issue (int Number, Magazine Magazine):this()
         {
-            this.Id = Id;
             this.Number = Number;
-            this.PublicationDate = PublicationDate;
+            this.PublicationDate = null;
             this.Magazine = Magazine;
         }
     }

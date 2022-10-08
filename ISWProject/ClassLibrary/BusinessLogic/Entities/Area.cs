@@ -13,12 +13,11 @@ namespace Magazine.Entities
 
         }
 
-        public Area(int Id, string Name):this()
-        {
-            this.Id = Id;
+        public Area(string Name, User Editor, Magazine Magazine):this()
+        { 
             this.Name = Name;
-            this.Editor = new User();
-            this.Magazine = new Magazine();
+            this.Editor = Editor;
+            this.Magazine = Magazine;
         }
     }
 }
