@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace Magazine.Entities
@@ -36,6 +37,8 @@ namespace Magazine.Entities
             set;
         }
 
+
+        [Required]
         public virtual User Responsible
         {
             get;
@@ -48,6 +51,7 @@ namespace Magazine.Entities
             set;
         }
 
+        [Required]
         public virtual Area BelongingArea
         {
             get;

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace Magazine.Entities
@@ -32,6 +33,8 @@ namespace Magazine.Entities
             set;
         }
 
+
+        [InverseProperty("Responsible")]
         public virtual ICollection<Paper> MainAuthoredPapers
         {
             get;

@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace Magazine.Entities
 {
     public partial class Magazine
     {
+        //[Key]
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -19,6 +21,9 @@ namespace Magazine.Entities
             get;
             set;
         }
+
+
+        [Required]
         public virtual User ChiefEditor
         {
             get;

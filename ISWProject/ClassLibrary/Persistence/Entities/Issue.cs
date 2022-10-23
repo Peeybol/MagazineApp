@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace Magazine.Entities
@@ -14,6 +15,7 @@ namespace Magazine.Entities
 
         public virtual ICollection<Paper> PublishedPapers { get; set; }
 
+        [Required] 
         public virtual Magazine Magazine { get; set; }
     }
 }
