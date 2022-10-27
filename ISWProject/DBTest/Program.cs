@@ -72,12 +72,12 @@ namespace DBTest
             Console.WriteLine("===========================================");
 
             Console.WriteLine("\n// CREACIÓN DE UNA REVISTA Y SU EDITOR EN JEFE");
-            User u1 = new User("1234", "Pepe", "TheBoss", false, "ninguna", "pgarcia@gmail.com", "theboss", "1234");
-            dal.Insert<User>(u1);
+            Magazine.Entities.User chiefEditor = new User("1234", "Pepe", "TheBoss", false, "ninguna", "pgarcia@gmail.com", "theboss", "1234");
+            dal.Insert<User>(chiefEditor);
             dal.Commit();
 
-            Magazine.Entities.Magazine m = new Magazine.Entities.Magazine("Revista Universitaria", u1);
-            u1.Magazine = m;
+            Magazine.Entities.Magazine m = new Magazine.Entities.Magazine("Revista Universitaria", chiefEditor);
+            chiefEditor.Magazine = m;
 
             dal.Insert<Magazine.Entities.Magazine>(m);
             dal.Commit();
@@ -88,6 +88,10 @@ namespace DBTest
             Console.ReadKey();
 
             // Populate here the rest of the database with data
+            Magazine.Entities.User editorOfArea = new Magazine.Entities.User("0001", "Pablo", "Perez", false, "el furbo", "pablito@gmail.com", "theEditor", "contraseña");
+            //Magazine.Entities.User  = new Magazine.Entities.User("0001", "Pablo", "Perez", false, "el furbo", "pablito@gmail.com", "theEditor", "contraseña");
+            Magazine.Entities.Area area = new Magazine.Entities.Area("area", editorOfArea, m);
+            Magazine.Entities.Issue issue = new Magazine.Entities.Issue(10, m);
 
         }
 
