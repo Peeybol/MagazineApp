@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace Magazine.Entities
 {
     public partial class Paper
     {
+        // [Key]
         public int Id
         {
             get;
@@ -51,19 +53,22 @@ namespace Magazine.Entities
             set;
         }
 
-        [Required]
+        // [Required]
+        [InverseProperty("Papers")]
         public virtual Area BelongingArea
         {
             get;
             set;
         }
 
+        [InverseProperty("EvaluationPending")]
         public virtual Area EvaluationPendingArea
         {
             get;
             set;
         }
 
+        [InverseProperty("PublicationPending")]
         public virtual Area PublicationPendingArea
         {
             get;

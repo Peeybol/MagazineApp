@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace Magazine.Entities
@@ -21,6 +22,8 @@ namespace Magazine.Entities
             get;
             set;
         }
+
+        //[Key]
         public int Id
         {
             get;

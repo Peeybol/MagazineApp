@@ -7,29 +7,30 @@ namespace Magazine.Entities
 {
     public partial class Area
     {
-        [Key]
+        // [Key] // preguntar si necesaria
         public int Id { get; set; }
         public string Name { get; set; }
-        [InverseProperty("BelongingArea")]
+        // [InverseProperty("BelongingArea")]
         public virtual ICollection<Paper> Papers
         {
             get;
             set;
         }
 
-        [InverseProperty("EvaluationPendingArea")]
+        // [InverseProperty("EvaluationPendingArea")]
         public virtual ICollection<Paper> EvaluationPending
         {
             get;
             set;
         }
-        [InverseProperty("PublicationPendingArea")]
+        // [InverseProperty("PublicationPendingArea")]
         public virtual ICollection<Paper> PublicationPending
         {
             get;
             set;
         }
         [Required]
+        // [InverseProperty("Areas")]
         public virtual Magazine Magazine
         {
             get;
@@ -38,6 +39,7 @@ namespace Magazine.Entities
 
 
         [Required]
+        // [InverseProperty("Area")]
         public virtual User Editor
         {
             get;
