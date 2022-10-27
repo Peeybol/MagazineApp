@@ -85,7 +85,7 @@ namespace DBTest
             Console.WriteLine("Nombre de la revista: " + m.Name);
             Console.WriteLine("  Editor de la revista: " + m.ChiefEditor.Name + " " + m.ChiefEditor.Surname);
 
-            Console.ReadKey();
+            
 
             // Populate here the rest of the database with data
             Magazine.Entities.User editorOfArea = new Magazine.Entities.User("0001", "Pablo", "Perez", false, "el furbo", "pablito@gmail.com", "theEditor", "contraseña");
@@ -105,6 +105,8 @@ namespace DBTest
             dal.Insert<Magazine.Entities.Issue>(issue);
             dal.Insert<Magazine.Entities.Paper>(paper);
             dal.Commit();
+
+            //Console.ReadKey();
         }
 
     }
