@@ -89,10 +89,22 @@ namespace DBTest
 
             // Populate here the rest of the database with data
             Magazine.Entities.User editorOfArea = new Magazine.Entities.User("0001", "Pablo", "Perez", false, "el furbo", "pablito@gmail.com", "theEditor", "contraseña");
-            //Magazine.Entities.User  = new Magazine.Entities.User("0001", "Pablo", "Perez", false, "el furbo", "pablito@gmail.com", "theEditor", "contraseña");
+            Magazine.Entities.User paperResponsible = new Magazine.Entities.User("0002", "Ivan", "Haro", false, "los coche", "ivanote@gmail.com", "ivanyvienen", "12345ab");
             Magazine.Entities.Area area = new Magazine.Entities.Area("area", editorOfArea, m);
             Magazine.Entities.Issue issue = new Magazine.Entities.Issue(10, m);
+            Magazine.Entities.Paper paper = new Magazine.Entities.Paper("Paper1", new DateTime(2022, 10, 27), area, paperResponsible);
+            area.EvaluationPending.Add(paper);
+            m.Areas.Add(area);
+            m.Issues.Add(issue);
+            paperResponsible.MainAuthoredPapers.Add(paper);
+            paper.EvaluationPendingArea = area;
 
+            dal.Insert<Magazine.Entities.User>(editorOfArea);
+            dal.Insert<Magazine.Entities.User>(paperResponsible);
+            dal.Insert<Magazine.Entities.Area>(area);
+            dal.Insert<Magazine.Entities.Issue>(issue);
+            dal.Insert<Magazine.Entities.Paper>(paper);
+            dal.Commit();
         }
 
     }
