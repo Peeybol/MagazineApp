@@ -14,7 +14,7 @@ namespace Magazine.Entities
 
         public string Surname { get; set; }
 
-        [InverseProperty("CoAuthors")] // Se pondría porque user hereda de person y user tiene otra realacion con Paper?
+        // [InverseProperty("CoAuthors")] // Se pondría porque user hereda de person y user tiene otra realacion con Paper?
         public virtual ICollection<Paper> CoAuthoredPapers
         {
             get;

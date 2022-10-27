@@ -34,7 +34,7 @@ namespace Magazine.Entities
         }
 
 
-        [InverseProperty("Responsible")] // Misma duda que con Person
+        // [InverseProperty("Responsible")] // Misma duda que con Person
         public virtual ICollection<Paper> MainAuthoredPapers
         {
             get;
