@@ -10,6 +10,7 @@ namespace Magazine.Persistence
 {
     public class MagazineDbContext : DbContextISW
     {
+
         public MagazineDbContext() : base("MagazineDbConnection") //this is the connection string name
         {
             /*
@@ -65,6 +66,13 @@ namespace Magazine.Persistence
             
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Paper>()
+                        .HasRequired(p => p.Responsible)
+                        .WithMany()
+                        .WillCascadeOnDelete(false);
+        }
     }
 
 }
