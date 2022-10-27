@@ -81,6 +81,9 @@
     <Compile Include="BaseTest.cs" />
     <Compile Include="EvaluationTest.cs" />
     <Compile Include="IssueTest.cs" />
+    <Compile Include="MagazineDBDataSet.cs">
+      <DependentUpon>MagazineDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="MagazineDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
