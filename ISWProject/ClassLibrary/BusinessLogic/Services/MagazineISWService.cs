@@ -13,7 +13,7 @@ namespace Magazine.Services
 {
     public class MagazineISWService : IMagazineISWService
     {
-        // Dal persistence service
+        // Dal persistence service 
         private readonly IDAL dal;
 
         // Resources Manager for error messaging
