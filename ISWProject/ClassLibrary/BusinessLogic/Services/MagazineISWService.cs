@@ -45,6 +45,25 @@ namespace Magazine.Services
             dal.Commit();
         }
 
+        public bool IsValidEmail(string email) 
+        {
+            var trimmedEmail = email.Trim();
+
+            if (trimmedEmail.EndsWith("."))
+            {
+                return false; 
+            }
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == trimmedEmail;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         private void ValidateLoggedUser(bool validateLogged)
         {
             if (validateLogged) {
@@ -82,7 +101,15 @@ namespace Magazine.Services
         #region User
         public void RegisterUser(string id, string name, string surname, bool alerted, string areasOfInterest, string email, string login, string password)
         {
-
+            if (dal.GetById<User>(id) != null) throw new ServiceException(resourceManager.GetString("UserAlreadyLogged"));
+            if ((name == null) || (name.Length == 0)) throw new ServiceException(resourceManager.GetString("InvalidName"));
+            if ((surname == null) || (surname.Length == 0)) throw new ServiceException(resourceManager.GetString("InvalidSurName"));
+            if (!IsValidEmail(email)) throw new ServiceException(resourceManager.GetString("InvalidEmail"));
+            if ((login == null) || (login.Length == 0)) throw new ServiceException(resourceManager.GetString("InvalidSurName"));
+            if ((password == null) || (password.Length <= 8)) throw new ServiceException(resourceManager.GetString("InvalidPassword"));
+            Magazine.Entities.User regUser = new Magazine.Entities.User(id, name, surname, alerted, areasOfInterest, email, login, password);
+            dal.Insert<User>(regUser);
+            Commit();
         }
 
         #endregion
