@@ -53,7 +53,7 @@ namespace Magazine.Entities
             set;
         }
 
-        // [Required]
+        [Required]
         [InverseProperty("Papers")]
         public virtual Area BelongingArea
         {
