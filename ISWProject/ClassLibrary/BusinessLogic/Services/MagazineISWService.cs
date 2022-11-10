@@ -40,6 +40,11 @@ namespace Magazine.Services
             }
         }
 
+        public void Commit()
+        {
+            dal.Commit();
+        }
+
         private void ValidateLoggedUser(bool validateLogged)
         {
             if (validateLogged) {
@@ -75,7 +80,10 @@ namespace Magazine.Services
         }
 
         #region User
+        public void RegisterUser(string id, string name, string surname, bool alerted, string areasOfInterest, string email, string login, string password)
+        {
 
+        }
 
         #endregion
 
