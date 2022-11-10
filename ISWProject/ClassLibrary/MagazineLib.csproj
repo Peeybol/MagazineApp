@@ -58,6 +58,9 @@
     <Compile Include="BusinessLogic\Entities\Paper.cs" />
     <Compile Include="BusinessLogic\Entities\User.cs" />
     <Compile Include="BusinessLogic\Entities\Person.cs" />
+    <Compile Include="BusinessLogic\Services\IMagazineISWService.cs" />
+    <Compile Include="BusinessLogic\Services\MagazineISWService.cs" />
+    <Compile Include="BusinessLogic\Services\ServiceException.cs" />
     <Compile Include="Persistence\Entities\Evaluation.cs" />
     <Compile Include="Persistence\Entities\Issue.cs" />
     <Compile Include="Persistence\Entities\Magazine.cs" />
@@ -75,9 +78,9 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="BusinessLogic\Services\" />
-    <Folder Include="Resources\" />
+    <EmbeddedResource Include="Resources\ExceptionMessages.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
