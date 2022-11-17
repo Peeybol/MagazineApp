@@ -168,7 +168,7 @@ namespace Magazine.Services
             int num = getLastIssueNumber();
             if (num == null)
             {
-                Issue newIssue = new Issue( , number); //Este constructor está mal pq falta la ID
+                Issue newIssue = new Issue(number, magazine);
                 
             }
         }
@@ -179,7 +179,7 @@ namespace Magazine.Services
             foreach (Issue issue in magazine.Issues)
                 if (issue.Number > res) res = issue.Number;
             
-            if ()
+            if (Issue ) //por acabar
 
             return res;
         }
