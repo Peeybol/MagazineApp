@@ -64,6 +64,46 @@ namespace Magazine.Services
             }
         }
 
+        public bool IsValidPassword(string password)
+        {
+            if (password == null || password.Length < 8) return false;
+            int conds = 0;
+            foreach(char c in password)
+            {
+                if (c >= 'a' && c <= 'z')
+                {
+                    conds++;
+                    break;
+                }
+            }
+            foreach(char c in password)
+            {
+                if (c >= 'A' && c <= 'Z')
+                {
+                    conds++;
+                    break;
+                }
+            }
+            foreach(char c in password)
+            {
+                if (c >= '0' && c <= '9')
+                {
+                    conds++;
+                    break;
+                }
+            }
+            char[] specialCharacters = {'?', '-', '+', '=', '_', '@', '#', '!', '&','$'};
+            if (password.IndexOfAny(specialCharacters) != -1) conds++;
+            if (conds < 4) return false;
+            return true;
+        }
+
+        public bool IsValidUser(string user)
+        {
+            if(user == null || user.Length == 0 || user.Length > 30) return false;
+            return true;
+        }
+
         private void ValidateLoggedUser(bool validateLogged)
         {
             if (validateLogged) {
@@ -102,14 +142,15 @@ namespace Magazine.Services
         public void RegisterUser(string id, string name, string surname, bool alerted, string areasOfInterest, string email, string login, string password)
         {
             if (dal.GetById<User>(id) != null) throw new ServiceException(resourceManager.GetString("UserAlreadyLogged"));
-            if ((name == null) || (name.Length == 0)) throw new ServiceException(resourceManager.GetString("InvalidName"));
-            if ((surname == null) || (surname.Length == 0)) throw new ServiceException(resourceManager.GetString("InvalidSurName"));
+            if ((name == null) || (name.Length < 2)) throw new ServiceException(resourceManager.GetString("InvalidName"));
+            if ((surname == null) || (surname.Length < 2)) throw new ServiceException(resourceManager.GetString("InvalidSurName"));
             if (!IsValidEmail(email)) throw new ServiceException(resourceManager.GetString("InvalidEmail"));
-            if ((login == null) || (login.Length == 0)) throw new ServiceException(resourceManager.GetString("InvalidSurName"));
-            if ((password == null) || (password.Length <= 8)) throw new ServiceException(resourceManager.GetString("InvalidPassword"));
+            if (!IsValidUser(login)) throw new ServiceException(resourceManager.GetString("InvalidSurName"));
+            if (!IsValidPassword(password)) throw new ServiceException(resourceManager.GetString("InvalidPassword"));
             Magazine.Entities.User regUser = new Magazine.Entities.User(id, name, surname, alerted, areasOfInterest, email, login, password);
             dal.Insert<User>(regUser);
             Commit();
+            
         }
 
         #endregion
