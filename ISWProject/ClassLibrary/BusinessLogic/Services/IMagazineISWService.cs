@@ -173,7 +173,7 @@ namespace Magazine.Services
         /// </returns>
         int AddMagazine(string name, string chiefEditorId);
 
-
+        List<Paper> ListAllPapers();
         #endregion
     }
 }

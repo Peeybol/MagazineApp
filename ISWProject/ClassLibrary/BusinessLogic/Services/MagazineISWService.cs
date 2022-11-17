@@ -133,11 +133,11 @@ namespace Magazine.Services
         #region User
         public void RegisterUser(string id, string name, string surname, bool alerted, string areasOfInterest, string email, string login, string password)
         {
-            if (dal.GetById<User>(id) != null) throw new ServiceException(resourceManager.GetString("UserAlreadyLogged"));
-            if ((name == null) || (name.Length < 2)) throw new ServiceException(resourceManager.GetString("InvalidName"));
-            if ((surname == null) || (surname.Length < 2)) throw new ServiceException(resourceManager.GetString("InvalidSurName"));
+            if (dal.GetById<User>(id) != null) throw new ServiceException(resourceManager.GetString("LoggedUser"));
+            if ((name == null) || (name.Length < 2)) throw new ServiceException(resourceManager.GetString("InvalidUserName"));
+            if ((surname == null) || (surname.Length < 2)) throw new ServiceException(resourceManager.GetString("InvalidUserSurname"));
             if (!IsValidEmail(email)) throw new ServiceException(resourceManager.GetString("InvalidEmail"));
-            if (!IsValidUser(login)) throw new ServiceException(resourceManager.GetString("InvalidSurName"));
+            if (!IsValidUser(login)) throw new ServiceException(resourceManager.GetString("InvalidUser"));
             if (!IsValidPassword(password)) throw new ServiceException(resourceManager.GetString("InvalidPassword"));
             Magazine.Entities.User regUser = new Magazine.Entities.User(id, name, surname, alerted, areasOfInterest, email, login, password);
             dal.Insert<User>(regUser);
@@ -240,6 +240,15 @@ namespace Magazine.Services
             dal.Insert(m);
             Commit();
             return m.Id;
+        }
+
+        List<Paper> ListAllPapers()
+        {
+            List<Paper> list = new List<Paper>();
+            foreach(Area a in magazine.Areas) 
+                list.Concat(a.Papers);
+
+            return list;
         }
 
         #endregion
