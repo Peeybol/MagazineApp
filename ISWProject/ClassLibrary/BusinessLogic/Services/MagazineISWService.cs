@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Resources;
+using System.Runtime.ConstrainedExecution;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -142,6 +143,16 @@ namespace Magazine.Services
             dal.Insert<User>(regUser);
             Commit();
             
+        }
+
+        public string Login(string login, string password)
+        {   
+            if(login == null) { throw new ServiceException(resourceManager.GetString("InvalidUser"));}
+            if(password == null) { throw new ServiceException(resourceManager.GetString("InvalidPassword"));}
+            User myUser = dal.GetWhere<User>((u) => u.Login.Equals(login)).ToList().FirstOrDefault(null);
+            if (myUser == null) {throw new ServiceException(resourceManager.GetString("UserNotExists"));}
+            if (!myUser.Password.Equals(password)) { throw new ServiceException(resourceManager.GetString("IncorrectPassword"));}
+            else { return myUser.Id; }
         }
 
         #endregion
