@@ -47,21 +47,12 @@ namespace Magazine.Services
 
         public bool IsValidEmail(string email) 
         {
-            var trimmedEmail = email.Trim();
-
-            if (trimmedEmail.EndsWith("."))
-            {
-                return false; 
-            }
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == trimmedEmail;
-            }
-            catch
-            {
-                return false;
-            }
+            if (email == null || email.Length <= 4) return false;
+            int indexAt = email.IndexOf('@');
+            int indexDot = email.LastIndexOf('.');
+            if (indexAt == -1 || indexDot == -1) return false;
+            if (indexAt > indexDot) return false;
+            return true;
         }
 
         public bool IsValidPassword(string password)
