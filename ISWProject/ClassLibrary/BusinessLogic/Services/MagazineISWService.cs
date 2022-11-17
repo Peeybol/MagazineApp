@@ -1,6 +1,7 @@
 ﻿using Magazine.Entities;
 using Magazine.Persistence;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -88,7 +89,35 @@ namespace Magazine.Services
         #endregion
 
         #region Paper
+        public int SubmitPaper(int areaId, string title, DateTime uploadDate)
+        {
+            ValidateLoggedUser(true);
+            Area area = magazine.getAreaById(areaId);
+            if (area == null) throw new ServiceException(resourceManager.GetString("InvalidAreaName"));
+            Paper paper = new Paper(title, uploadDate, area, loggedUser);
+            area.Papers.Add(paper);
+            area.EvaluationPending.Add(paper);
+            paper.EvaluationPendingArea = area;
+            dal.Insert(area);
+            dal.Insert(paper);
+            return paper.Id;
+        }
+        public List<Person> Coauthors (int paperId, )
+        {
 
+        }
+
+        public void EvaluatePaper(bool accepted, string comments, DateTime date, int paperId)
+        {
+            ValidateLoggedUser(true);
+            Evaluation evaluation = new Evaluation(accepted, comments, date);
+            dal.Insert(evaluation);
+            Paper paper = magazine.getEvPendingPaperById(paperId);
+            paper.Evaluation = evaluation;
+            paper.EvaluationPendingArea = null;
+            paper.PublicationPendingArea = paper.BelongingArea;
+            dal.Insert(paper);
+        }
         #endregion
 
 

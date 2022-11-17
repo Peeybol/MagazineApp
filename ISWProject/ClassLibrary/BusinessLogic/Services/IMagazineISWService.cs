@@ -70,6 +70,7 @@ namespace Magazine.Services
         /// </returns>
         int SubmitPaper(int areaId, string title, DateTime uploadDate);
 
+        List<Person> Coauthors(int paperId);
 
         /// <summary>   Validate data, if correct, register paper evaluation.</summary>
         /// <param>     <c>accepted</c> is the result of the evaluation. 
