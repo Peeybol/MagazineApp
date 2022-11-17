@@ -163,7 +163,37 @@ namespace Magazine.Services
 
 
         #region Issue
+        public int AddIssue(int number)
+        {
+            int num = getLastIssueNumber();
+            if (num == null)
+            {
+                Issue newIssue = new Issue( , number); //Este constructor está mal pq falta la ID
+                
+            }
+        }
 
+        public int getLastIssueNumber() //dentro de magazine
+        {
+            int res = Int32.MinValue;
+            foreach (Issue issue in magazine.Issues)
+                if (issue.Number > res) res = issue.Number;
+            
+            if ()
+
+            return res;
+        }
+
+        public void modifyIssue(int Id, DateTime newPublicationDate)
+        {
+            Issue issue = null;
+
+            foreach (Issue i in magazine.Issues)
+                if (i.Id == Id) issue = i;
+
+            issue.PublicationDate = newPublicationDate;
+            Commit();
+        }
 
         #endregion
 
