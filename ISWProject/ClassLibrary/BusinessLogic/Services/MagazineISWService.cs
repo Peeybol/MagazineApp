@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Resources;
+using System.Runtime.ConstrainedExecution;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,6 +47,56 @@ namespace Magazine.Services
             dal.Commit();
         }
 
+        public bool IsValidEmail(string email) 
+        {
+            if (email == null || email.Length <= 4) return false;
+            int indexAt = email.IndexOf('@');
+            int indexDot = email.LastIndexOf('.');
+            if (indexAt == -1 || indexDot == -1) return false;
+            if (indexAt > indexDot) return false;
+            return true;
+        }
+
+        public bool IsValidPassword(string password)
+        {
+            if (password == null || password.Length < 8) return false;
+            int conds = 0;
+            foreach(char c in password)
+            {
+                if (c >= 'a' && c <= 'z')
+                {
+                    conds++;
+                    break;
+                }
+            }
+            foreach(char c in password)
+            {
+                if (c >= 'A' && c <= 'Z')
+                {
+                    conds++;
+                    break;
+                }
+            }
+            foreach(char c in password)
+            {
+                if (c >= '0' && c <= '9')
+                {
+                    conds++;
+                    break;
+                }
+            }
+            char[] specialCharacters = {'?', '-', '+', '=', '_', '@', '#', '!', '&','$'};
+            if (password.IndexOfAny(specialCharacters) != -1) conds++;
+            if (conds < 4) return false;
+            return true;
+        }
+
+        public bool IsValidUser(string user)
+        {
+            if(user == null || user.Length == 0 || user.Length > 30) return false;
+            return true;
+        }
+
         private void ValidateLoggedUser(bool validateLogged)
         {
             if (validateLogged) {
@@ -83,7 +134,26 @@ namespace Magazine.Services
         #region User
         public void RegisterUser(string id, string name, string surname, bool alerted, string areasOfInterest, string email, string login, string password)
         {
+            if (dal.GetById<User>(id) != null) throw new ServiceException(resourceManager.GetString("LoggedUser"));
+            if ((name == null) || (name.Length < 2)) throw new ServiceException(resourceManager.GetString("InvalidUserName"));
+            if ((surname == null) || (surname.Length < 2)) throw new ServiceException(resourceManager.GetString("InvalidUserSurname"));
+            if (!IsValidEmail(email)) throw new ServiceException(resourceManager.GetString("InvalidEmail"));
+            if (!IsValidUser(login)) throw new ServiceException(resourceManager.GetString("InvalidUser"));
+            if (!IsValidPassword(password)) throw new ServiceException(resourceManager.GetString("InvalidPassword"));
+            Magazine.Entities.User regUser = new Magazine.Entities.User(id, name, surname, alerted, areasOfInterest, email, login, password);
+            dal.Insert<User>(regUser);
+            Commit();
+            
+        }
 
+        public string Login(string login, string password)
+        {   
+            if(login == null) { throw new ServiceException(resourceManager.GetString("InvalidUser"));}
+            if(password == null) { throw new ServiceException(resourceManager.GetString("InvalidPassword"));}
+            User myUser = dal.GetWhere<User>((u) => u.Login.Equals(login)).ToList().FirstOrDefault(null);
+            if (myUser == null) {throw new ServiceException(resourceManager.GetString("UserNotExists"));}
+            if (!myUser.Password.Equals(password)) { throw new ServiceException(resourceManager.GetString("IncorrectPassword"));}
+            else { return myUser.Id; }
         }
 
         #endregion
@@ -122,7 +192,37 @@ namespace Magazine.Services
 
 
         #region Issue
+        public int AddIssue(int number)
+        {
+            int num = getLastIssueNumber();
+            if (num == null)
+            {
+                Issue newIssue = new Issue(number, magazine);
+                
+            }
+        }
 
+        public int getLastIssueNumber() //dentro de magazine
+        {
+            int res = Int32.MinValue;
+            foreach (Issue issue in magazine.Issues)
+                if (issue.Number > res) res = issue.Number;
+            
+            if (Issue ) //por acabar
+
+            return res;
+        }
+
+        public void modifyIssue(int Id, DateTime newPublicationDate)
+        {
+            Issue issue = null;
+
+            foreach (Issue i in magazine.Issues)
+                if (i.Id == Id) issue = i;
+
+            issue.PublicationDate = newPublicationDate;
+            Commit();
+        }
 
         #endregion
 
@@ -199,6 +299,15 @@ namespace Magazine.Services
             dal.Insert(m);
             Commit();
             return m.Id;
+        }
+
+        List<Paper> ListAllPapers()
+        {
+            List<Paper> list = new List<Paper>();
+            foreach(Area a in magazine.Areas) 
+                list.Concat(a.Papers);
+
+            return list;
         }
 
         #endregion

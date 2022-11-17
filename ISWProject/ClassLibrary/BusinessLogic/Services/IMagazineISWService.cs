@@ -143,6 +143,8 @@ namespace Magazine.Services
         /// </returns>
         int AddIssue(int number);
 
+        void modifyIssue(int Id, DateTime newPublicationDate);
+
         #endregion
 
         #region Area
@@ -174,7 +176,7 @@ namespace Magazine.Services
         /// </returns>
         int AddMagazine(string name, string chiefEditorId);
 
-
+        List<Paper> ListAllPapers();
         #endregion
     }
 }

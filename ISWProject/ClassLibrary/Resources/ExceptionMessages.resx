@@ -117,14 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="IncorrectPassword" xml:space="preserve">
+    <value>The password is not correct</value>
+  </data>
   <data name="InvalidAddAreaUser" xml:space="preserve">
     <value>Only chief editor may add areas</value>
   </data>
   <data name="InvalidAreaName" xml:space="preserve">
     <value>Area Name is invalid</value>
   </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>Email is not valid</value>
+  </data>
   <data name="InvalidMagazineName" xml:space="preserve">
     <value>Magazine name may not be null nor empty</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>The password is invalid</value>
+  </data>
+  <data name="InvalidUser" xml:space="preserve">
+    <value>The user is invalid</value>
+  </data>
+  <data name="InvalidUserName" xml:space="preserve">
+    <value>Name field is not valid</value>
+  </data>
+  <data name="InvalidUserSurname" xml:space="preserve">
+    <value>Surname field is not valid</value>
   </data>
   <data name="LoggedOutUser" xml:space="preserve">
     <value>Operation only valid for Logged in Users</value>
