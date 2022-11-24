@@ -156,6 +156,8 @@ namespace Magazine.Services
             else { return myUser.Id; }
         }
 
+        public void Logout() { }
+
         #endregion
 
         #region Paper
