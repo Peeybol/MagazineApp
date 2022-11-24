@@ -54,6 +54,8 @@ namespace Magazine.Services
             int indexDot = email.LastIndexOf('.');
             if (indexAt == -1 || indexDot == -1) return false;
             if (indexAt > indexDot) return false;
+            if (indexDot - indexAt <= 2) return false;
+            if (email.Length - indexDot < 2) return false;
             return true;
         }
 
