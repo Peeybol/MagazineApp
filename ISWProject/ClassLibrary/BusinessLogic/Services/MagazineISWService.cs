@@ -198,33 +198,53 @@ namespace Magazine.Services
         #region Issue
         public int AddIssue(int number)
         {
-            int num = getLastIssueNumber();
-            if (num == null)
-            {
-                Issue newIssue = new Issue(number, magazine);
-                
+            try 
+            { 
+                magazine.Issues.Add(new Issue(number, magazine));
+                return number;
             }
+            catch (Exception) { return -1; }
         }
 
-        public int getLastIssueNumber() //dentro de magazine
+        public void GetLastIssue() //dentro de magazine
         {
             int res = Int32.MinValue;
-            foreach (Issue issue in magazine.Issues)
-                if (issue.Number > res) res = issue.Number;
+            Issue issue = null;
+            foreach (Issue i in magazine.Issues)
+                if (i.Number > issue.Number) issue = i;
             
-            if (Issue ) //por acabar
-
-            return res;
+            int added = issue.PublicationDate == null ? AddIssue(issue.Number) : AddIssue(issue.Number + 1);
         }
 
-        public void modifyIssue(int Id, DateTime newPublicationDate)
+        public List<Area> GetAllAreas()
+        {
+            return magazine.Areas.ToList<Area>();
+        }
+
+        public List<Paper> GetAllPendingPapers()
+        {
+            List<Paper> paperList = new List<Paper>();
+            foreach (Area area in magazine.Areas)
+                paperList.Concat(area.PublicationPending.ToList<Paper>());
+
+            return paperList;
+        }
+
+        public List
+
+        public void ModifyIssue(int Id, DateTime newPublicationDate)
         {
             Issue issue = null;
 
             foreach (Issue i in magazine.Issues)
-                if (i.Id == Id) issue = i;
+                if (i.Id == Id)
+                {
+                    issue = i;
+                    //magazine.Issues.Remove(i);
+                }
 
             issue.PublicationDate = newPublicationDate;
+            //magazine.Issues.Add(issue);
             Commit();
         }
 
