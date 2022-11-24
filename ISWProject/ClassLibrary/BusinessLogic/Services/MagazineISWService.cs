@@ -148,8 +148,8 @@ namespace Magazine.Services
 
         public string Login(string login, string password)
         {   
-            if(login == null) { throw new ServiceException(resourceManager.GetString("InvalidUser"));}
-            if(password == null) { throw new ServiceException(resourceManager.GetString("InvalidPassword"));}
+            if(!IsValidUser(login)) { throw new ServiceException(resourceManager.GetString("InvalidUser"));}
+            if(!IsValidPassword(password)) { throw new ServiceException(resourceManager.GetString("InvalidPassword"));}
             User myUser = dal.GetWhere<User>((u) => u.Login.Equals(login)).ToList().FirstOrDefault(null);
             if (myUser == null) {throw new ServiceException(resourceManager.GetString("UserNotExists"));}
             if (!myUser.Password.Equals(password)) { throw new ServiceException(resourceManager.GetString("IncorrectPassword"));}
