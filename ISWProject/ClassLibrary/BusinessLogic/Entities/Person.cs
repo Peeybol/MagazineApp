@@ -16,7 +16,5 @@ namespace Magazine.Entities
             this.Name = Name;
             this.Surname = Surname;
         }
-
-        
     }
 }

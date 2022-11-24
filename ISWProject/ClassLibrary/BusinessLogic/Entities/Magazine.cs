@@ -18,16 +18,26 @@ namespace Magazine.Entities
             this.ChiefEditor = ChiefEditor;
         }
 
-        public Area getAreaById (int id)
+        public Area GetAreaById (int id)
         {
             return this.Areas.FirstOrDefault(a => a.Id == id);
         }
 
-        public Paper getEvPendingPaperById (int id)
+        public Paper GetEvPendingPaperById (int id)
         {
             foreach (Area a in Areas)
             {
                 Paper paper = a.EvaluationPending.FirstOrDefault(p => p.Id == id);
+                if (paper != null) return paper;
+            }
+            return null;
+        }
+
+        public Paper GetPaperById(int id)
+        {
+            foreach (Area a in Areas)
+            {
+                Paper paper = a.Papers.FirstOrDefault(p => p.Id == id);
                 if (paper != null) return paper;
             }
             return null;

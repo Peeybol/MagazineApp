@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Resources;
+using System.Runtime.CompilerServices;
 using System.Runtime.ConstrainedExecution;
 using System.Security.Policy;
 using System.Text;
@@ -162,7 +163,7 @@ namespace Magazine.Services
         public int SubmitPaper(int areaId, string title, DateTime uploadDate)
         {
             ValidateLoggedUser(true);
-            Area area = magazine.getAreaById(areaId);
+            Area area = magazine.GetAreaById(areaId);
             if (area == null) throw new ServiceException(resourceManager.GetString("InvalidAreaName"));
             Paper paper = new Paper(title, uploadDate, area, loggedUser);
             area.Papers.Add(paper);
@@ -170,11 +171,31 @@ namespace Magazine.Services
             paper.EvaluationPendingArea = area;
             dal.Insert(area);
             dal.Insert(paper);
+            Commit();
             return paper.Id;
         }
-        public List<Person> Coauthors (int paperId, )
-        {
 
+        public void RegisterPerson(string id, string name, string surname)
+        {
+            if (dal.GetById<Paper>(id) != null) throw new ServiceException(resourceManager.GetString("LoggedPerson"));
+            if ((name == null) || (name.Length < 2)) throw new ServiceException(resourceManager.GetString("InvalidUserName"));
+            if ((surname == null) || (surname.Length < 2)) throw new ServiceException(resourceManager.GetString("InvalidUserSurname"));
+            Magazine.Entities.Person regPerson = new Magazine.Entities.Person(id, name, surname);
+            dal.Insert<Person>(regPerson);
+            Commit();
+        }
+        public Person GetPersonById (string id)
+        {
+            Person person = dal.GetById<Person>(id);
+            if (person != null) return person;
+            else throw new ServiceException(resourceManager.GetString("PersonNotExists"));
+        }
+        public void AddCoauthor (int paperId, string id)
+        {
+            Paper paper = magazine.GetPaperById(paperId);
+            Person person = GetPersonById(id);
+            paper.AddCoauthor(person);
+            Commit();
         }
 
         public void EvaluatePaper(bool accepted, string comments, DateTime date, int paperId)
@@ -182,11 +203,11 @@ namespace Magazine.Services
             ValidateLoggedUser(true);
             Evaluation evaluation = new Evaluation(accepted, comments, date);
             dal.Insert(evaluation);
-            Paper paper = magazine.getEvPendingPaperById(paperId);
+            Paper paper = magazine.GetEvPendingPaperById(paperId);
             paper.Evaluation = evaluation;
             paper.EvaluationPendingArea = null;
             paper.PublicationPendingArea = paper.BelongingArea;
-            dal.Insert(paper);
+            Commit();
         }
         #endregion
 
