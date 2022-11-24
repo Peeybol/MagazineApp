@@ -153,10 +153,12 @@ namespace Magazine.Services
             User myUser = dal.GetWhere<User>((u) => u.Login.Equals(login)).ToList().FirstOrDefault(null);
             if (myUser == null) {throw new ServiceException(resourceManager.GetString("UserNotExists"));}
             if (!myUser.Password.Equals(password)) { throw new ServiceException(resourceManager.GetString("IncorrectPassword"));}
-            else { return myUser.Id; }
+            else { loggedUser = myUser; return myUser.Id; }
         }
 
-        public void Logout() { }
+        public void Logout() {
+            loggedUser = null;
+        }
 
         #endregion
 
