@@ -190,7 +190,7 @@ namespace Magazine.Services
             dal.Insert<Person>(regPerson);
             Commit();
         }
-        public Person GetPersonById (string id)
+        public Person GetPersonById (string id) 
         {
             Person person = dal.GetById<Person>(id);
             if (person != null) return person;
