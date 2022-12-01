@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.ConstrainedExecution;
+using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -216,6 +217,29 @@ namespace Magazine.Services
             Commit();
         }
 
+        public bool isAccepted(int paperId)
+        {
+            Paper myPaper = magazine.GetPaperById(paperId);
+            if(myPaper == null) { throw new ServiceException(resourceManager.GetString("PaperNotExists")); }
+            else
+            {
+                if(myPaper.Evaluation == null) { throw new ServiceException(resourceManager.GetString("NotEvaluatedPaper")); }
+                else return myPaper.Evaluation.Accepted;
+            }
+            
+        }
+
+        public bool isEvaluationPending(int paperId)
+        {
+            return magazine.GetEvPendingPaperById(paperId) != null;
+        }
+
+        public bool isPublicationPending(int paperId)
+        {
+            return magazine.GetPubPendingPaperById(paperId) != null;
+        }
+
+
         public void PublishPaper(int paperId)
         {
             Issue issue = magazine.GetOpenIssue();
@@ -278,6 +302,11 @@ namespace Magazine.Services
             issue.PublicationDate = newPublicationDate;
             //magazine.Issues.Add(issue);
             Commit();
+        }
+
+        public void UnPublishPaper(int paperId)
+        {
+            
         }
 
         #endregion
@@ -357,7 +386,7 @@ namespace Magazine.Services
             return m.Id;
         }
 
-        List<Paper> ListAllPapers()
+        public List<Paper> ListAllPapers()
         {
             List<Paper> list = new List<Paper>();
             foreach(Area a in magazine.Areas) 

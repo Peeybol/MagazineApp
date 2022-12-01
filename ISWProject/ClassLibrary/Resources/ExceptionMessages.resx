@@ -159,11 +159,17 @@
   <data name="MagazineNotExists" xml:space="preserve">
     <value>There is not magazine in the system</value>
   </data>
+  <data name="NotEvaluatedPaper" xml:space="preserve">
+    <value>Paper is not evaluated</value>
+  </data>
   <data name="NoIssueOpen" xml:space="preserve">
     <value>There is no current issue open</value>
   </data>
   <data name="NullUserId" xml:space="preserve">
     <value>User Id is null or empty</value>
+  </data>
+  <data name="PaperNotExists" xml:space="preserve">
+    <value>Paper does not exist </value>
   </data>
   <data name="PersonNotExists" xml:space="preserve">
     <value>Person does not exist</value>
