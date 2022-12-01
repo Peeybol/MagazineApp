@@ -217,6 +217,18 @@ namespace Magazine.Services
             Commit();
         }
 
+        public bool isAccepted(int paperId)
+        {
+            Paper myPaper = magazine.GetPaperById(paperId);
+            if(myPaper == null) { throw new ServiceException(resourceManager.GetString("PaperNotExists")); }
+            else
+            {
+                if(myPaper.Evaluation == null) { throw new ServiceException(resourceManager.GetString("NotEvaluatedPaper")); }
+                else return myPaper.Evaluation.Accepted;
+            }
+            
+        }
+
         public bool isEvaluationPending(int paperId)
         {
             return magazine.GetEvPendingPaperById(paperId) != null;
