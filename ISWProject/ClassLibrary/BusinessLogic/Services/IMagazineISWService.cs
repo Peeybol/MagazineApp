@@ -145,7 +145,7 @@ namespace Magazine.Services
         /// </returns>
         int AddIssue(int number);
 
-        void modifyIssue(int Id, DateTime newPublicationDate);
+        void ModifyIssue(int Id, DateTime newPublicationDate);
 
         #endregion
 
