@@ -177,4 +177,7 @@
   <data name="UserNotExists" xml:space="preserve">
     <value>User does not exist</value>
   </data>
+  <data name="NoPubPendingPaper" xml:space="preserve">
+    <value>This paper is not pending to be published</value>
+  </data>
 </root>

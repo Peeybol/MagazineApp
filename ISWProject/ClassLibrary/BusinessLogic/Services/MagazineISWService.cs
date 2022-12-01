@@ -176,8 +176,6 @@ namespace Magazine.Services
             area.Papers.Add(paper);
             area.EvaluationPending.Add(paper);
             paper.EvaluationPendingArea = area;
-            dal.Insert(area);
-            dal.Insert(paper);
             Commit();
             return paper.Id;
         }
@@ -209,7 +207,6 @@ namespace Magazine.Services
         {
             ValidateLoggedUser(true);
             Evaluation evaluation = new Evaluation(accepted, comments, date);
-            dal.Insert(evaluation);
             Paper paper = magazine.GetEvPendingPaperById(paperId);
             paper.Evaluation = evaluation;
             paper.EvaluationPendingArea = null;
@@ -231,11 +228,14 @@ namespace Magazine.Services
 
         public bool isEvaluationPending(int paperId)
         {
+            if (magazine.GetPaperById(paperId) == null) throw new ServiceException(resourceManager.GetString("PaperNotExists"));
             return magazine.GetEvPendingPaperById(paperId) != null;
         }
 
         public bool isPublicationPending(int paperId)
         {
+            if (magazine.GetPaperById(paperId) == null) throw new ServiceException(resourceManager.GetString("PaperNotExists"));
+            // Mirar si hace falta comprobar que ha sido evaluado
             return magazine.GetPubPendingPaperById(paperId) != null;
         }
 
@@ -243,10 +243,17 @@ namespace Magazine.Services
         public void PublishPaper(int paperId)
         {
             Issue issue = magazine.GetOpenIssue();
-            if (issue == null) {
-                throw new ServiceException(resourceManager.GetString("NoIssueOpen"));
+            if (issue == null)
+            {
+                int number;
+                if (magazine.GetLastIssue() == null) number = 1;
+                else number = magazine.GetLastIssue().Number + 1;
+                issue = new Issue(number, magazine);
             }
-            Paper paper = magazine.GetPaperById(paperId);
+            Paper paper = magazine.GetPubPendingPaperById(paperId);
+            if (paper == null) throw new ServiceException(resourceManager.GetString("NoPubPendingPaper"));
+            issue.PublishedPapers.Add(paper);
+            Commit();
         }
         #endregion
 
@@ -254,22 +261,12 @@ namespace Magazine.Services
         #region Issue
         public int AddIssue(int number)
         {
-            try 
-            { 
+            try
+            {
                 magazine.Issues.Add(new Issue(number, magazine));
                 return number;
             }
             catch (Exception) { return -1; }
-        }
-
-        public void GetLastIssue() //dentro de magazine
-        {
-            int res = Int32.MinValue;
-            Issue issue = null;
-            foreach (Issue i in magazine.Issues)
-                if (i.Number > issue.Number) issue = i;
-            
-            int added = issue.PublicationDate == null ? AddIssue(issue.Number) : AddIssue(issue.Number + 1);
         }
 
         public List<Area> GetAllAreas()
