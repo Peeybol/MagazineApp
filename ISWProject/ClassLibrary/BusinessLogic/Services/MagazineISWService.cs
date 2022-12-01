@@ -253,7 +253,7 @@ namespace Magazine.Services
             return paperList;
         }
 
-        public List
+        //public List
 
         public void ModifyIssue(int Id, DateTime newPublicationDate)
         {
