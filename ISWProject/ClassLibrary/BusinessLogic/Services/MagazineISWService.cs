@@ -290,17 +290,9 @@ namespace Magazine.Services
 
         public void ModifyIssue(int Id, DateTime newPublicationDate)
         {
-            Issue issue = null;
-
-            foreach (Issue i in magazine.Issues)
-                if (i.Id == Id)
-                {
-                    issue = i;
-                    //magazine.Issues.Remove(i);
-                }
-
+            Issue issue = magazine.Issues.FirstOrDefault(i => i.Id == Id);
+            if(issue == null) { throw new ServiceException(resourceManager.GetString("IssueNotExists")); }
             issue.PublicationDate = newPublicationDate;
-            //magazine.Issues.Add(issue);
             Commit();
         }
 
