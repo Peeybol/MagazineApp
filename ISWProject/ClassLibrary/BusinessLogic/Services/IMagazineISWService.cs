@@ -72,7 +72,7 @@ namespace Magazine.Services
 
         void RegisterPerson(string id, string name, string surname);
 
-        List<Person> Coauthors(int paperId);
+        void AddCoauthor(int paperId, string id);
 
         /// <summary>   Validate data, if correct, register paper evaluation.</summary>
         /// <param>     <c>accepted</c> is the result of the evaluation. 
@@ -145,7 +145,7 @@ namespace Magazine.Services
         /// </returns>
         int AddIssue(int number);
 
-        void modifyIssue(int Id, DateTime newPublicationDate);
+        void ModifyIssue(int Id, DateTime newPublicationDate);
 
         #endregion
 
