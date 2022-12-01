@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.ConstrainedExecution;
+using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -280,6 +281,11 @@ namespace Magazine.Services
             issue.PublicationDate = newPublicationDate;
             //magazine.Issues.Add(issue);
             Commit();
+        }
+
+        public void UnPublishPaper(int paperId)
+        {
+            
         }
 
         #endregion

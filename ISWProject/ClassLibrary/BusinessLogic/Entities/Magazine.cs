@@ -42,5 +42,15 @@ namespace Magazine.Entities
             }
             return null;
         }
+
+        public Paper GetPublishedPaperById(int id)
+        {
+            foreach (Issue i in Issues)
+            {
+                Paper paper = i.PublishedPapers.FirstOrDefault(p => p.Id == id);
+                if (paper != null) return paper;
+            }
+            return null;
+        }
     }
 }
