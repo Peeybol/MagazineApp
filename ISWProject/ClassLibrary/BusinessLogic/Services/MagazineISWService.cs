@@ -217,6 +217,18 @@ namespace Magazine.Services
             Commit();
         }
 
+        public bool isAccepted(int paperId)
+        {
+            Paper myPaper = magazine.GetPaperById(paperId);
+            if(myPaper == null) { throw new ServiceException(resourceManager.GetString("PaperNotExists")); }
+            else
+            {
+                if(myPaper.Evaluation == null) { throw new ServiceException(resourceManager.GetString("NotEvaluatedPaper")); }
+                else return myPaper.Evaluation.Accepted;
+            }
+            
+        }
+
         public bool isEvaluationPending(int paperId)
         {
             return magazine.GetEvPendingPaperById(paperId) != null;
@@ -227,6 +239,15 @@ namespace Magazine.Services
             return magazine.GetPubPendingPaperById(paperId) != null;
         }
 
+
+        public void PublishPaper(int paperId)
+        {
+            Issue issue = magazine.GetOpenIssue();
+            if (issue == null) {
+                throw new ServiceException(resourceManager.GetString("NoIssueOpen"));
+            }
+            Paper paper = magazine.GetPaperById(paperId);
+        }
         #endregion
 
 
