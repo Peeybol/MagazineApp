@@ -23,6 +23,11 @@ namespace Magazine.Entities
             return this.Areas.FirstOrDefault(a => a.Id == id);
         }
 
+        public Area GetAreaByName(string areaName)
+        {
+            return Areas.FirstOrDefault(a => a.Name == areaName);
+        }
+
         public Paper GetEvPendingPaperById (int id)
         {
             foreach (Area a in Areas)
