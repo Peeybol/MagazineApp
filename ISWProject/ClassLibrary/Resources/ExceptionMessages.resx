@@ -159,6 +159,9 @@
   <data name="MagazineNotExists" xml:space="preserve">
     <value>There is not magazine in the system</value>
   </data>
+  <data name="NoIssueOpen" xml:space="preserve">
+    <value>There is no current issue open</value>
+  </data>
   <data name="NullUserId" xml:space="preserve">
     <value>User Id is null or empty</value>
   </data>

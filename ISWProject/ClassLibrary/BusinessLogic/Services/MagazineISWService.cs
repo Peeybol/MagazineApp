@@ -215,6 +215,15 @@ namespace Magazine.Services
             paper.PublicationPendingArea = paper.BelongingArea;
             Commit();
         }
+
+        public void PublishPaper(int paperId)
+        {
+            Issue issue = magazine.GetOpenIssue();
+            if (issue == null) {
+                throw new ServiceException(resourceManager.GetString("NoIssueOpen"));
+            }
+            Paper paper = magazine.GetPaperById(paperId);
+        }
         #endregion
 
 

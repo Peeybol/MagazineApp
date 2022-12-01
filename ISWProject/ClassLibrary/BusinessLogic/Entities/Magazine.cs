@@ -42,5 +42,14 @@ namespace Magazine.Entities
             }
             return null;
         }
+
+        public Issue GetOpenIssue()
+        {
+            foreach (Issue i in Issues)
+            {
+                if (i.PublicationDate == null) return i;
+            }
+            return null;
+        }
     }
 }
