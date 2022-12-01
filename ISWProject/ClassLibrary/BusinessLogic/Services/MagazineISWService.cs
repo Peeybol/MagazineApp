@@ -215,6 +215,17 @@ namespace Magazine.Services
             paper.PublicationPendingArea = paper.BelongingArea;
             Commit();
         }
+
+        public bool isEvaluationPending(int paperId)
+        {
+            return GetEvPendingPaperById(paperId) != null;
+        }
+
+        public bool isPublicationPending(int paperId)
+        {
+
+        }
+
         #endregion
 
 
@@ -348,7 +359,7 @@ namespace Magazine.Services
             return m.Id;
         }
 
-        List<Paper> ListAllPapers()
+        public List<Paper> ListAllPapers()
         {
             List<Paper> list = new List<Paper>();
             foreach(Area a in magazine.Areas) 
