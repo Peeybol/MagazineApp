@@ -219,12 +219,12 @@ namespace Magazine.Services
 
         public bool isEvaluationPending(int paperId)
         {
-            return GetEvPendingPaperById(paperId) != null;
+            return magazine.GetEvPendingPaperById(paperId) != null;
         }
 
         public bool isPublicationPending(int paperId)
         {
-
+            return magazine.GetPubPendingPaperById(paperId) != null;
         }
 
         #endregion

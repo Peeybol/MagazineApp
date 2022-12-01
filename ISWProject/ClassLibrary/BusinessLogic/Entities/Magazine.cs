@@ -52,5 +52,15 @@ namespace Magazine.Entities
             }
             return null;
         }
+
+        public Paper GetPubPendingPaperById(int id)
+        {
+            foreach (Area a in Areas)
+            {
+                Paper paper = a.PublicationPending.FirstOrDefault(p => p.Id == id);
+                if (paper != null) return paper;
+            }
+            return null;
+        }
     }
 }
