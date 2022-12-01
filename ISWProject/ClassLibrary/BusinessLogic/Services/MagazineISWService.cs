@@ -306,7 +306,11 @@ namespace Magazine.Services
 
         public void UnPublishPaper(int paperId)
         {
-            
+            Paper p = magazine.GetPublishedPaperById(paperId);
+            if (p == null) throw new ServiceException(resourceManager.GetString("PaperNotPublished"));
+            p.BelongingArea.PublicationPending.Add(p);
+            p.Issue.PublishedPapers.Remove(p);
+            Commit();
         }
 
         #endregion
