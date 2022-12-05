@@ -136,6 +136,7 @@ namespace Magazine.Services
         }
 
         #region User
+        // check that the user is not repeated
         public void RegisterUser(string id, string name, string surname, bool alerted, string areasOfInterest, string email, string login, string password)
         {
             if (dal.GetById<User>(id) != null) throw new ServiceException(resourceManager.GetString("LoggedUser"));
@@ -151,10 +152,11 @@ namespace Magazine.Services
         }
 
         public string Login(string login, string password)
-        {   
+        {
+            ValidateLoggedUser(false);
             if(!IsValidUser(login)) { throw new ServiceException(resourceManager.GetString("InvalidUser"));}
             if(!IsValidPassword(password)) { throw new ServiceException(resourceManager.GetString("InvalidPassword"));}
-            User myUser = dal.GetWhere<User>((u) => u.Login.Equals(login)).ToList().FirstOrDefault(null);
+            User myUser = dal.GetWhere<User>((u) => u.Login.Equals(login)).ToList().FirstOrDefault();
             if (myUser == null) {throw new ServiceException(resourceManager.GetString("UserNotExists"));}
             if (!myUser.Password.Equals(password)) { throw new ServiceException(resourceManager.GetString("IncorrectPassword"));}
             else { loggedUser = myUser; return myUser.Id; }
@@ -167,6 +169,7 @@ namespace Magazine.Services
         #endregion
 
         #region Paper
+        // check that the parameters are not null (look at submit paper from the practice: area name and coauthors)
         public int SubmitPaper(int areaId, string title, DateTime uploadDate)
         {
             ValidateLoggedUser(true);
@@ -203,6 +206,7 @@ namespace Magazine.Services
             Commit();
         }
 
+        // validate data, check that the paper is not evaluated, if it is accepted move to the paper pending publication list, if rejected remove it from evaluation pending list
         public void EvaluatePaper(bool accepted, string comments, DateTime date, int paperId)
         {
             ValidateLoggedUser(true);
@@ -282,8 +286,6 @@ namespace Magazine.Services
 
             return paperList;
         }
-
-        //public List
 
         public void ModifyIssue(int Id, DateTime newPublicationDate)
         {
