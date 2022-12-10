@@ -136,7 +136,6 @@ namespace Magazine.Services
         }
 
         #region User
-        // check that the user is not repeated
         public void RegisterUser(string id, string name, string surname, bool alerted, string areasOfInterest, string email, string login, string password)
         {
             if (dal.GetById<User>(id) != null) throw new ServiceException(resourceManager.GetString("LoggedUser"));
@@ -148,7 +147,6 @@ namespace Magazine.Services
             Magazine.Entities.User regUser = new Magazine.Entities.User(id, name, surname, alerted, areasOfInterest, email, login, password);
             dal.Insert<User>(regUser);
             Commit();
-            
         }
 
         public string Login(string login, string password)
@@ -156,10 +154,11 @@ namespace Magazine.Services
             ValidateLoggedUser(false);
             if(!IsValidUser(login)) { throw new ServiceException(resourceManager.GetString("InvalidUser"));}
             if(!IsValidPassword(password)) { throw new ServiceException(resourceManager.GetString("InvalidPassword"));}
-            User myUser = dal.GetWhere<User>((u) => u.Login.Equals(login)).ToList().FirstOrDefault();
+            User myUser = dal.GetWhere<User>((u) => u.Login.Equals(login)).FirstOrDefault();
             if (myUser == null) {throw new ServiceException(resourceManager.GetString("UserNotExists"));}
             if (!myUser.Password.Equals(password)) { throw new ServiceException(resourceManager.GetString("IncorrectPassword"));}
-            else { loggedUser = myUser; return myUser.Id; }
+            loggedUser = myUser; 
+            return myUser.Id; 
         }
 
         public void Logout() {
@@ -169,9 +168,12 @@ namespace Magazine.Services
         #endregion
 
         #region Paper
-        // check that the parameters are not null (look at submit paper from the practice: area name and coauthors)
+        // añadir metodo lanzadera pasandole el nombre del area como parametro
         public int SubmitPaper(int areaId, string title, DateTime uploadDate)
         {
+            //if(areaId == null) { throw new ServiceException(resourceManager.GetString("InvalidAreaId")); }
+            if (title == null) { throw new ServiceException(resourceManager.GetString("InvalidTitle")); }
+            if (uploadDate == null) { throw new ServiceException(resourceManager.GetString("InvalidUploadDate")); }
             ValidateLoggedUser(true);
             Area area = magazine.GetAreaById(areaId);
             if (area == null) throw new ServiceException(resourceManager.GetString("InvalidAreaName"));
@@ -198,10 +200,12 @@ namespace Magazine.Services
             if (person != null) return person;
             else throw new ServiceException(resourceManager.GetString("PersonNotExists"));
         }
+        // añadir metodo lanzadera pasandole nombre y apellidos de la persona
         public void AddCoauthor (int paperId, string id)
         {
             Paper paper = magazine.GetPaperById(paperId);
             Person person = GetPersonById(id);
+            if(person == null) { }
             paper.AddCoauthor(person);
             Commit();
         }
