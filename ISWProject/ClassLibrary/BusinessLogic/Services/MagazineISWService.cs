@@ -139,6 +139,7 @@ namespace Magazine.Services
         // check that the user is not repeated
         public void RegisterUser(string id, string name, string surname, bool alerted, string areasOfInterest, string email, string login, string password)
         {
+            ValidateLoggedUser(false);
             if (dal.GetById<User>(id) != null) throw new ServiceException(resourceManager.GetString("LoggedUser"));
             if ((name == null) || (name.Length < 2)) throw new ServiceException(resourceManager.GetString("InvalidUserName"));
             if ((surname == null) || (surname.Length < 2)) throw new ServiceException(resourceManager.GetString("InvalidUserSurname"));
@@ -201,6 +202,7 @@ namespace Magazine.Services
         public void AddCoauthor (int paperId, string id)
         {
             Paper paper = magazine.GetPaperById(paperId);
+            if(paper.CoAuthors.Count() == 4) throw new ServiceException(resourceManager.GetString("MaximumNumberCoauthors"));
             Person person = GetPersonById(id);
             paper.AddCoauthor(person);
             Commit();
