@@ -136,6 +136,7 @@ namespace Magazine.Services
         }
 
         #region User
+        // check that the user is not repeated
         public void RegisterUser(string id, string name, string surname, bool alerted, string areasOfInterest, string email, string login, string password)
         {
             if (dal.GetById<User>(id) != null) throw new ServiceException(resourceManager.GetString("LoggedUser"));
@@ -151,10 +152,11 @@ namespace Magazine.Services
         }
 
         public string Login(string login, string password)
-        {   
+        {
+            ValidateLoggedUser(false);
             if(!IsValidUser(login)) { throw new ServiceException(resourceManager.GetString("InvalidUser"));}
             if(!IsValidPassword(password)) { throw new ServiceException(resourceManager.GetString("InvalidPassword"));}
-            User myUser = dal.GetWhere<User>((u) => u.Login.Equals(login)).ToList().FirstOrDefault(null);
+            User myUser = dal.GetWhere<User>((u) => u.Login.Equals(login)).ToList().FirstOrDefault();
             if (myUser == null) {throw new ServiceException(resourceManager.GetString("UserNotExists"));}
             if (!myUser.Password.Equals(password)) { throw new ServiceException(resourceManager.GetString("IncorrectPassword"));}
             else { loggedUser = myUser; return myUser.Id; }
@@ -167,6 +169,7 @@ namespace Magazine.Services
         #endregion
 
         #region Paper
+        // check that the parameters are not null (look at submit paper from the practice: area name and coauthors)
         public int SubmitPaper(int areaId, string title, DateTime uploadDate)
         {
             ValidateLoggedUser(true);
@@ -176,8 +179,6 @@ namespace Magazine.Services
             area.Papers.Add(paper);
             area.EvaluationPending.Add(paper);
             paper.EvaluationPendingArea = area;
-            dal.Insert(area);
-            dal.Insert(paper);
             Commit();
             return paper.Id;
         }
@@ -205,11 +206,11 @@ namespace Magazine.Services
             Commit();
         }
 
+        // validate data, check that the paper is not evaluated, if it is accepted move to the paper pending publication list, if rejected remove it from evaluation pending list
         public void EvaluatePaper(bool accepted, string comments, DateTime date, int paperId)
         {
             ValidateLoggedUser(true);
             Evaluation evaluation = new Evaluation(accepted, comments, date);
-            dal.Insert(evaluation);
             Paper paper = magazine.GetEvPendingPaperById(paperId);
             paper.Evaluation = evaluation;
             paper.EvaluationPendingArea = null;
@@ -231,11 +232,14 @@ namespace Magazine.Services
 
         public bool isEvaluationPending(int paperId)
         {
+            if (magazine.GetPaperById(paperId) == null) throw new ServiceException(resourceManager.GetString("PaperNotExists"));
             return magazine.GetEvPendingPaperById(paperId) != null;
         }
 
         public bool isPublicationPending(int paperId)
         {
+            if (magazine.GetPaperById(paperId) == null) throw new ServiceException(resourceManager.GetString("PaperNotExists"));
+            // Mirar si hace falta comprobar que ha sido evaluado
             return magazine.GetPubPendingPaperById(paperId) != null;
         }
 
@@ -243,10 +247,17 @@ namespace Magazine.Services
         public void PublishPaper(int paperId)
         {
             Issue issue = magazine.GetOpenIssue();
-            if (issue == null) {
-                throw new ServiceException(resourceManager.GetString("NoIssueOpen"));
+            if (issue == null)
+            {
+                int number;
+                if (magazine.GetLastIssue() == null) number = 1;
+                else number = magazine.GetLastIssue().Number + 1;
+                issue = new Issue(number, magazine);
             }
-            Paper paper = magazine.GetPaperById(paperId);
+            Paper paper = magazine.GetPubPendingPaperById(paperId);
+            if (paper == null) throw new ServiceException(resourceManager.GetString("NoPubPendingPaper"));
+            issue.PublishedPapers.Add(paper);
+            Commit();
         }
         #endregion
 
@@ -254,22 +265,12 @@ namespace Magazine.Services
         #region Issue
         public int AddIssue(int number)
         {
-            try 
-            { 
+            try
+            {
                 magazine.Issues.Add(new Issue(number, magazine));
                 return number;
             }
             catch (Exception) { return -1; }
-        }
-
-        public void GetLastIssue() //dentro de magazine
-        {
-            int res = Int32.MinValue;
-            Issue issue = null;
-            foreach (Issue i in magazine.Issues)
-                if (i.Number > issue.Number) issue = i;
-            
-            int added = issue.PublicationDate == null ? AddIssue(issue.Number) : AddIssue(issue.Number + 1);
         }
 
         public List<Area> GetAllAreas()
@@ -286,21 +287,11 @@ namespace Magazine.Services
             return paperList;
         }
 
-        //public List
-
         public void ModifyIssue(int Id, DateTime newPublicationDate)
         {
-            Issue issue = null;
-
-            foreach (Issue i in magazine.Issues)
-                if (i.Id == Id)
-                {
-                    issue = i;
-                    //magazine.Issues.Remove(i);
-                }
-
+            Issue issue = magazine.Issues.FirstOrDefault(i => i.Id == Id);
+            if(issue == null) { throw new ServiceException(resourceManager.GetString("IssueNotExists")); }
             issue.PublicationDate = newPublicationDate;
-            //magazine.Issues.Add(issue);
             Commit();
         }
 

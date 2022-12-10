@@ -147,6 +147,9 @@
   <data name="InvalidUserSurname" xml:space="preserve">
     <value>Surname field is not valid</value>
   </data>
+  <data name="IssueNotExists" xml:space="preserve">
+    <value>Issue does not exist</value>
+  </data>
   <data name="LoggedOutUser" xml:space="preserve">
     <value>Operation only valid for Logged in Users</value>
   </data>
@@ -179,5 +182,8 @@
   </data>
   <data name="UserNotExists" xml:space="preserve">
     <value>User does not exist</value>
+  </data>
+  <data name="NoPubPendingPaper" xml:space="preserve">
+    <value>This paper is not pending to be published</value>
   </data>
 </root>

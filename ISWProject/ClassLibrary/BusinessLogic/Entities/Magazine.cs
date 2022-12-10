@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 
@@ -80,6 +81,10 @@ namespace Magazine.Entities
                 if (i.PublicationDate == null) return i;
             }
             return null;
+        }
+        public Issue GetLastIssue()
+        {
+            return Issues.LastOrDefault();
         }
     }
 }
