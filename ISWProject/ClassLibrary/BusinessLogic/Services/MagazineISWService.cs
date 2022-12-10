@@ -95,9 +95,9 @@ namespace Magazine.Services
             return true;
         }
 
-        public bool IsValidUser(string user)
+        public bool IsValidUser(string login)
         {
-            if(user == null || user.Length == 0 || user.Length > 30) return false;
+            if(login == null || login.Length == 0 || login.Length > 30 || dal.GetWhere<User>(u => u.Login.Equals(login)).FirstOrDefault(null) != null) return false;
             return true;
         }
 
