@@ -186,4 +186,10 @@
   <data name="NoPubPendingPaper" xml:space="preserve">
     <value>This paper is not pending to be published</value>
   </data>
+  <data name="InvalidTitle" xml:space="preserve">
+    <value>The title is null</value>
+  </data>
+  <data name="InvalidUploadDate" xml:space="preserve">
+    <value>The upload date is null</value>
+  </data>
 </root>
