@@ -192,4 +192,16 @@
   <data name="InvalidUploadDate" xml:space="preserve">
     <value>The upload date is null</value>
   </data>
+  <data name="InvalidDate" xml:space="preserve">
+    <value>The date is null</value>
+  </data>
+  <data name="MaximumNumberCoauthors" xml:space="preserve">
+    <value>Maximum number of coauthors reached</value>
+  </data>
+  <data name="NotChiefEditor" xml:space="preserve">
+    <value>Logged user is not the Chief Editor of the Magazine</value>
+  </data>
+  <data name="NotEditor" xml:space="preserve">
+    <value>Logged user is not the Area Editor</value>
+  </data>
 </root>

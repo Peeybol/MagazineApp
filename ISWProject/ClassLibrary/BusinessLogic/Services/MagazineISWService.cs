@@ -202,6 +202,7 @@ namespace Magazine.Services
             else throw new ServiceException(resourceManager.GetString("PersonNotExists"));
         }
         // añadir metodo lanzadera pasandole nombre y apellidos de la persona
+        // añadir método para crear persona en caso de que no exista
         public void AddCoauthor (int paperId, string id)
         {
             Paper paper = magazine.GetPaperById(paperId);
@@ -216,11 +217,16 @@ namespace Magazine.Services
         public void EvaluatePaper(bool accepted, string comments, DateTime date, int paperId)
         {
             ValidateLoggedUser(true);
+            if (comments == null) comments = "";
+            if(date == null) throw new ServiceException(resourceManager.GetString("InvalidDate"));
             Evaluation evaluation = new Evaluation(accepted, comments, date);
             Paper paper = magazine.GetEvPendingPaperById(paperId);
+            if(loggedUser != paper.BelongingArea.Editor) throw new ServiceException(resourceManager.GetString("NotEditor"));
             paper.Evaluation = evaluation;
+            paper.BelongingArea.EvaluationPending.Remove(paper);
             paper.EvaluationPendingArea = null;
             paper.PublicationPendingArea = paper.BelongingArea;
+            paper.BelongingArea.PublicationPending.Add(paper);
             Commit();
         }
 
@@ -245,7 +251,6 @@ namespace Magazine.Services
         public bool isPublicationPending(int paperId)
         {
             if (magazine.GetPaperById(paperId) == null) throw new ServiceException(resourceManager.GetString("PaperNotExists"));
-            // Mirar si hace falta comprobar que ha sido evaluado
             return magazine.GetPubPendingPaperById(paperId) != null;
         }
 
@@ -271,12 +276,9 @@ namespace Magazine.Services
         #region Issue
         public int AddIssue(int number)
         {
-            try
-            {
-                magazine.Issues.Add(new Issue(number, magazine));
-                return number;
-            }
-            catch (Exception) { return -1; }
+            Issue issue = new Issue(number, magazine);
+            magazine.Issues.Add(issue);
+            return issue.Id;
         }
 
         public List<Area> GetAllAreas()
@@ -344,7 +346,7 @@ namespace Magazine.Services
             // validate editor id not empty
             if ((editorId == null) || (editorId.Length == 0)) throw new ServiceException(resourceManager.GetString("NullUserId"));
 
-            //validate editor exists
+            // validate editor exists
             var editor = dal.GetById<User>(editorId);
             if (editor==null) throw new ServiceException(resourceManager.GetString("UserNotExists"));            
 
@@ -389,6 +391,7 @@ namespace Magazine.Services
 
         public List<Paper> ListAllPapers()
         {
+            if(loggedUser != magazine.ChiefEditor) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
             List<Paper> list = new List<Paper>();
             foreach(Area a in magazine.Areas) 
                 list.Concat(a.Papers);
