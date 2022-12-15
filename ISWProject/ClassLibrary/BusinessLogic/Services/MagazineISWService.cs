@@ -221,6 +221,7 @@ namespace Magazine.Services
             if(date == null) throw new ServiceException(resourceManager.GetString("InvalidDate"));
             Evaluation evaluation = new Evaluation(accepted, comments, date);
             Paper paper = magazine.GetEvPendingPaperById(paperId);
+            if (paper == null) throw new ServiceException(resourceManager.GetString("PaperNotPendingOfEvaluation"));
             if(loggedUser != paper.BelongingArea.Editor) throw new ServiceException(resourceManager.GetString("NotEditor"));
             paper.Evaluation = evaluation;
             paper.BelongingArea.EvaluationPending.Remove(paper);
