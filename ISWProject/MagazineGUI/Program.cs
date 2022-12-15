@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Magazine.Persistence;
+using Magazine.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,9 +16,11 @@ namespace MagazineGUI
         [STAThread]
         static void Main()
         {
+            IMagazineISWService service = new MagazineISWService(new EntityFrameworkDAL(new MagazineDbContext()));
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MagazineApp(service));
         }
     }
 }

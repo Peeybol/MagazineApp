@@ -34,7 +34,7 @@ namespace Magazine.Services
             this.dal = dal;
 
             // Resource manager for internationalization of error messages is created
-            resourceManager = new ResourceManager("MagazineLib.Resources.ExceptionMessages", Assembly.GetExecutingAssembly());
+            resourceManager = new ResourceManager("ClassLibrary.Resources.ExceptionMessages", Assembly.GetExecutingAssembly());
             
             // Only one magazine object exists in our system
             magazine = dal.GetAll<Entities.Magazine>().FirstOrDefault();
