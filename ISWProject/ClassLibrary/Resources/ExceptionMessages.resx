@@ -204,4 +204,7 @@
   <data name="NotEditor" xml:space="preserve">
     <value>Logged user is not the Area Editor</value>
   </data>
+  <data name="PaperNotPendingOfEvaluation" xml:space="preserve">
+    <value />
+  </data>
 </root>
