@@ -207,4 +207,7 @@
   <data name="PaperNotPendingOfEvaluation" xml:space="preserve">
     <value />
   </data>
+  <data name="NoSubPermission" xml:space="preserve">
+    <value>The user is not allowed to submit a paper.</value>
+  </data>
 </root>

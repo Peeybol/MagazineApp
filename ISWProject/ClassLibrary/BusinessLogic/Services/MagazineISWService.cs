@@ -143,7 +143,7 @@ namespace Magazine.Services
             if ((name == null) || (name.Length < 2)) throw new ServiceException(resourceManager.GetString("InvalidUserName"));
             if ((surname == null) || (surname.Length < 2)) throw new ServiceException(resourceManager.GetString("InvalidUserSurname"));
             if (!IsValidEmail(email)) throw new ServiceException(resourceManager.GetString("InvalidEmail"));
-            if (!IsValidUser(login) || dal.GetWhere<User>(u => u.Login.Equals(login)).FirstOrDefault(null) != null) throw new ServiceException(resourceManager.GetString("InvalidUser"));
+            if (!IsValidUser(login) || dal.GetWhere<User>(u => u.Login.Equals(login)).FirstOrDefault() != null) throw new ServiceException(resourceManager.GetString("InvalidUser"));
             if (!IsValidPassword(password)) throw new ServiceException(resourceManager.GetString("InvalidPassword"));
             Magazine.Entities.User regUser = new Magazine.Entities.User(id, name, surname, alerted, areasOfInterest, email, login, password);
             dal.Insert<User>(regUser);
@@ -170,14 +170,21 @@ namespace Magazine.Services
 
         #region Paper
         // añadir metodo lanzadera pasandole el nombre del area como parametro
+        // TODO - Debatir si deberíamos cambiar el método de la interfaz para que, en vez de la id, pida el nombre.
         public int SubmitPaper(int areaId, string title, DateTime uploadDate)
         {
+            // TODO - Por qué está esto comentado?
             //if(areaId == null) { throw new ServiceException(resourceManager.GetString("InvalidAreaId")); }
-            if (title == null) { throw new ServiceException(resourceManager.GetString("InvalidTitle")); }
+
+            if (title == null || title.Equals("")) { throw new ServiceException(resourceManager.GetString("InvalidTitle")); }
             if (uploadDate == null) { throw new ServiceException(resourceManager.GetString("InvalidUploadDate")); }
             ValidateLoggedUser(true);
             Area area = magazine.GetAreaById(areaId);
             if (area == null) throw new ServiceException(resourceManager.GetString("InvalidAreaName"));
+            // TODO - El editor de un area puede intentar publicar en otra como usuario normal?
+            if (loggedUser.Equals(magazine.ChiefEditor) || loggedUser.Equals(area.Editor)) 
+            { throw new ServiceException(resourceManager.GetString("NoSubPermission")); }
+            // TODO - Para mirar si está publicado, miramos id o título? Título es único?
             Paper paper = new Paper(title, uploadDate, area, loggedUser);
             area.Papers.Add(paper);
             area.EvaluationPending.Add(paper);
@@ -217,6 +224,7 @@ namespace Magazine.Services
         public void EvaluatePaper(bool accepted, string comments, DateTime date, int paperId)
         {
             ValidateLoggedUser(true);
+            // TODO - Tenemos apuntado del profe que esto está mal, pero estamos comprobando si son nulos no?????
             if (comments == null) comments = "";
             if(date == null) throw new ServiceException(resourceManager.GetString("InvalidDate"));
             Evaluation evaluation = new Evaluation(accepted, comments, date);
@@ -277,6 +285,7 @@ namespace Magazine.Services
         #region Issue
         public int AddIssue(int number)
         {
+            // TODO - A lo mejor crear método en magazine que sea add issue y llamarlo desde aquí, mejor que llamar a magazine.issue
             Issue issue = new Issue(number, magazine);
             magazine.Issues.Add(issue);
             return issue.Id;
@@ -284,12 +293,14 @@ namespace Magazine.Services
 
         public List<Area> GetAllAreas()
         {
+            // TODO - Mover este método a la clase Magazine, mejor que llamar a Areas desde aquí
             return magazine.Areas.ToList<Area>();
         }
 
         public List<Paper> GetAllPendingPapers()
         {
             List<Paper> paperList = new List<Paper>();
+            // TODO - Mover este método a la clase Magazine, mejor que llamar a Areas desde aquí
             foreach (Area area in magazine.Areas)
                 paperList.Concat(area.PublicationPending.ToList<Paper>());
 
@@ -306,6 +317,11 @@ namespace Magazine.Services
 
         public void UnPublishPaper(int paperId)
         {
+            // TODO - Comprobar si solo lo puede hacer el chiefEditor o tb el Editor del Area en el que esté seleccionado para publicar.
+            // Comprobar que el Use Case dice esto, porque me parece que no es lo mismo published que selected to publish
+            // Comprobar que el paper se tiene que buscar de todos los Issue de la Magazine, o solo del último ya que es el que aún
+            // no se ha publicado (último => publicationDate == null)
+            if (!loggedUser.Equals(magazine.ChiefEditor)) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
             Paper p = magazine.GetPublishedPaperById(paperId);
             if (p == null) throw new ServiceException(resourceManager.GetString("PaperNotPublished"));
             p.BelongingArea.PublicationPending.Add(p);
@@ -402,4 +418,6 @@ namespace Magazine.Services
 
         #endregion
     }
+
+    // TODO - Mirar si hay que habilitar sección de comentarios a las Issue
 }
