@@ -115,21 +115,21 @@ namespace Magazine.Services
         public void DBInitialization()
         {
             // Chief editor registered
-            RegisterUser("66666666A", "Javier", "Jaen", false, "HCI; Software Engineering", "fjaen@upv.es", "fjaen", "1234");
+            RegisterUser("66666666A", "Javier", "Jaen", false, "HCI; Software Engineering", "fjaen@upv.es", "fjaen", "Manolo123?");
             
             // Area editors registered
-            RegisterUser("77777777B", "Jorge", "Montaner", false, "Software Engineering", "jormonm5@upv.es", "jmontaner", "1234");
-            RegisterUser("88888888C", "Fernando", "Alonso", false, "HCI", "falonso@upv.es", "falonso", "1234");
+            RegisterUser("77777777B", "Jorge", "Montaner", false, "Software Engineering", "jormonm5@upv.es", "jmontaner", "Manolo123?");
+            RegisterUser("88888888C", "Fernando", "Alonso", false, "HCI", "falonso@upv.es", "falonso", "Manolo123?");
             
             // Author registered
-            RegisterUser("99999999D", "Carlos", "Sainz", false, "HCI", "csainz@upv.es", "csainz", "1234");
+            RegisterUser("99999999D", "Carlos", "Sainz", false, "HCI", "csainz@upv.es", "csainz", "Manolo123?");
             
             // Magazine created and stored in "magazine" reference
             int magazineId = AddMagazine("University Magazine","66666666A");
             magazine = dal.GetById<Entities.Magazine>(magazineId);
             
             // Two Areas added, Login required because only chief editor is allowed to do this 
-            Login("fjaen", "1234");
+            Login("fjaen", "Manolo123?");
             AddArea("HCI", "77777777B");
             AddArea("Software Engineering", "88888888C");
             Logout();
