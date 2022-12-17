@@ -30,7 +30,7 @@ namespace MagazineGUI
             String repPass = repPass_txt.Text;
             String areasOfInterest = aof_txt.Text; bool alerted = spam_checkbox.Checked;
             
-            try { service.RegisterUser(id, name, surname, alerted, areasOfInterest, email, user, password); }
+            try { service.RegisterUser(id, name, surname, alerted, areasOfInterest, email, user, password); this.Close(); }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
@@ -184,5 +184,6 @@ namespace MagazineGUI
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Asterisk);
         }
+
     }
 }
