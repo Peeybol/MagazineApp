@@ -179,6 +179,8 @@ namespace Magazine.Services
         int AddMagazine(string name, string chiefEditorId);
 
         List<Paper> ListAllPapers();
+
+        List<Area> ListAllAreas();
         #endregion
     }
 }

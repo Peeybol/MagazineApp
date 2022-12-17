@@ -63,7 +63,7 @@ namespace Magazine.Services
 
         public bool IsValidPassword(string password)
         {
-            if (password == null || password.Length < 8) return false;
+            if (password == null || password.Length < 8 || password.Length > 32) return false;
             int conds = 0;
             foreach(char c in password)
             {
@@ -414,6 +414,11 @@ namespace Magazine.Services
                 list.Concat(a.Papers);
 
             return list;
+        }
+
+        public List<Area> ListAllAreas()
+        {
+            return magazine.Areas.ToList();
         }
 
         #endregion

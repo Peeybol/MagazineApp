@@ -80,5 +80,26 @@ namespace MagazineGUI
             if (aof_txt.Text.Length < 1) { signUp_button.Enabled = false; }
             else { signUp_button.Enabled = true; }
         }
+
+        private void PasswordInfoButton_Click(object sender, EventArgs e)
+        {
+            DialogResult answer = MessageBox.Show(this, "- Password must be between 8 and 32 characters\n" +
+                                    "- Password must have atleast 1 lowercase letter and 1 uppercase letter\n" +
+                                    "- Password must have at least 1 number\n" +
+                                    "- Password must have one special character from the set\n{'?', '-', '+', '=', '_', '@', '#', '!', '&','$'}",
+                                    "Password info",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Asterisk);
+        }
+
+        private void AreasInterestButton_Click(object sender, EventArgs e)
+        {
+            StringBuilder areas = new StringBuilder();
+            service.ListAllAreas().ForEach(a => areas.Append(a.Name+"\n"));
+            DialogResult answer = MessageBox.Show(this, "Introduce your areas of interest, separated by comas (,) from this list:\n" +
+                                                        areas.ToString(), "AreasInfo",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Asterisk);
+        }
     }
 }

@@ -78,7 +78,7 @@
             this.usernameBox.Name = "usernameBox";
             this.usernameBox.Size = new System.Drawing.Size(485, 26);
             this.usernameBox.TabIndex = 6;
-            this.usernameBox.TextChanged += new System.EventHandler(this.usernameBox_TextChanged);
+            this.usernameBox.TextChanged += new System.EventHandler(this.UsernameBox_TextChanged);
             // 
             // passwordLabel
             // 
@@ -98,7 +98,7 @@
             this.passwordBox.PasswordChar = '♡';
             this.passwordBox.Size = new System.Drawing.Size(485, 26);
             this.passwordBox.TabIndex = 8;
-            this.passwordBox.TextChanged += new System.EventHandler(this.passwordBox_TextChanged);
+            this.passwordBox.TextChanged += new System.EventHandler(this.PasswordBox_TextChanged);
             // 
             // noaccountLabel
             // 
@@ -122,7 +122,7 @@
             this.signupLink.TabStop = true;
             this.signupLink.Text = "Sign up";
             this.signupLink.VisitedLinkColor = System.Drawing.Color.Gray;
-            this.signupLink.Click += new System.EventHandler(this.signup_Click);
+            this.signupLink.Click += new System.EventHandler(this.Signup_Click);
             // 
             // loginButton
             // 
@@ -135,7 +135,7 @@
             this.loginButton.TabIndex = 11;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = true;
-            this.loginButton.Click += new System.EventHandler(this.login_Click);
+            this.loginButton.Click += new System.EventHandler(this.Login_Click);
             // 
             // cancelButton
             // 
@@ -147,7 +147,7 @@
             this.cancelButton.TabIndex = 12;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancel_Click);
+            this.cancelButton.Click += new System.EventHandler(this.Cancel_Click);
             // 
             // errorLabel
             // 
