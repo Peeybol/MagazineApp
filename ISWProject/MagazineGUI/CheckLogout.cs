@@ -25,7 +25,7 @@ namespace MagazineGUI
             this.MinimizeBox = false;
         }
 
-        private void accept_Click(object sender, EventArgs e)
+        private void Accept_Click(object sender, EventArgs e)
         {
             service.Logout();
             this.Hide();
@@ -34,7 +34,7 @@ namespace MagazineGUI
             MagazineApp.Show();
         }
 
-        private void cancel_Click(object sender, EventArgs e)
+        private void Cancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }

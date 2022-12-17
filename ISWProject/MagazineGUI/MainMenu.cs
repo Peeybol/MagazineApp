@@ -15,6 +15,7 @@ namespace MagazineGUI
     {
         private IMagazineISWService service;
         private CheckLogout CheckLogout;
+        //private SubmitPaper SubmitPaper;
 
         public MainMenu(IMagazineISWService service)
         {
@@ -25,31 +26,31 @@ namespace MagazineGUI
 
             //We initialize the windows that we may open later:
             CheckLogout = new CheckLogout(service);
-
         }
 
-        private void submitPaperToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SubmitPaperToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void EvaluateAPaperToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void evaluateAPaperToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ListPapersToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void listPapersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void BuildAnIssueToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void buildAnIssueToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LogOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+            CheckLogout.FormClosed += (s, args) => this.Close();
             CheckLogout.ShowDialog();
         }
     }

@@ -28,51 +28,51 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Label1 = new System.Windows.Forms.Label();
+            this.Button1 = new System.Windows.Forms.Button();
+            this.Button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(30, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(301, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Are you sure you want to log out?";
+            this.Label1.AutoSize = true;
+            this.Label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.Label1.Location = new System.Drawing.Point(30, 47);
+            this.Label1.Name = "label1";
+            this.Label1.Size = new System.Drawing.Size(301, 25);
+            this.Label1.TabIndex = 0;
+            this.Label1.Text = "Are you sure you want to log out?";
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.button1.Location = new System.Drawing.Point(182, 100);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 30);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Accept";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.accept_Click);
+            this.Button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.Button1.Location = new System.Drawing.Point(182, 100);
+            this.Button1.Name = "button1";
+            this.Button1.Size = new System.Drawing.Size(100, 30);
+            this.Button1.TabIndex = 1;
+            this.Button1.Text = "Accept";
+            this.Button1.UseVisualStyleBackColor = true;
+            this.Button1.Click += new System.EventHandler(this.Accept_Click);
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.button2.Location = new System.Drawing.Point(294, 100);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 30);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.cancel_Click);
+            this.Button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.Button2.Location = new System.Drawing.Point(294, 100);
+            this.Button2.Name = "button2";
+            this.Button2.Size = new System.Drawing.Size(100, 30);
+            this.Button2.TabIndex = 2;
+            this.Button2.Text = "Cancel";
+            this.Button2.UseVisualStyleBackColor = true;
+            this.Button2.Click += new System.EventHandler(this.Cancel_Click);
             // 
             // CheckLogout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(406, 142);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Button2);
+            this.Controls.Add(this.Button1);
+            this.Controls.Add(this.Label1);
             this.Name = "CheckLogout";
             this.Text = "CheckLogout";
             this.ResumeLayout(false);
@@ -82,8 +82,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label Label1;
+        private System.Windows.Forms.Button Button1;
+        private System.Windows.Forms.Button Button2;
     }
 }
