@@ -48,6 +48,8 @@
             this.spam_checkbox = new System.Windows.Forms.CheckBox();
             this.signUp_button = new System.Windows.Forms.Button();
             this.cancel_button = new System.Windows.Forms.Button();
+            this.passwordError_label = new System.Windows.Forms.Label();
+            this.emailError_label = new System.Windows.Forms.Label();
             this.passwordInfoButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -82,7 +84,7 @@
             this.id_txt.Name = "id_txt";
             this.id_txt.Size = new System.Drawing.Size(382, 26);
             this.id_txt.TabIndex = 2;
-            this.id_txt.TextChanged += new System.EventHandler(this.id_txt_TextChanged);
+            this.id_txt.TextChanged += new System.EventHandler(this.Id_txt_TextChanged);
             // 
             // name_label
             // 
@@ -114,7 +116,7 @@
             this.name_txt.Name = "name_txt";
             this.name_txt.Size = new System.Drawing.Size(382, 26);
             this.name_txt.TabIndex = 5;
-            this.name_txt.TextChanged += new System.EventHandler(this.name_txt_TextChanged);
+            this.name_txt.TextChanged += new System.EventHandler(this.Name_txt_TextChanged);
             // 
             // surname_txt
             // 
@@ -124,7 +126,7 @@
             this.surname_txt.Name = "surname_txt";
             this.surname_txt.Size = new System.Drawing.Size(382, 26);
             this.surname_txt.TabIndex = 6;
-            this.surname_txt.TextChanged += new System.EventHandler(this.surname_txt_TextChanged);
+            this.surname_txt.TextChanged += new System.EventHandler(this.Surname_txt_TextChanged);
             // 
             // username_label
             // 
@@ -145,7 +147,7 @@
             this.username_txt.Name = "username_txt";
             this.username_txt.Size = new System.Drawing.Size(382, 26);
             this.username_txt.TabIndex = 8;
-            this.username_txt.TextChanged += new System.EventHandler(this.username_txt_TextChanged);
+            this.username_txt.TextChanged += new System.EventHandler(this.Username_txt_TextChanged);
             // 
             // password_label
             // 
@@ -167,7 +169,7 @@
             this.pass_txt.PasswordChar = '♡';
             this.pass_txt.Size = new System.Drawing.Size(382, 26);
             this.pass_txt.TabIndex = 10;
-            this.pass_txt.TextChanged += new System.EventHandler(this.pass_txt_TextChanged);
+            this.pass_txt.TextChanged += new System.EventHandler(this.Pass_txt_TextChanged);
             // 
             // repeatePas_label
             // 
@@ -189,7 +191,7 @@
             this.repPass_txt.PasswordChar = '♡';
             this.repPass_txt.Size = new System.Drawing.Size(382, 26);
             this.repPass_txt.TabIndex = 12;
-            this.repPass_txt.TextChanged += new System.EventHandler(this.repPass_txt_TextChanged);
+            this.repPass_txt.Leave += new System.EventHandler(this.RepPass_txt_Leave);
             // 
             // email_label
             // 
@@ -210,7 +212,7 @@
             this.email_txt.Name = "email_txt";
             this.email_txt.Size = new System.Drawing.Size(382, 26);
             this.email_txt.TabIndex = 14;
-            this.email_txt.TextChanged += new System.EventHandler(this.email_txt_TextChanged);
+            this.email_txt.Leave += new System.EventHandler(this.Email_txt_Leave);
             // 
             // aof_label
             // 
@@ -231,7 +233,7 @@
             this.aof_txt.Name = "aof_txt";
             this.aof_txt.Size = new System.Drawing.Size(382, 26);
             this.aof_txt.TabIndex = 16;
-            this.aof_txt.TextChanged += new System.EventHandler(this.aof_txt_TextChanged);
+            this.aof_txt.TextChanged += new System.EventHandler(this.Aof_txt_TextChanged);
             // 
             // spam_checkbox
             // 
@@ -256,7 +258,7 @@
             this.signUp_button.TabIndex = 18;
             this.signUp_button.Text = "Sign Up";
             this.signUp_button.UseVisualStyleBackColor = true;
-            this.signUp_button.Click += new System.EventHandler(this.signUp_Click);
+            this.signUp_button.Click += new System.EventHandler(this.SignUp_Click);
             // 
             // cancel_button
             // 
@@ -268,6 +270,31 @@
             this.cancel_button.TabIndex = 19;
             this.cancel_button.Text = "Cancel";
             this.cancel_button.UseVisualStyleBackColor = true;
+            this.cancel_button.Click += new System.EventHandler(this.Cancel_button_Click);
+            // 
+            // passwordError_label
+            // 
+            this.passwordError_label.AutoSize = true;
+            this.passwordError_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordError_label.ForeColor = System.Drawing.Color.Red;
+            this.passwordError_label.Location = new System.Drawing.Point(50, 584);
+            this.passwordError_label.Name = "passwordError_label";
+            this.passwordError_label.Size = new System.Drawing.Size(194, 20);
+            this.passwordError_label.TabIndex = 20;
+            this.passwordError_label.Text = "Passwords do not match";
+            this.passwordError_label.Visible = false;
+            // 
+            // emailError_label
+            // 
+            this.emailError_label.AutoSize = true;
+            this.emailError_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emailError_label.ForeColor = System.Drawing.Color.Red;
+            this.emailError_label.Location = new System.Drawing.Point(50, 678);
+            this.emailError_label.Name = "emailError_label";
+            this.emailError_label.Size = new System.Drawing.Size(197, 20);
+            this.emailError_label.TabIndex = 21;
+            this.emailError_label.Text = "Email format is incorrect.";
+            this.emailError_label.Visible = false;
             // 
             // passwordInfoButton
             // 
@@ -296,6 +323,10 @@
             this.ClientSize = new System.Drawing.Size(480, 750);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.passwordInfoButton);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(640, 947);
+            this.Controls.Add(this.emailError_label);
+            this.Controls.Add(this.passwordError_label);
             this.Controls.Add(this.cancel_button);
             this.Controls.Add(this.signUp_button);
             this.Controls.Add(this.spam_checkbox);
@@ -316,9 +347,10 @@
             this.Controls.Add(this.id_txt);
             this.Controls.Add(this.id_label);
             this.Controls.Add(this.signUp_label);
+            this.MinimumSize = new System.Drawing.Size(658, 994);
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "SignUpForm";
-            this.Text = "SignUpForm";
+            this.Text = "Sign Up";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -348,5 +380,7 @@
         private System.Windows.Forms.Button cancel_button;
         private System.Windows.Forms.Button passwordInfoButton;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label passwordError_label;
+        private System.Windows.Forms.Label emailError_label;
     }
 }

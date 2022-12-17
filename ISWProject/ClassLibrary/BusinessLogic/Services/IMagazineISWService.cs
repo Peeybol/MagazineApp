@@ -12,6 +12,7 @@ namespace Magazine.Services
     {
 
         // YOU MAY ADD ANY ADDITIONAL NEEDED SERVICES TO THIS INTERFACE
+        bool IsValidEmail(string email);
 
         /// <summary>   Initializes Database with some data</summary>        
         void DBInitialization();
