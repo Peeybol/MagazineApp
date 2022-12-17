@@ -163,7 +163,7 @@ namespace Magazine.Services
         }
 
         public void Logout() {
-            loggedUser = null;
+            loggedUser = null;  
         }
 
         #endregion
