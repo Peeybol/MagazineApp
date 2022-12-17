@@ -50,8 +50,16 @@ namespace MagazineGUI
 
         private void LogOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CheckLogout.FormClosed += (s, args) => this.Close();
-            CheckLogout.ShowDialog();
+            DialogResult answer = MessageBox.Show(this, "Are you sure you want to log out?",
+                                    "Logout Confirmation",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Question);
+            if (answer == DialogResult.OK)
+            {
+                service.Logout();
+                this.Hide();
+                new MagazineApp(service).Show();
+            }
         }
     }
 }
