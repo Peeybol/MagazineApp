@@ -36,6 +36,8 @@
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.noaccountLabel = new System.Windows.Forms.Label();
             this.signupLink = new System.Windows.Forms.LinkLabel();
+            this.loginButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // loginLabel
@@ -71,10 +73,12 @@
             // 
             // usernameBox
             // 
+            this.usernameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usernameBox.Location = new System.Drawing.Point(62, 174);
             this.usernameBox.Name = "usernameBox";
-            this.usernameBox.Size = new System.Drawing.Size(485, 20);
+            this.usernameBox.Size = new System.Drawing.Size(485, 29);
             this.usernameBox.TabIndex = 6;
+            this.usernameBox.TextChanged += new System.EventHandler(this.usernameBox_TextChanged);
             // 
             // passwordLabel
             // 
@@ -88,10 +92,11 @@
             // 
             // passwordBox
             // 
+            this.passwordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordBox.Location = new System.Drawing.Point(62, 242);
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.PasswordChar = '♡';
-            this.passwordBox.Size = new System.Drawing.Size(485, 20);
+            this.passwordBox.Size = new System.Drawing.Size(485, 29);
             this.passwordBox.TabIndex = 8;
             // 
             // noaccountLabel
@@ -116,12 +121,40 @@
             this.signupLink.TabStop = true;
             this.signupLink.Text = "Sign up";
             this.signupLink.VisitedLinkColor = System.Drawing.Color.Gray;
+            this.signupLink.Click += new System.EventHandler(this.signup_Click);
+            // 
+            // loginButton
+            // 
+            this.loginButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.loginButton.Enabled = false;
+            this.loginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginButton.Location = new System.Drawing.Point(284, 433);
+            this.loginButton.Name = "loginButton";
+            this.loginButton.Size = new System.Drawing.Size(142, 33);
+            this.loginButton.TabIndex = 11;
+            this.loginButton.Text = "Login";
+            this.loginButton.UseVisualStyleBackColor = true;
+            this.loginButton.Click += new System.EventHandler(this.login_Click);
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelButton.Location = new System.Drawing.Point(448, 433);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(142, 33);
+            this.cancelButton.TabIndex = 12;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancel_Click);
             // 
             // MagazineApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 518);
+            this.ClientSize = new System.Drawing.Size(602, 478);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.loginButton);
             this.Controls.Add(this.signupLink);
             this.Controls.Add(this.noaccountLabel);
             this.Controls.Add(this.passwordBox);
@@ -149,6 +182,8 @@
         private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.Label noaccountLabel;
         private System.Windows.Forms.LinkLabel signupLink;
+        private System.Windows.Forms.Button loginButton;
+        private System.Windows.Forms.Button cancelButton;
     }
 }
 

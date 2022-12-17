@@ -49,5 +49,25 @@ namespace MagazineGUI
         {
 
         }
+
+        private void login_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cancel_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void signup_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void usernameBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
