@@ -374,6 +374,13 @@ namespace Magazine.Services
             return area.Id;
         }
 
+        public int GetIdByAreaName (string areaName)
+        {
+            Area area = magazine.GetAreaByName(areaName);
+            if (area == null) throw new ServiceException(resourceManager.GetString("InvalidAreaName"));
+            else return area.Id;
+        }
+             
         #endregion
 
         #region Magazine
@@ -418,6 +425,4 @@ namespace Magazine.Services
 
         #endregion
     }
-
-    // TODO - Mirar si hay que habilitar sección de comentarios a las Issue
 }
