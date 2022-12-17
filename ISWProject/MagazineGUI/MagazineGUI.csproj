@@ -56,11 +56,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckLogout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckLogout.Designer.cs">
+      <DependentUpon>CheckLogout.cs</DependentUpon>
+    </Compile>
     <Compile Include="MagazineApp.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MagazineApp.Designer.cs">
       <DependentUpon>MagazineApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,8 +82,14 @@
     <Compile Include="SignUpForm.Designer.cs">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CheckLogout.resx">
+      <DependentUpon>CheckLogout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MagazineApp.resx">
       <DependentUpon>MagazineApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
