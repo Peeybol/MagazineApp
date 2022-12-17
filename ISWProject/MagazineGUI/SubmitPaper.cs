@@ -19,6 +19,8 @@ namespace MagazineGUI
         {
             InitializeComponent();
             this.service = service;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
         }
 
         private void AcceptClick(object sender, EventArgs e)
