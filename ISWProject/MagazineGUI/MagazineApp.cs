@@ -22,39 +22,17 @@ namespace MagazineGUI
             this.MaximizeBox = false;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void welcomeText_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void loginLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void login_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                service.Login(usernameBox.Text, passwordBox.Text);
+            }
+            catch(Exception) 
+            {
+                errorLabel.Text = "Login Failed: Username or password incorrect";
+                errorLabel.Visible = true;
+            }
         }
 
         private void cancel_Click(object sender, EventArgs e)
@@ -64,12 +42,28 @@ namespace MagazineGUI
 
         private void signup_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            SignUpForm signUp = new SignUpForm(service);
+            signUp.FormClosed += (s, args) => this.Close();
+            signUp.Show();
         }
 
         private void usernameBox_TextChanged(object sender, EventArgs e)
         {
+            if (passwordBox.Text.Length > 0 && usernameBox.Text.Length > 0)
+            {
+                loginButton.Enabled = true;
+            }
+            else loginButton.Enabled = false;
+        }
 
+        private void passwordBox_TextChanged(object sender, EventArgs e)
+        {
+            if(passwordBox.Text.Length > 0 && usernameBox.Text.Length > 0) 
+            {
+                loginButton.Enabled = true;
+            }
+            else loginButton.Enabled = false;
         }
     }
 }

@@ -205,9 +205,12 @@
     <value>Logged user is not the Area Editor</value>
   </data>
   <data name="PaperNotPendingOfEvaluation" xml:space="preserve">
-    <value />
+    <value>Paper is not pending of being evaluated</value>
   </data>
   <data name="NoSubPermission" xml:space="preserve">
     <value>The user is not allowed to submit a paper.</value>
+  </data>
+  <data name="InvalidLogin" xml:space="preserve">
+    <value>Login failed</value>
   </data>
 </root>

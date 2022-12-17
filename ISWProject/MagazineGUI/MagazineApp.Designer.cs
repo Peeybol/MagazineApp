@@ -38,6 +38,7 @@
             this.signupLink = new System.Windows.Forms.LinkLabel();
             this.loginButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.errorLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // loginLabel
@@ -49,7 +50,6 @@
             this.loginLabel.Size = new System.Drawing.Size(78, 29);
             this.loginLabel.TabIndex = 4;
             this.loginLabel.Text = "Login";
-            this.loginLabel.Click += new System.EventHandler(this.loginLabel_Click);
             // 
             // welcomeLabel
             // 
@@ -73,10 +73,10 @@
             // 
             // usernameBox
             // 
-            this.usernameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usernameBox.Location = new System.Drawing.Point(62, 174);
             this.usernameBox.Name = "usernameBox";
-            this.usernameBox.Size = new System.Drawing.Size(485, 29);
+            this.usernameBox.Size = new System.Drawing.Size(485, 26);
             this.usernameBox.TabIndex = 6;
             this.usernameBox.TextChanged += new System.EventHandler(this.usernameBox_TextChanged);
             // 
@@ -92,12 +92,13 @@
             // 
             // passwordBox
             // 
-            this.passwordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordBox.Location = new System.Drawing.Point(62, 242);
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.PasswordChar = '♡';
-            this.passwordBox.Size = new System.Drawing.Size(485, 29);
+            this.passwordBox.Size = new System.Drawing.Size(485, 26);
             this.passwordBox.TabIndex = 8;
+            this.passwordBox.TextChanged += new System.EventHandler(this.passwordBox_TextChanged);
             // 
             // noaccountLabel
             // 
@@ -128,7 +129,7 @@
             this.loginButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.loginButton.Enabled = false;
             this.loginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginButton.Location = new System.Drawing.Point(284, 433);
+            this.loginButton.Location = new System.Drawing.Point(223, 406);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(142, 33);
             this.loginButton.TabIndex = 11;
@@ -140,7 +141,7 @@
             // 
             this.cancelButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(448, 433);
+            this.cancelButton.Location = new System.Drawing.Point(382, 406);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(142, 33);
             this.cancelButton.TabIndex = 12;
@@ -148,11 +149,24 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancel_Click);
             // 
+            // errorLabel
+            // 
+            this.errorLabel.AutoSize = true;
+            this.errorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorLabel.Location = new System.Drawing.Point(59, 360);
+            this.errorLabel.Name = "errorLabel";
+            this.errorLabel.Size = new System.Drawing.Size(50, 16);
+            this.errorLabel.TabIndex = 13;
+            this.errorLabel.Text = "label1";
+            this.errorLabel.Visible = false;
+            // 
             // MagazineApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(602, 478);
+            this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.signupLink);
@@ -166,7 +180,6 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MagazineApp";
             this.Text = "MagazineApp";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,6 +197,7 @@
         private System.Windows.Forms.LinkLabel signupLink;
         private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Label errorLabel;
     }
 }
 
