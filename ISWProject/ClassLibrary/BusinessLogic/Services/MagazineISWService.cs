@@ -142,9 +142,9 @@ namespace Magazine.Services
             string [] areas = aof.Split(',');
             foreach (string area in areas)
             {
-                if (magazine.GetAreaByName(area.Trim()) == null) return false;
+                if (magazine != null && magazine.GetAreaByName(area.Trim()) == null) return false;
             }
-            return true; ;
+            return true;
         }
 
         public void RegisterUser(string id, string name, string surname, bool alerted, string areasOfInterest, string email, string login, string password)

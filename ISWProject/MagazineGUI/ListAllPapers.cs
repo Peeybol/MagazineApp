@@ -41,6 +41,7 @@ namespace MagazineGUI
             //item.SubItems.Add(paper.Title);
             //item.SubItems.Add(paper.UploadDate.ToString());
             //listView1.Items.Add(item);
+
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -58,7 +59,7 @@ namespace MagazineGUI
         {
             foreach(ListViewItem i in listView1.SelectedItems)
             {
-                
+                service.UnPublishPaper(Int32.Parse(i.Text));
             }
         }
     }
