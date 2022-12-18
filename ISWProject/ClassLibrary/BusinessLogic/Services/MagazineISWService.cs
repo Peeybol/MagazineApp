@@ -189,12 +189,8 @@ namespace Magazine.Services
 
         #region Paper
         // añadir metodo lanzadera pasandole el nombre del area como parametro
-        // TODO - Debatir si deberíamos cambiar el método de la interfaz para que, en vez de la id, pida el nombre.
         public int SubmitPaper(int areaId, string title, DateTime uploadDate)
         {
-            // TODO - Por qué está esto comentado?
-            //if(areaId == null) { throw new ServiceException(resourceManager.GetString("InvalidAreaId")); }
-
             if (title == null || title.Equals("")) { throw new ServiceException(resourceManager.GetString("InvalidTitle")); }
             if (uploadDate == null) { throw new ServiceException(resourceManager.GetString("InvalidUploadDate")); }
             ValidateLoggedUser(true);
