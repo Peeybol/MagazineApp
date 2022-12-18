@@ -32,12 +32,12 @@
             this.Paper_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Upload_date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.Authors = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Paper_state = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Area = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Issue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
@@ -59,7 +59,7 @@
             this.listView1.LabelWrap = false;
             this.listView1.Location = new System.Drawing.Point(-2, -2);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1347, 488);
+            this.listView1.Size = new System.Drawing.Size(1159, 488);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -80,26 +80,6 @@
             this.Upload_date.Text = "Upload date";
             this.Upload_date.Width = 219;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(12, 509);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 39);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Remove";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.removeButton_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(152, 509);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(126, 39);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Unpublish";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.unpublishButton_Click);
-            // 
             // Authors
             // 
             this.Authors.Text = "Authors";
@@ -119,6 +99,26 @@
             // 
             this.Issue.Text = "Issue";
             this.Issue.Width = 175;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 509);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(122, 39);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Remove";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.removeButton_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(152, 509);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(126, 39);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Unpublish";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.unpublishButton_Click);
             // 
             // textBox1
             // 

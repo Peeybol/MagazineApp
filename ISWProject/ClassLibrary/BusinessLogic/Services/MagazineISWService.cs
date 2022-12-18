@@ -35,7 +35,6 @@ namespace Magazine.Services
 
             // Resource manager for internationalization of error messages is created
             resourceManager = new ResourceManager("ClassLibrary.Resources.ExceptionMessages", Assembly.GetExecutingAssembly());
-            
             // Only one magazine object exists in our system
             magazine = dal.GetAll<Entities.Magazine>().FirstOrDefault();
             if(magazine == null)
@@ -461,9 +460,9 @@ namespace Magazine.Services
             return list;
         }
 
-        public List<Paper> ListPapersByAreaId(int areaId)
+        public List<Paper> ListPapersByArea(Area a)
         {
-            return magazine.GetAreaById(areaId).Papers.ToList();
+            return a.Papers.ToList();
         }
 
         public List<Area> ListAllAreas()
@@ -471,6 +470,24 @@ namespace Magazine.Services
             return magazine.Areas.ToList();
         }
 
+        public bool IsAreaEditor(User user, out Area area)
+        {
+            area = null;
+            foreach (Area a in magazine.Areas)
+            {
+                if (a.Editor == user)
+                {
+                    area = a;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool IsChiefEditor(User user)
+        {
+            return magazine.ChiefEditor == user;
+        }
         #endregion
     }
 }

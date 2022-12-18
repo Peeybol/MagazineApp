@@ -186,7 +186,13 @@ namespace Magazine.Services
 
         List<Paper> ListAllPapers();
 
+        List<Paper> ListPapersByArea(Area a);
+
         void RemovePaper(int paperId);
+
+        bool IsAreaEditor(User user, out Area area);
+
+        bool IsChiefEditor(User user);
         List<Area> ListAllAreas();
         #endregion
     }
