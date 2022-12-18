@@ -62,5 +62,10 @@ namespace MagazineGUI
                 new MagazineApp(service).Show();
             }
         }
+
+        private void xClicked(object sender, FormClosingEventArgs e)
+        {
+            LogOutToolStripMenuItem_Click(sender, e);
+        }
     }
 }
