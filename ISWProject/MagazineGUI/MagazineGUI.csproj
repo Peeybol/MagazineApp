@@ -103,6 +103,9 @@
     <EmbeddedResource Include="CheckLogout.resx">
       <DependentUpon>CheckLogout.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EvaluatePaper.resx">
+      <DependentUpon>EvaluatePaper.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ListAllPapers.resx">
       <DependentUpon>ListAllPapers.cs</DependentUpon>
     </EmbeddedResource>
