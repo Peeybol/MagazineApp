@@ -86,5 +86,14 @@ namespace Magazine.Entities
         {
             return Issues.LastOrDefault();
         }
+
+        public void RemovePaperById(int id)
+        {
+            foreach(Area a in Areas)
+            {
+                Paper paper = a.Papers.FirstOrDefault(p =>p.Id == id);
+                if (paper != null) { a.Papers.Remove(paper); break; }
+            }
+        }
     }
 }

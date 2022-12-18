@@ -182,6 +182,7 @@ namespace Magazine.Services
 
         List<Paper> ListAllPapers();
 
+        void RemovePaper(int paperId);
         List<Area> ListAllAreas();
         #endregion
     }

@@ -205,9 +205,16 @@ namespace Magazine.Services
             return paper.Id;
         }
 
+        public void RemovePaper(int paperId)
+        {
+            if (magazine.GetPaperById(paperId) == null) throw new ServiceException(resourceManager.GetString("PaperNotExists"));
+            magazine.RemovePaperById(paperId);
+            Commit();
+        }
+
         public void RegisterPerson(string id, string name, string surname)
         {
-            if (dal.GetById<Paper>(id) != null) throw new ServiceException(resourceManager.GetString("LoggedPerson"));
+            if (dal.GetById<Person>(id) != null) throw new ServiceException(resourceManager.GetString("LoggedPerson"));
             if ((name == null) || (name.Length < 2)) throw new ServiceException(resourceManager.GetString("InvalidUserName"));
             if ((surname == null) || (surname.Length < 2)) throw new ServiceException(resourceManager.GetString("InvalidUserSurname"));
             Magazine.Entities.Person regPerson = new Magazine.Entities.Person(id, name, surname);
@@ -436,6 +443,11 @@ namespace Magazine.Services
                     list.Add(p);
 
             return list;
+        }
+
+        public List<Paper> ListPapersByAreaId(int areaId)
+        {
+            return magazine.GetAreaById(areaId).Papers.ToList();
         }
 
         public List<Area> ListAllAreas()
