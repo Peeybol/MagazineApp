@@ -14,8 +14,6 @@ namespace MagazineGUI
     public partial class MainMenu : Form
     {
         private IMagazineISWService service;
-        private CheckLogout CheckLogout;
-        //private SubmitPaper SubmitPaper;
 
         public MainMenu(IMagazineISWService service)
         {
@@ -23,14 +21,14 @@ namespace MagazineGUI
             this.service = service;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-
-            //We initialize the windows that we may open later:
-            CheckLogout = new CheckLogout(service);
         }
 
         private void SubmitPaperToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            this.Hide();
+            SubmitPaper submitPaper = new SubmitPaper(service);
+            submitPaper.FormClosed += (s, args) => this.Show();
+            submitPaper.Show();
         }
 
         private void EvaluateAPaperToolStripMenuItem_Click(object sender, EventArgs e)
