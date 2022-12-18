@@ -27,6 +27,9 @@ namespace MagazineGUI
             try
             {
                 service.Login(usernameBox.Text, passwordBox.Text);
+                this.Hide();
+                MainMenu MainMenu = new MainMenu(service);
+                MainMenu.Show();
             }
             catch(Exception) 
             {
