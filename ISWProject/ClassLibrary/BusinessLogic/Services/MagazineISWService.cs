@@ -178,6 +178,11 @@ namespace Magazine.Services
             loggedUser = null;  
         }
 
+        public User GetCurrentUser()
+        {
+            return loggedUser;
+        }
+
         #endregion
 
         #region Paper
@@ -298,6 +303,17 @@ namespace Magazine.Services
             issue.PublishedPapers.Add(paper);
             Commit();
         }
+
+        
+
+        public List<Paper> ListEvaluationPendingPapers(Area a)
+        {
+            List<Paper> PaperList = new List<Paper>();
+            foreach (Paper p in a.EvaluationPending)
+                PaperList.Add(p);
+            return PaperList;
+        }
+        
         #endregion
 
 
