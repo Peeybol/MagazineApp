@@ -213,4 +213,7 @@
   <data name="InvalidLogin" xml:space="preserve">
     <value>Login failed</value>
   </data>
+  <data name="InvalidID" xml:space="preserve">
+    <value>The ID number is invalid</value>
+  </data>
 </root>

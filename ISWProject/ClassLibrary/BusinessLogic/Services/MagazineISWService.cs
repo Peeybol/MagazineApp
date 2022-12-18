@@ -3,6 +3,7 @@ using Magazine.Persistence;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Resources;
@@ -115,7 +116,7 @@ namespace Magazine.Services
         public void DBInitialization()
         {
             // Chief editor registered
-            RegisterUser("66666666A", "Javier", "Jaen", false, "HCI; Software Engineering", "fjaen@upv.es", "fjaen", "Manolo123?");
+            RegisterUser("66666666A", "Javier", "Jaen", false, "HCI, Software Engineering", "fjaen@upv.es", "fjaen", "Manolo123?");
             
             // Area editors registered
             RegisterUser("77777777B", "Jorge", "Montaner", false, "Software Engineering", "jormonm5@upv.es", "jmontaner", "Manolo123?");
@@ -150,6 +151,7 @@ namespace Magazine.Services
         public void RegisterUser(string id, string name, string surname, bool alerted, string areasOfInterest, string email, string login, string password)
         {
             ValidateLoggedUser(false);
+            if (id == null || id.Length < 2) throw new ServiceException(resourceManager.GetString("InvalidID"));
             if (dal.GetById<User>(id) != null) throw new ServiceException(resourceManager.GetString("LoggedUser"));
             if ((name == null) || (name.Length < 2)) throw new ServiceException(resourceManager.GetString("InvalidUserName"));
             if ((surname == null) || (surname.Length < 2)) throw new ServiceException(resourceManager.GetString("InvalidUserSurname"));

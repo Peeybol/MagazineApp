@@ -29,6 +29,7 @@ namespace MagazineGUI
             {
                 int areaId = service.GetIdByAreaName(areaBox.Text);
                 service.SubmitPaper(areaId, titleBox.Text, DateTime.Now);
+                this.Close();
             } catch (Exception ex) {
                 errorLabel.Text = ex.Message;
                 errorLabel.Visible = true;
