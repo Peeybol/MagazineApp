@@ -333,7 +333,7 @@ namespace Magazine.Services
             // Comprobar que el Use Case dice esto, porque me parece que no es lo mismo published que selected to publish
             // Comprobar que el paper se tiene que buscar de todos los Issue de la Magazine, o solo del último ya que es el que aún
             // no se ha publicado (último => publicationDate == null)
-            if (!loggedUser.Equals(magazine.ChiefEditor)) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
+            //if (!loggedUser.Equals(magazine.ChiefEditor)) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
             Paper p = magazine.GetPublishedPaperById(paperId);
             if (p == null) throw new ServiceException(resourceManager.GetString("PaperNotPublished"));
             p.BelongingArea.PublicationPending.Add(p);

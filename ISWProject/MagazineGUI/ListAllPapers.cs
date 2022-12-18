@@ -56,7 +56,10 @@ namespace MagazineGUI
 
         private void removeButton_Click(object sender, EventArgs e)
         {
-
+            foreach(ListViewItem i in listView1.SelectedItems)
+            {
+                
+            }
         }
     }
 }
