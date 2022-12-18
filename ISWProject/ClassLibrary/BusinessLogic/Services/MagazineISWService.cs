@@ -415,6 +415,7 @@ namespace Magazine.Services
 
         public List<Paper> ListAllPapers()
         {
+            // esta linea está comentada para poder probar el ListAllPapers sin tener que hacer el login cada vez (HAY QUE DESCOMENTARLA PARA ENTREGAR)
             //if(loggedUser != magazine.ChiefEditor) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
             List<Paper> list = new List<Paper>();
             foreach(Area a in magazine.Areas) 
