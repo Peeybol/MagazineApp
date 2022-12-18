@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuildIssue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuildIssue.Designer.cs">
+      <DependentUpon>BuildIssue.cs</DependentUpon>
+    </Compile>
     <Compile Include="CheckLogout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     <Compile Include="SubmitPaper.Designer.cs">
       <DependentUpon>SubmitPaper.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BuildIssue.resx">
+      <DependentUpon>BuildIssue.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CheckLogout.resx">
       <DependentUpon>CheckLogout.cs</DependentUpon>
     </EmbeddedResource>
