@@ -62,6 +62,12 @@
     <Compile Include="CheckLogout.Designer.cs">
       <DependentUpon>CheckLogout.cs</DependentUpon>
     </Compile>
+    <Compile Include="EvaluatePaper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EvaluatePaper.Designer.cs">
+      <DependentUpon>EvaluatePaper.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListAllPapers.cs">
       <SubType>Form</SubType>
     </Compile>
