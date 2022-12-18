@@ -124,6 +124,7 @@
             this.Controls.Add(this.areaLabel);
             this.Name = "SubmitPaper";
             this.Text = "Submit Paper";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.XClicked);
             this.ResumeLayout(false);
             this.PerformLayout();
 

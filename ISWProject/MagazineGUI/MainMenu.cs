@@ -33,7 +33,10 @@ namespace MagazineGUI
 
         private void EvaluateAPaperToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            EvaluatePaper evPaper = new EvaluatePaper(service);
+            evPaper.FormClosed += (s, args) => this.Show();
+            evPaper.Show();
         }
 
         private void ListPapersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -46,7 +49,10 @@ namespace MagazineGUI
 
         private void BuildAnIssueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            BuildIssue buildIssue = new BuildIssue(service);
+            buildIssue.FormClosed += (s, args) => this.Show();
+            buildIssue.Show();
         }
 
         private void LogOutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -63,9 +69,10 @@ namespace MagazineGUI
             }
         }
 
-        private void xClicked(object sender, FormClosingEventArgs e)
+        private void XClicked(object sender, FormClosingEventArgs e)
         {
-            LogOutToolStripMenuItem_Click(sender, e);
+            service.Logout();
+            Application.Exit();
         }
     }
 }
