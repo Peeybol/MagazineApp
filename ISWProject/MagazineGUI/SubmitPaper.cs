@@ -29,6 +29,7 @@ namespace MagazineGUI
             {
                 int areaId = service.GetIdByAreaName(areaBox.Text);
                 service.SubmitPaper(areaId, titleBox.Text, DateTime.Now);
+                this.Close();
             } catch (Exception ex) {
                 errorLabel.Text = ex.Message;
                 errorLabel.Visible = true;
@@ -59,5 +60,13 @@ namespace MagazineGUI
             else titleOk = true;
             EnableAcceptButton();
         }
+
+        /*
+         * TODO:
+         * - Quitar mensaje de error cuando se corrijan los fallos.
+         * - Enseñar diálogo de confirmación de paper enviado.
+         * - Mostrar las áreas disponibles con botón como el SignUp
+         * - Botón para añadir coautores. Preguntar si coautores solo se añaden al submitear un paper o después.
+         */
     }
 }

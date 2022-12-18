@@ -182,6 +182,5 @@ namespace MagazineGUI
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Asterisk);
         }
-
     }
 }

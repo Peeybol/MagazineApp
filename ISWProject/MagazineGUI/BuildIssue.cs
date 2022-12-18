@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Magazine.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,13 @@ namespace MagazineGUI
 {
     public partial class BuildIssue : Form
     {
-        public BuildIssue()
+        private IMagazineISWService service;
+        public BuildIssue(IMagazineISWService service)
         {
             InitializeComponent();
+            this.service = service;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
         }
     }
 }
