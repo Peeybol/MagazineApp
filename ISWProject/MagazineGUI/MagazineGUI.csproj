@@ -62,6 +62,12 @@
     <Compile Include="CheckLogout.Designer.cs">
       <DependentUpon>CheckLogout.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListAllPapers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListAllPapers.Designer.cs">
+      <DependentUpon>ListAllPapers.cs</DependentUpon>
+    </Compile>
     <Compile Include="MagazineApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
     </Compile>
     <EmbeddedResource Include="CheckLogout.resx">
       <DependentUpon>CheckLogout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListAllPapers.resx">
+      <DependentUpon>ListAllPapers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MagazineApp.resx">
       <DependentUpon>MagazineApp.cs</DependentUpon>

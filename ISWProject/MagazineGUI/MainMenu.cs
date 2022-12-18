@@ -40,7 +40,10 @@ namespace MagazineGUI
 
         private void ListPapersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            ListAllPapers listPapers = new ListAllPapers(service);
+            listPapers.FormClosed += (s, args) => this.Show();
+            listPapers.Show();
         }
 
         private void BuildAnIssueToolStripMenuItem_Click(object sender, EventArgs e)

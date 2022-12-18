@@ -415,7 +415,7 @@ namespace Magazine.Services
 
         public List<Paper> ListAllPapers()
         {
-            if(loggedUser != magazine.ChiefEditor) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
+            //if(loggedUser != magazine.ChiefEditor) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
             List<Paper> list = new List<Paper>();
             foreach(Area a in magazine.Areas) 
                 list.Concat(a.Papers);
