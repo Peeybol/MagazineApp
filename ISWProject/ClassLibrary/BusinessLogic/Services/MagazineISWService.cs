@@ -136,6 +136,17 @@ namespace Magazine.Services
         }
 
         #region User
+
+        public bool CheckAreasExist(string aof)
+        {
+            string [] areas = aof.Split(',');
+            foreach (string area in areas)
+            {
+                if (magazine.GetAreaByName(area.Trim()) == null) return false;
+            }
+            return true; ;
+        }
+
         public void RegisterUser(string id, string name, string surname, bool alerted, string areasOfInterest, string email, string login, string password)
         {
             ValidateLoggedUser(false);
@@ -145,6 +156,7 @@ namespace Magazine.Services
             if (!IsValidEmail(email)) throw new ServiceException(resourceManager.GetString("InvalidEmail"));
             if (!IsValidUser(login) || dal.GetWhere<User>(u => u.Login.Equals(login)).FirstOrDefault() != null) throw new ServiceException(resourceManager.GetString("InvalidUser"));
             if (!IsValidPassword(password)) throw new ServiceException(resourceManager.GetString("InvalidPassword"));
+            if (!CheckAreasExist(areasOfInterest)) throw new ServiceException(resourceManager.GetString("InvalidAreaName"));
             Magazine.Entities.User regUser = new Magazine.Entities.User(id, name, surname, alerted, areasOfInterest, email, login, password);
             dal.Insert<User>(regUser);
             Commit();

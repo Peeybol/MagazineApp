@@ -242,10 +242,10 @@
             // 
             this.signUp_button.Enabled = false;
             this.signUp_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.signUp_button.Location = new System.Drawing.Point(323, 849);
+            this.signUp_button.Location = new System.Drawing.Point(310, 849);
             this.signUp_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 20);
             this.signUp_button.Name = "signUp_button";
-            this.signUp_button.Size = new System.Drawing.Size(111, 39);
+            this.signUp_button.Size = new System.Drawing.Size(124, 39);
             this.signUp_button.TabIndex = 18;
             this.signUp_button.Text = "Sign Up";
             this.signUp_button.UseVisualStyleBackColor = true;
