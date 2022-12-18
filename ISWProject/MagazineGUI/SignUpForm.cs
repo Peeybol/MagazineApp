@@ -125,13 +125,7 @@ namespace MagazineGUI
 
         private bool AreAllTrue()
         {
-            return areChecked.Contains(false);
-
-            bool res = true;
-            foreach(bool b in areChecked) { res &= b; }
-            return res;
-
-            
+            return !areChecked.Contains(false);
         }
 
         private void Email_txt_Leave(object sender, EventArgs e)

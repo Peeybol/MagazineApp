@@ -136,6 +136,17 @@ namespace Magazine.Services
         }
 
         #region User
+
+        public bool CheckAreasExist(string aof)
+        {
+            string [] areas = aof.Split(',');
+            foreach (string area in areas)
+            {
+                if (magazine.GetAreaByName(area.Trim()) == null) return false;
+            }
+            return true; ;
+        }
+
         public void RegisterUser(string id, string name, string surname, bool alerted, string areasOfInterest, string email, string login, string password)
         {
             ValidateLoggedUser(false);
@@ -145,6 +156,7 @@ namespace Magazine.Services
             if (!IsValidEmail(email)) throw new ServiceException(resourceManager.GetString("InvalidEmail"));
             if (!IsValidUser(login) || dal.GetWhere<User>(u => u.Login.Equals(login)).FirstOrDefault() != null) throw new ServiceException(resourceManager.GetString("InvalidUser"));
             if (!IsValidPassword(password)) throw new ServiceException(resourceManager.GetString("InvalidPassword"));
+            if (!CheckAreasExist(areasOfInterest)) throw new ServiceException(resourceManager.GetString("InvalidAreaName"));
             Magazine.Entities.User regUser = new Magazine.Entities.User(id, name, surname, alerted, areasOfInterest, email, login, password);
             dal.Insert<User>(regUser);
             Commit();
@@ -321,7 +333,7 @@ namespace Magazine.Services
             // Comprobar que el Use Case dice esto, porque me parece que no es lo mismo published que selected to publish
             // Comprobar que el paper se tiene que buscar de todos los Issue de la Magazine, o solo del último ya que es el que aún
             // no se ha publicado (último => publicationDate == null)
-            if (!loggedUser.Equals(magazine.ChiefEditor)) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
+            //if (!loggedUser.Equals(magazine.ChiefEditor)) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
             Paper p = magazine.GetPublishedPaperById(paperId);
             if (p == null) throw new ServiceException(resourceManager.GetString("PaperNotPublished"));
             p.BelongingArea.PublicationPending.Add(p);
