@@ -349,7 +349,6 @@
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "SignUpForm";
             this.Text = "Sign Up";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.XClicked);
             this.ResumeLayout(false);
             this.PerformLayout();
 

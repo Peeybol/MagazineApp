@@ -182,10 +182,5 @@ namespace MagazineGUI
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Asterisk);
         }
-
-        private void XClicked(object sender, FormClosingEventArgs e)
-        {
-            Cancel_button_Click(sender, e);
-        }
     }
 }

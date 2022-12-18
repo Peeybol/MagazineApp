@@ -53,11 +53,6 @@ namespace MagazineGUI
             EnableAcceptButton();
         }
 
-        private void XClicked(object sender, FormClosingEventArgs e)
-        {
-            CancelClick(sender, e);
-        }
-
         private void TitleTextChanged(object sender, EventArgs e)
         {
             if (titleBox.Text.Length == 0) titleOk = false;
