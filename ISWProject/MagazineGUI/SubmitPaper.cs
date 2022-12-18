@@ -29,6 +29,12 @@ namespace MagazineGUI
             {
                 int areaId = service.GetIdByAreaName(areaBox.Text);
                 service.SubmitPaper(areaId, titleBox.Text, DateTime.Now);
+
+                DialogResult answer = MessageBox.Show(this, "Paper submitted succesfully!",
+                                    "Paper submitted",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+
                 this.Close();
             } catch (Exception ex) {
                 errorLabel.Text = ex.Message;
@@ -54,6 +60,16 @@ namespace MagazineGUI
             EnableAcceptButton();
         }
 
+        private void AreaButton_Clicked(object sender, EventArgs e)
+        {
+            StringBuilder areas = new StringBuilder();
+            service.ListAllAreas().ForEach(a => areas.Append(a.Name + "\n"));
+            DialogResult answer = MessageBox.Show(this, "Introduce your areas of interest, separated by comas (,) from this list:\n" +
+                                                        areas.ToString(), "AreasInfo",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Asterisk);
+        }
+
         private void TitleTextChanged(object sender, EventArgs e)
         {
             if (titleBox.Text.Length == 0) titleOk = false;
@@ -63,9 +79,6 @@ namespace MagazineGUI
 
         /*
          * TODO:
-         * - Quitar mensaje de error cuando se corrijan los fallos.
-         * - Enseñar diálogo de confirmación de paper enviado.
-         * - Mostrar las áreas disponibles con botón como el SignUp
          * - Botón para añadir coautores. Preguntar si coautores solo se añaden al submitear un paper o después.
          */
     }
