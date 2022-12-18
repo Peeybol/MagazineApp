@@ -54,6 +54,8 @@ namespace Magazine.Services
         /// </returns>
         void RegisterUser(string id, string name, string surname, bool alerted, string areasOfInterest, string email, string login, string password);
 
+        User GetCurrentUser();
+        
         #endregion
 
         #region Paper
@@ -132,6 +134,8 @@ namespace Magazine.Services
         ///             true if paper is Accepted, false otherwise
         /// </returns>
         bool isAccepted(int paperId);
+
+        List<Paper> ListEvaluationPendingPapers(Area a);
 
         #endregion
 
