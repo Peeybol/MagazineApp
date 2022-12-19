@@ -42,7 +42,7 @@ namespace MagazineGUI
             listView1.Items.Clear();
             listView1.Items.AddRange(Data.Select(p =>
             {
-                StringBuilder sb = new StringBuilder(p.Responsible.Name + p.Responsible.Surname);
+                StringBuilder sb = new StringBuilder(p.Responsible.Name + " " + p.Responsible.Surname);
                 ListViewItem item = new ListViewItem(p.Id + "");
                 item.SubItems.Add(p.Title);
                 item.SubItems.Add(sb.ToString());

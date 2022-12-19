@@ -20,7 +20,7 @@ namespace MagazineGUI
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainMenu(service));
+            Application.Run(new MagazineApp(service));
         }
     }
 }
