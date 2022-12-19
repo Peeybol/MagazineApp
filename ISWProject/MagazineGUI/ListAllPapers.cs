@@ -54,7 +54,7 @@ namespace MagazineGUI
             listView1.Items.Clear();
             listView1.Items.AddRange(Data.Select(p =>
             {
-                StringBuilder sb = new StringBuilder(p.Responsible.Name + p.Responsible.Surname);
+                StringBuilder sb = new StringBuilder(p.Responsible.Name + " " + p.Responsible.Surname);
                 foreach (Person ca in p.CoAuthors.Skip(1)) sb.Append(", " + ca.Name + " " + ca.Surname);
                 ListViewItem item = new ListViewItem(p.Id + "");
                 item.SubItems.Add(p.Title);
@@ -70,17 +70,6 @@ namespace MagazineGUI
                 item.SubItems.Add(p.Issue == null ? "none" : p.Issue.Number + "");
                 return item;
             }).ToArray());
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-
         }
 
         private void removeButton_Click(object sender, EventArgs e)

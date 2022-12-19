@@ -37,7 +37,7 @@
             this.errorLabel = new System.Windows.Forms.Label();
             this.passwordInfoButton = new System.Windows.Forms.Button();
             this.coauthorsButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.coauthorsBox = new System.Windows.Forms.TextBox();
             this.coauthorsLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -134,14 +134,15 @@
             this.coauthorsButton.UseVisualStyleBackColor = true;
             this.coauthorsButton.Click += new System.EventHandler(this.CoauthorsButton_Click);
             // 
-            // textBox1
+            // coauthorsBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(27, 181);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(238, 100);
-            this.textBox1.TabIndex = 23;
+            this.coauthorsBox.Enabled = false;
+            this.coauthorsBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.coauthorsBox.Location = new System.Drawing.Point(27, 181);
+            this.coauthorsBox.Multiline = true;
+            this.coauthorsBox.Name = "coauthorsBox";
+            this.coauthorsBox.Size = new System.Drawing.Size(238, 100);
+            this.coauthorsBox.TabIndex = 23;
             // 
             // coauthorsLabel
             // 
@@ -159,7 +160,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(315, 345);
             this.Controls.Add(this.coauthorsButton);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.coauthorsBox);
             this.Controls.Add(this.coauthorsLabel);
             this.Controls.Add(this.passwordInfoButton);
             this.Controls.Add(this.errorLabel);
@@ -187,7 +188,7 @@
         private System.Windows.Forms.Label errorLabel;
         private System.Windows.Forms.Button passwordInfoButton;
         private System.Windows.Forms.Button coauthorsButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox coauthorsBox;
         private System.Windows.Forms.Label coauthorsLabel;
     }
 }

@@ -15,12 +15,16 @@ namespace MagazineGUI
     {
         private IMagazineISWService service;
         private Boolean areaOk = false, titleOk = false;
+        private List<string> ids;
         public SubmitPaper(IMagazineISWService service)
         {
             InitializeComponent();
             this.service = service;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            ids = new List<string>();
+
+            coauthorsBox.Text = service.GetCurrentUser().Name + " " + service.GetCurrentUser().Surname + "\r\n";
         }
 
         private void AcceptClick(object sender, EventArgs e)
@@ -29,7 +33,10 @@ namespace MagazineGUI
             {
                 int areaId = service.GetIdByAreaName(areaBox.Text);
                 int paperId = service.SubmitPaper(areaId, titleBox.Text, DateTime.Now);
-
+                foreach (string authorId in ids)
+                {
+                    service.AddCoauthor(paperId, authorId);
+                }
                 DialogResult answer = MessageBox.Show(this, "Paper submitted succesfully!",
                                     "Paper submitted",
                 MessageBoxButtons.OK,
@@ -74,7 +81,7 @@ namespace MagazineGUI
         private void CoauthorsButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ListPerson listPerson = new ListPerson(service);
+            ListPerson listPerson = new ListPerson(service, coauthorsBox, ids);
             listPerson.FormClosed += (s, args) => this.Show();
             listPerson.Show();
         }

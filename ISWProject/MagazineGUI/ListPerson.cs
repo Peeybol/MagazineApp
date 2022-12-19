@@ -15,21 +15,25 @@ namespace MagazineGUI
     public partial class ListPerson : Form
     {
         private IMagazineISWService service;
-        List<Person> Data; 
-        public ListPerson(IMagazineISWService service)
+        private List<Person> Data;
+        private TextBox coauthors;
+        private List<string> ids;
+        public ListPerson(IMagazineISWService service, TextBox coauthors, List<string> ids)
         {
             this.service = service;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            this.coauthors = coauthors;
+            this.ids = ids;
             InitializeComponent();
             Data = service.ListAllPersons();
-            initializeData(Data);
+            InitializeData(Data);
         }
 
-        public void initializeData(List<Person> Data)
+        public void InitializeData(List<Person> Data)
         {
-            listView1.Items.Clear();
-            listView1.Items.AddRange(Data.Select(p =>
+            listView.Items.Clear();
+            listView.Items.AddRange(Data.Select(p =>
             {
                 ListViewItem item = new ListViewItem(p.Name);
                 item.SubItems.Add(p.Surname);
@@ -37,14 +41,22 @@ namespace MagazineGUI
             }).ToArray());
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void Register_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            RegisterPerson registerPerson = new RegisterPerson(service);
+            registerPerson.FormClosed += (s, args) => this.Close();
+            registerPerson.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Select_Click(object sender, EventArgs e)
         {
+            string selectedName = listView.SelectedItems[0].SubItems[0].Text + " " +
+                listView.SelectedItems[0].SubItems[1].Text + "\r\n";
+            coauthors.Text += selectedName;
 
+            ids.Add(Data[listView.SelectedItems[0].Index].Id);
+            this.Close();
         }
     }
 }
