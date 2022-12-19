@@ -212,6 +212,11 @@ namespace Magazine.Services
             Commit();
         }
 
+        public Paper GetPaperById(int id)
+        {
+            return magazine.GetPaperById(id);
+        }
+
         public void RegisterPerson(string id, string name, string surname)
         {
             if (dal.GetById<Person>(id) != null) throw new ServiceException(resourceManager.GetString("LoggedPerson"));
@@ -317,6 +322,7 @@ namespace Magazine.Services
         #region Issue
         public int AddIssue(int number)
         {
+            if (loggedUser != magazine.ChiefEditor) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
             // TODO - A lo mejor crear método en magazine que sea add issue y llamarlo desde aquí, mejor que llamar a magazine.issue
             Issue issue = new Issue(number, magazine);
             magazine.Issues.Add(issue);
@@ -341,8 +347,10 @@ namespace Magazine.Services
 
         public void ModifyIssue(int Id, DateTime newPublicationDate)
         {
+            if(loggedUser != magazine.ChiefEditor) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
             Issue issue = magazine.Issues.FirstOrDefault(i => i.Id == Id);
             if(issue == null) { throw new ServiceException(resourceManager.GetString("IssueNotExists")); }
+            if(newPublicationDate.Date <  DateTime.Now.Date) throw new ServiceException(resourceManager.GetString("IncorrectDate"));
             issue.PublicationDate = newPublicationDate;
             Commit();
         }
@@ -361,11 +369,9 @@ namespace Magazine.Services
             Commit();
         }
 
-        public int LastIssueNumber()
+        public Issue GetLastIssue()
         {
-            Issue myIssue = magazine.Issues.LastOrDefault();
-            if (myIssue == null) return 1;
-            else return myIssue.Number + 1;
+            return magazine.Issues.LastOrDefault();
         }
 
         #endregion

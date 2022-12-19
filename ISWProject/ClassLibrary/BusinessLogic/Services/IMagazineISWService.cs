@@ -13,9 +13,10 @@ namespace Magazine.Services
 
         // YOU MAY ADD ANY ADDITIONAL NEEDED SERVICES TO THIS INTERFACE
         bool IsValidEmail(string email);
-        int LastIssueNumber();
+        Issue GetLastIssue();
         List<Area> GetAllAreas();
         Area GetAreaByName(string areaName);
+        Paper GetPaperById(int id);
 
         /// <summary>   Initializes Database with some data</summary>        
         void DBInitialization();

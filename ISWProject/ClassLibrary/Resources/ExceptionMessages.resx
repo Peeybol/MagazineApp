@@ -216,4 +216,7 @@
   <data name="InvalidID" xml:space="preserve">
     <value>The ID number is invalid</value>
   </data>
+  <data name="IncorrectDate" xml:space="preserve">
+    <value>The date selected is incorrect (Date from the past)</value>
+  </data>
 </root>

@@ -50,11 +50,11 @@
             // 
             this.issue_label.AutoSize = true;
             this.issue_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.issue_label.Location = new System.Drawing.Point(300, 21);
+            this.issue_label.Location = new System.Drawing.Point(287, 21);
             this.issue_label.Name = "issue_label";
-            this.issue_label.Size = new System.Drawing.Size(270, 46);
+            this.issue_label.Size = new System.Drawing.Size(282, 46);
             this.issue_label.TabIndex = 0;
-            this.issue_label.Text = "Current Issue";
+            this.issue_label.Text = "Current Issue:";
             // 
             // areas_comboBox
             // 
@@ -62,7 +62,7 @@
             this.areas_comboBox.Name = "areas_comboBox";
             this.areas_comboBox.Size = new System.Drawing.Size(225, 24);
             this.areas_comboBox.TabIndex = 1;
-            this.areas_comboBox.SelectedIndexChanged += new System.EventHandler(this.areas_comboBox_SelectedIndexChanged);
+            this.areas_comboBox.SelectedIndexChanged += new System.EventHandler(this.Areas_comboBox_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -79,6 +79,7 @@
             this.listview_publicatedPapers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.col_publicatedId,
             this.col_publicatedTitle});
+            this.listview_publicatedPapers.FullRowSelect = true;
             this.listview_publicatedPapers.HideSelection = false;
             this.listview_publicatedPapers.Location = new System.Drawing.Point(531, 192);
             this.listview_publicatedPapers.Name = "listview_publicatedPapers";
@@ -102,6 +103,7 @@
             this.listview_pendingPapers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.col_pendingId,
             this.col_pendingTitle});
+            this.listview_pendingPapers.FullRowSelect = true;
             this.listview_pendingPapers.HideSelection = false;
             this.listview_pendingPapers.Location = new System.Drawing.Point(49, 192);
             this.listview_pendingPapers.Name = "listview_pendingPapers";
@@ -148,6 +150,7 @@
             this.pendingToPublicated_button.TabIndex = 8;
             this.pendingToPublicated_button.Text = "Move to Publicated Papers";
             this.pendingToPublicated_button.UseVisualStyleBackColor = true;
+            this.pendingToPublicated_button.Click += new System.EventHandler(this.PendingToPublicated_button_Click);
             // 
             // moveToPending_button
             // 
@@ -157,6 +160,7 @@
             this.moveToPending_button.TabIndex = 9;
             this.moveToPending_button.Text = "Move to Pending Publication Papers";
             this.moveToPending_button.UseVisualStyleBackColor = true;
+            this.moveToPending_button.Click += new System.EventHandler(this.MoveToPending_button_Click);
             // 
             // dateTime
             // 
@@ -173,6 +177,7 @@
             this.buildIssue_button.TabIndex = 11;
             this.buildIssue_button.Text = "Build a new Issue";
             this.buildIssue_button.UseVisualStyleBackColor = true;
+            this.buildIssue_button.Click += new System.EventHandler(this.BuildIssue_button_Click);
             // 
             // issue_number
             // 
