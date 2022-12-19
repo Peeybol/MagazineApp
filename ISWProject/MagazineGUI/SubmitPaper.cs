@@ -34,7 +34,7 @@ namespace MagazineGUI
                                     "Paper submitted",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
-                errorLabel.Visible= false;
+                errorLabel.Visible = false;
             } 
             catch (Exception ex) 
             {
@@ -74,10 +74,9 @@ namespace MagazineGUI
         private void CoauthorsButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            // Cambiar por list person
-            RegisterPerson registerPerson = new RegisterPerson(service);
-            registerPerson.FormClosed += (s, args) => this.Show();
-            registerPerson.Show();
+            ListPerson listPerson = new ListPerson(service);
+            listPerson.FormClosed += (s, args) => this.Show();
+            listPerson.Show();
         }
 
         private void TitleTextChanged(object sender, EventArgs e)
