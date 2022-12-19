@@ -31,7 +31,7 @@
             this.AcceptButton = new System.Windows.Forms.Button();
             this.RejectButton = new System.Windows.Forms.Button();
             this.GoBackButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.CommentsTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -65,13 +65,13 @@
             this.GoBackButton.UseVisualStyleBackColor = true;
             this.GoBackButton.Click += new System.EventHandler(this.GoBackButton_Click);
             // 
-            // textBox1
+            // CommentsTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(21, 68);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(504, 245);
-            this.textBox1.TabIndex = 3;
+            this.CommentsTextBox.Location = new System.Drawing.Point(21, 68);
+            this.CommentsTextBox.Multiline = true;
+            this.CommentsTextBox.Name = "CommentsTextBox";
+            this.CommentsTextBox.Size = new System.Drawing.Size(504, 245);
+            this.CommentsTextBox.TabIndex = 3;
             // 
             // label1
             // 
@@ -89,7 +89,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(551, 402);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.CommentsTextBox);
             this.Controls.Add(this.GoBackButton);
             this.Controls.Add(this.RejectButton);
             this.Controls.Add(this.AcceptButton);
@@ -105,7 +105,7 @@
         private System.Windows.Forms.Button AcceptButton;
         private System.Windows.Forms.Button RejectButton;
         private System.Windows.Forms.Button GoBackButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox CommentsTextBox;
         private System.Windows.Forms.Label label1;
     }
 }

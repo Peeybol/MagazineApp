@@ -34,6 +34,7 @@
             this.Author = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PublicationDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.EvaluateButton = new System.Windows.Forms.Button();
+            this.GoBackButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
@@ -44,6 +45,7 @@
             this.Title,
             this.Author,
             this.PublicationDate});
+            this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(12, 12);
             this.listView1.Name = "listView1";
@@ -85,11 +87,22 @@
             this.EvaluateButton.UseVisualStyleBackColor = true;
             this.EvaluateButton.Click += new System.EventHandler(this.EvaluateButton_Click);
             // 
+            // GoBackButton
+            // 
+            this.GoBackButton.Location = new System.Drawing.Point(13, 478);
+            this.GoBackButton.Name = "GoBackButton";
+            this.GoBackButton.Size = new System.Drawing.Size(102, 35);
+            this.GoBackButton.TabIndex = 2;
+            this.GoBackButton.Text = "Go Back";
+            this.GoBackButton.UseVisualStyleBackColor = true;
+            this.GoBackButton.Click += new System.EventHandler(this.GoBackButton_Click);
+            // 
             // EvaluatePaper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 525);
+            this.Controls.Add(this.GoBackButton);
             this.Controls.Add(this.EvaluateButton);
             this.Controls.Add(this.listView1);
             this.Name = "EvaluatePaper";
@@ -106,5 +119,6 @@
         private System.Windows.Forms.ColumnHeader Author;
         private System.Windows.Forms.ColumnHeader PublicationDate;
         private System.Windows.Forms.Button EvaluateButton;
+        private System.Windows.Forms.Button GoBackButton;
     }
 }

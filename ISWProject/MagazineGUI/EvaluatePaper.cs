@@ -59,9 +59,15 @@ namespace MagazineGUI
         private void EvaluateButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            PaperEvaluation PaperEvaluation = new PaperEvaluation(service);
+            int id = Int32.Parse(listView1.SelectedItems[0].SubItems[0].Text);
+            PaperEvaluation PaperEvaluation = new PaperEvaluation(service, id);
             PaperEvaluation.FormClosed += (s, args) => this.Show();
             PaperEvaluation.Show();
+        }
+
+        private void GoBackButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
