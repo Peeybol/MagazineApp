@@ -36,6 +36,9 @@
             this.acceptButton = new System.Windows.Forms.Button();
             this.errorLabel = new System.Windows.Forms.Label();
             this.passwordInfoButton = new System.Windows.Forms.Button();
+            this.coauthorsButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.coauthorsLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // areaLabel
@@ -79,7 +82,7 @@
             // cancelButton
             // 
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(179, 221);
+            this.cancelButton.Location = new System.Drawing.Point(179, 296);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(86, 37);
             this.cancelButton.TabIndex = 4;
@@ -91,7 +94,7 @@
             // 
             this.acceptButton.Enabled = false;
             this.acceptButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.acceptButton.Location = new System.Drawing.Point(87, 221);
+            this.acceptButton.Location = new System.Drawing.Point(87, 296);
             this.acceptButton.Name = "acceptButton";
             this.acceptButton.Size = new System.Drawing.Size(86, 37);
             this.acceptButton.TabIndex = 5;
@@ -104,7 +107,7 @@
             this.errorLabel.AutoSize = true;
             this.errorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorLabel.ForeColor = System.Drawing.Color.Red;
-            this.errorLabel.Location = new System.Drawing.Point(26, 166);
+            this.errorLabel.Location = new System.Drawing.Point(26, 241);
             this.errorLabel.Name = "errorLabel";
             this.errorLabel.Size = new System.Drawing.Size(99, 16);
             this.errorLabel.TabIndex = 6;
@@ -121,11 +124,43 @@
             this.passwordInfoButton.UseVisualStyleBackColor = true;
             this.passwordInfoButton.Click += new System.EventHandler(this.AreaButton_Clicked);
             // 
+            // coauthorsButton
+            // 
+            this.coauthorsButton.Location = new System.Drawing.Point(271, 182);
+            this.coauthorsButton.Name = "coauthorsButton";
+            this.coauthorsButton.Size = new System.Drawing.Size(25, 26);
+            this.coauthorsButton.TabIndex = 24;
+            this.coauthorsButton.Text = "+";
+            this.coauthorsButton.UseVisualStyleBackColor = true;
+            this.coauthorsButton.Click += new System.EventHandler(this.CoauthorsButton_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(27, 181);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(238, 100);
+            this.textBox1.TabIndex = 23;
+            // 
+            // coauthorsLabel
+            // 
+            this.coauthorsLabel.AutoSize = true;
+            this.coauthorsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.coauthorsLabel.Location = new System.Drawing.Point(23, 153);
+            this.coauthorsLabel.Name = "coauthorsLabel";
+            this.coauthorsLabel.Size = new System.Drawing.Size(96, 24);
+            this.coauthorsLabel.TabIndex = 22;
+            this.coauthorsLabel.Text = "Coauthors";
+            // 
             // SubmitPaper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(315, 270);
+            this.ClientSize = new System.Drawing.Size(315, 345);
+            this.Controls.Add(this.coauthorsButton);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.coauthorsLabel);
             this.Controls.Add(this.passwordInfoButton);
             this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.acceptButton);
@@ -151,5 +186,8 @@
         private System.Windows.Forms.Button acceptButton;
         private System.Windows.Forms.Label errorLabel;
         private System.Windows.Forms.Button passwordInfoButton;
+        private System.Windows.Forms.Button coauthorsButton;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label coauthorsLabel;
     }
 }

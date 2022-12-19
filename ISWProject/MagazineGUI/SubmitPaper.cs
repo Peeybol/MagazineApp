@@ -71,6 +71,15 @@ namespace MagazineGUI
                 MessageBoxIcon.Asterisk);
         }
 
+        private void CoauthorsButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // Cambiar por list person
+            RegisterPerson registerPerson = new RegisterPerson(service);
+            registerPerson.FormClosed += (s, args) => this.Show();
+            registerPerson.Show();
+        }
+
         private void TitleTextChanged(object sender, EventArgs e)
         {
             if (titleBox.Text.Length == 0) titleOk = false;
