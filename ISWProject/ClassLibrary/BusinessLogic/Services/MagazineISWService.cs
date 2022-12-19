@@ -301,11 +301,12 @@ namespace Magazine.Services
 
         
 
-        public List<Paper> ListEvaluationPendingPapers(Area a)
+        public List<Paper> ListAllEvaluationPendingPapers()
         {
             List<Paper> PaperList = new List<Paper>();
-            foreach (Paper p in a.EvaluationPending)
-                PaperList.Add(p);
+            foreach (Area a in magazine.Areas)
+                foreach (Paper p in a.EvaluationPending)
+                    PaperList.Add(p);
             return PaperList;
         }
         

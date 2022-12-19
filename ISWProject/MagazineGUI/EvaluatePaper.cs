@@ -27,22 +27,41 @@ namespace MagazineGUI
 
             //Area a = CurrentUser.Area;
 
-            if (!service.IsChiefEditor(CurrentUser))
+            if (service.IsChiefEditor(CurrentUser))
             {
-                foreach (Paper p in service.ListAllPapers())
-                {
-                    ListViewItem item = new ListViewItem(p.Id + "");
-                    listView1.Items.Add(item);
-                }
+                InitializeData(service.ListAllEvaluationPendingPapers());
             }
             else
             {
-                foreach (Paper p in CurrentUser.Area.EvaluationPending)
-                {
-                    ListViewItem item = new ListViewItem(p.Id + "");
-                    listView1.Items.Add(item);
-                }
+                InitializeData(CurrentUser.Area.EvaluationPending.ToList()); //Revisar
             }
+        }
+
+        public void InitializeData(List<Paper> Data)
+        {
+            listView1.Items.Clear();
+            listView1.Items.AddRange(Data.Select(p =>
+            {
+                StringBuilder sb = new StringBuilder(p.Responsible.Name + p.Responsible.Surname);
+                ListViewItem item = new ListViewItem(p.Id + "");
+                item.SubItems.Add(p.Title);
+                item.SubItems.Add(sb.ToString());
+                item.SubItems.Add(p.UploadDate.ToString());
+                return item;
+            }).ToArray());
+        }
+
+        private void IndexChanged(object sender, EventArgs e)
+        {
+            EvaluateButton.Enabled = listView1.SelectedItems.Count > 0 ? true : false;
+        }
+
+        private void EvaluateButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            PaperEvaluation PaperEvaluation = new PaperEvaluation(service);
+            PaperEvaluation.FormClosed += (s, args) => this.Show();
+            PaperEvaluation.Show();
         }
     }
 }
