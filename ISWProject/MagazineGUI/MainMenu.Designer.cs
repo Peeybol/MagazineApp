@@ -35,10 +35,10 @@
             this.ListPapersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.IssueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BuildAnIssueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.LogOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PeopleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RegisterPersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LogOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,24 +99,9 @@
             // BuildAnIssueToolStripMenuItem
             // 
             this.BuildAnIssueToolStripMenuItem.Name = "BuildAnIssueToolStripMenuItem";
-            this.BuildAnIssueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.BuildAnIssueToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.BuildAnIssueToolStripMenuItem.Text = "Build an Issue";
             this.BuildAnIssueToolStripMenuItem.Click += new System.EventHandler(this.BuildAnIssueToolStripMenuItem_Click);
-            // 
-            // AccountToolStripMenuItem
-            // 
-            this.AccountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.LogOutToolStripMenuItem});
-            this.AccountToolStripMenuItem.Name = "AccountToolStripMenuItem";
-            this.AccountToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
-            this.AccountToolStripMenuItem.Text = "Account";
-            // 
-            // LogOutToolStripMenuItem
-            // 
-            this.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem";
-            this.LogOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.LogOutToolStripMenuItem.Text = "Log Out";
-            this.LogOutToolStripMenuItem.Click += new System.EventHandler(this.LogOutToolStripMenuItem_Click);
             // 
             // PeopleToolStripMenuItem
             // 
@@ -129,9 +114,24 @@
             // RegisterPersonToolStripMenuItem
             // 
             this.RegisterPersonToolStripMenuItem.Name = "RegisterPersonToolStripMenuItem";
-            this.RegisterPersonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.RegisterPersonToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.RegisterPersonToolStripMenuItem.Text = "Register a Person";
             this.RegisterPersonToolStripMenuItem.Click += new System.EventHandler(this.RegisterPersonToolStripMenuItem_Click);
+            // 
+            // AccountToolStripMenuItem
+            // 
+            this.AccountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.LogOutToolStripMenuItem});
+            this.AccountToolStripMenuItem.Name = "AccountToolStripMenuItem";
+            this.AccountToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.AccountToolStripMenuItem.Text = "Account";
+            // 
+            // LogOutToolStripMenuItem
+            // 
+            this.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem";
+            this.LogOutToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.LogOutToolStripMenuItem.Text = "Log Out";
+            this.LogOutToolStripMenuItem.Click += new System.EventHandler(this.LogOutToolStripMenuItem_Click);
             // 
             // MainMenu
             // 
@@ -142,7 +142,7 @@
             this.MainMenuStrip = this.MenuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainMenu";
-            this.Text = "MainMenu";
+            this.Text = "The Dudes Magazine";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.XClicked);
             this.MenuStrip1.ResumeLayout(false);
             this.MenuStrip1.PerformLayout();

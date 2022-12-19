@@ -161,7 +161,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView1);
             this.Name = "ListAllPapers";
-            this.Text = "ListAllPapers";
+            this.Text = "Paper List";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -179,7 +179,7 @@
             this.Controls.Add(this.welcomeLabel);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MagazineApp";
-            this.Text = "MagazineApp";
+            this.Text = "The Dudes Magazine";
             this.ResumeLayout(false);
             this.PerformLayout();
 

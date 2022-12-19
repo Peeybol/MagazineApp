@@ -47,10 +47,11 @@
             this.PublicationDate});
             this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(12, 12);
+            this.listView1.Location = new System.Drawing.Point(9, 10);
+            this.listView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listView1.Name = "listView1";
             this.listView1.Scrollable = false;
-            this.listView1.Size = new System.Drawing.Size(876, 460);
+            this.listView1.Size = new System.Drawing.Size(658, 374);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -79,9 +80,10 @@
             // EvaluateButton
             // 
             this.EvaluateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.EvaluateButton.Location = new System.Drawing.Point(773, 478);
+            this.EvaluateButton.Location = new System.Drawing.Point(580, 388);
+            this.EvaluateButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.EvaluateButton.Name = "EvaluateButton";
-            this.EvaluateButton.Size = new System.Drawing.Size(115, 39);
+            this.EvaluateButton.Size = new System.Drawing.Size(86, 32);
             this.EvaluateButton.TabIndex = 1;
             this.EvaluateButton.Text = "Evaluate";
             this.EvaluateButton.UseVisualStyleBackColor = true;
@@ -89,9 +91,10 @@
             // 
             // GoBackButton
             // 
-            this.GoBackButton.Location = new System.Drawing.Point(13, 478);
+            this.GoBackButton.Location = new System.Drawing.Point(10, 388);
+            this.GoBackButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GoBackButton.Name = "GoBackButton";
-            this.GoBackButton.Size = new System.Drawing.Size(102, 35);
+            this.GoBackButton.Size = new System.Drawing.Size(76, 28);
             this.GoBackButton.TabIndex = 2;
             this.GoBackButton.Text = "Go Back";
             this.GoBackButton.UseVisualStyleBackColor = true;
@@ -99,14 +102,15 @@
             // 
             // EvaluatePaper
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 525);
+            this.ClientSize = new System.Drawing.Size(675, 427);
             this.Controls.Add(this.GoBackButton);
             this.Controls.Add(this.EvaluateButton);
             this.Controls.Add(this.listView1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "EvaluatePaper";
-            this.Text = "EvaluatePaper";
+            this.Text = "Evaluate a Paper";
             this.ResumeLayout(false);
 
         }

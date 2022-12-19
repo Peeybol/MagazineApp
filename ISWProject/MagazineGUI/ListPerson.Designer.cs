@@ -31,9 +31,9 @@
             this.listView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
             this.registerButton = new System.Windows.Forms.Button();
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // listView
@@ -63,6 +63,10 @@
             this.columnHeader2.Text = "Surname";
             this.columnHeader2.Width = 240;
             // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Width = 0;
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(37, 345);
@@ -83,10 +87,6 @@
             this.registerButton.UseVisualStyleBackColor = true;
             this.registerButton.Click += new System.EventHandler(this.Register_Click);
             // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Width = 0;
-            // 
             // ListPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -96,7 +96,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView);
             this.Name = "ListPerson";
-            this.Text = "ListPerson";
+            this.Text = "Person List";
             this.ResumeLayout(false);
 
         }

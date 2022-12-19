@@ -37,9 +37,10 @@
             // 
             // AcceptButton
             // 
-            this.AcceptButton.Location = new System.Drawing.Point(321, 345);
+            this.AcceptButton.Location = new System.Drawing.Point(241, 280);
+            this.AcceptButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AcceptButton.Name = "AcceptButton";
-            this.AcceptButton.Size = new System.Drawing.Size(99, 39);
+            this.AcceptButton.Size = new System.Drawing.Size(74, 32);
             this.AcceptButton.TabIndex = 0;
             this.AcceptButton.Text = "Accept";
             this.AcceptButton.UseVisualStyleBackColor = true;
@@ -47,9 +48,10 @@
             // 
             // RejectButton
             // 
-            this.RejectButton.Location = new System.Drawing.Point(432, 345);
+            this.RejectButton.Location = new System.Drawing.Point(324, 280);
+            this.RejectButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RejectButton.Name = "RejectButton";
-            this.RejectButton.Size = new System.Drawing.Size(93, 39);
+            this.RejectButton.Size = new System.Drawing.Size(70, 32);
             this.RejectButton.TabIndex = 1;
             this.RejectButton.Text = "Reject";
             this.RejectButton.UseVisualStyleBackColor = true;
@@ -57,9 +59,10 @@
             // 
             // GoBackButton
             // 
-            this.GoBackButton.Location = new System.Drawing.Point(21, 345);
+            this.GoBackButton.Location = new System.Drawing.Point(16, 280);
+            this.GoBackButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GoBackButton.Name = "GoBackButton";
-            this.GoBackButton.Size = new System.Drawing.Size(109, 39);
+            this.GoBackButton.Size = new System.Drawing.Size(82, 32);
             this.GoBackButton.TabIndex = 2;
             this.GoBackButton.Text = "Go Back";
             this.GoBackButton.UseVisualStyleBackColor = true;
@@ -67,34 +70,37 @@
             // 
             // CommentsTextBox
             // 
-            this.CommentsTextBox.Location = new System.Drawing.Point(21, 68);
+            this.CommentsTextBox.Location = new System.Drawing.Point(16, 55);
+            this.CommentsTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CommentsTextBox.Multiline = true;
             this.CommentsTextBox.Name = "CommentsTextBox";
-            this.CommentsTextBox.Size = new System.Drawing.Size(504, 245);
+            this.CommentsTextBox.Size = new System.Drawing.Size(379, 200);
             this.CommentsTextBox.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label1.Location = new System.Drawing.Point(18, 26);
+            this.label1.Location = new System.Drawing.Point(14, 21);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 29);
+            this.label1.Size = new System.Drawing.Size(101, 24);
             this.label1.TabIndex = 4;
             this.label1.Text = "Comments";
             // 
             // PaperEvaluation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(551, 402);
+            this.ClientSize = new System.Drawing.Size(413, 327);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CommentsTextBox);
             this.Controls.Add(this.GoBackButton);
             this.Controls.Add(this.RejectButton);
             this.Controls.Add(this.AcceptButton);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "PaperEvaluation";
-            this.Text = "PaperEvaluation";
+            this.Text = "Evaluate a Paper";
             this.ResumeLayout(false);
             this.PerformLayout();
 
