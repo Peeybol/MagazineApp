@@ -146,7 +146,7 @@
             this.Controls.Add(this.idBox);
             this.Controls.Add(this.idLabel);
             this.Name = "RegisterPerson";
-            this.Text = "RegisterPerson";
+            this.Text = "Register Person";
             this.ResumeLayout(false);
             this.PerformLayout();
 
