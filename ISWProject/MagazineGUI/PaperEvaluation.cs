@@ -30,11 +30,21 @@ namespace MagazineGUI
         private void AcceptButton_Click(object sender, EventArgs e)
         {
             service.EvaluatePaper(true, CommentsTextBox.Text, DateTime.Now, Id);
+            DialogResult answer = MessageBox.Show(this, "Paper accepted succesfully!",
+                                    "Paper Accepted",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+            this.Close();
         }
 
         private void RejectButton_Click(object sender, EventArgs e)
         {
             service.EvaluatePaper(false, CommentsTextBox.Text, DateTime.Now, Id);
+            DialogResult answer = MessageBox.Show(this, "Paper rejected succesfully!",
+                                    "Paper Rejecteds",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+            this.Close();
         }
     }
 }
