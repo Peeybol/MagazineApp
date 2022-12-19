@@ -209,8 +209,9 @@ namespace Magazine.Services
 
         public void RemovePaper(int paperId)
         {
-            if (magazine.GetPaperById(paperId) == null) throw new ServiceException(resourceManager.GetString("PaperNotExists"));
-            magazine.RemovePaperById(paperId);
+            //Esto no se puede hacer así pero necesito poder probar la interfaz y no se me ocurre qué mas hacer
+            dal.Delete<Paper>(magazine.GetPaperById(paperId));
+            //if(!magazine.RemovePaperById(paperId)) throw new ServiceException(resourceManager.GetString("PaperNotExists"));
             Commit();
         }
 
