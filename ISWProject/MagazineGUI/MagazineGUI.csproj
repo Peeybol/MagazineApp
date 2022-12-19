@@ -74,6 +74,12 @@
     <Compile Include="ListAllPapers.Designer.cs">
       <DependentUpon>ListAllPapers.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListPerson.Designer.cs">
+      <DependentUpon>ListPerson.cs</DependentUpon>
+    </Compile>
     <Compile Include="MagazineApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListAllPapers.resx">
       <DependentUpon>ListAllPapers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListPerson.resx">
+      <DependentUpon>ListPerson.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MagazineApp.resx">
       <DependentUpon>MagazineApp.cs</DependentUpon>

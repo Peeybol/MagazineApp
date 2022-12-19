@@ -190,6 +190,8 @@ namespace Magazine.Services
 
         void RemovePaper(int paperId);
 
+        List<Person> ListAllPersons();
+
         bool IsAreaEditor(User user, out Area area);
 
         bool IsChiefEditor(User user);

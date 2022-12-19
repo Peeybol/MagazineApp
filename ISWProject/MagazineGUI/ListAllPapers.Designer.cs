@@ -45,6 +45,8 @@
             // 
             // listView1
             // 
+            this.listView1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.listView1.AutoArrange = false;
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Paper_id,
             this.Title,
@@ -58,7 +60,9 @@
             this.listView1.HideSelection = false;
             this.listView1.LabelWrap = false;
             this.listView1.Location = new System.Drawing.Point(-2, -2);
+            this.listView1.Margin = new System.Windows.Forms.Padding(0);
             this.listView1.Name = "listView1";
+            this.listView1.Scrollable = false;
             this.listView1.Size = new System.Drawing.Size(1159, 488);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;

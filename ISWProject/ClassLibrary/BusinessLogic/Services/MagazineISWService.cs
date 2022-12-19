@@ -469,6 +469,11 @@ namespace Magazine.Services
             return magazine.Areas.ToList();
         }
 
+        public List<Person> ListAllPersons()
+        {
+            return dal.GetAll<Person>().ToList();
+        }
+
         public bool IsAreaEditor(User user, out Area area)
         {
             area = null;

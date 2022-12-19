@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -44,14 +45,13 @@ namespace MagazineGUI
                 Data = service.ListPapersByArea(a);
             }
             else return;
-
             initializeData(Data);
-            
+
         }
 
         public void initializeData(List<Paper> Data)
         {
-            listView1.Clear();
+            listView1.Items.Clear();
             listView1.Items.AddRange(Data.Select(p =>
             {
                 StringBuilder sb = new StringBuilder(p.Responsible.Name + p.Responsible.Surname);
@@ -103,7 +103,7 @@ namespace MagazineGUI
         private void filterButton_Click(object sender, EventArgs e)
         {
             initializeData(Data);
-            if (filterTextbox.Text == "" || filterTextbox.Text == null || filterTextbox.Text.Replace("[^0-9]", "").Length == 0) return;
+            if (filterTextbox.Text == "" || filterTextbox.Text == null || Regex.Match(filterTextbox.Text, "[^0-9]").Success) return;
             foreach(ListViewItem i in listView1.Items)
             {
                 if (i.SubItems[ISSUE].Text != filterTextbox.Text) listView1.Items.Remove(i);
