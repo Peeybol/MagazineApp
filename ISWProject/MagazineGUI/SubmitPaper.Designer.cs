@@ -35,6 +35,7 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.acceptButton = new System.Windows.Forms.Button();
             this.errorLabel = new System.Windows.Forms.Label();
+            this.passwordInfoButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // areaLabel
@@ -110,11 +111,22 @@
             this.errorLabel.Text = "texto de error";
             this.errorLabel.Visible = false;
             // 
+            // passwordInfoButton
+            // 
+            this.passwordInfoButton.Location = new System.Drawing.Point(271, 51);
+            this.passwordInfoButton.Name = "passwordInfoButton";
+            this.passwordInfoButton.Size = new System.Drawing.Size(25, 26);
+            this.passwordInfoButton.TabIndex = 21;
+            this.passwordInfoButton.Text = "?";
+            this.passwordInfoButton.UseVisualStyleBackColor = true;
+            this.passwordInfoButton.Click += new System.EventHandler(this.AreaButton_Clicked);
+            // 
             // SubmitPaper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(296, 270);
+            this.ClientSize = new System.Drawing.Size(315, 270);
+            this.Controls.Add(this.passwordInfoButton);
             this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.acceptButton);
             this.Controls.Add(this.cancelButton);
@@ -138,5 +150,6 @@
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button acceptButton;
         private System.Windows.Forms.Label errorLabel;
+        private System.Windows.Forms.Button passwordInfoButton;
     }
 }
