@@ -28,15 +28,16 @@ namespace MagazineGUI
             try
             {
                 int areaId = service.GetIdByAreaName(areaBox.Text);
-                service.SubmitPaper(areaId, titleBox.Text, DateTime.Now);
+                int paperId = service.SubmitPaper(areaId, titleBox.Text, DateTime.Now);
 
                 DialogResult answer = MessageBox.Show(this, "Paper submitted succesfully!",
                                     "Paper submitted",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
-
-                this.Close();
-            } catch (Exception ex) {
+                errorLabel.Visible= false;
+            } 
+            catch (Exception ex) 
+            {
                 errorLabel.Text = ex.Message;
                 errorLabel.Visible = true;
             }
@@ -64,7 +65,7 @@ namespace MagazineGUI
         {
             StringBuilder areas = new StringBuilder();
             service.ListAllAreas().ForEach(a => areas.Append(a.Name + "\n"));
-            DialogResult answer = MessageBox.Show(this, "Introduce your areas of interest, separated by comas (,) from this list:\n" +
+            DialogResult answer = MessageBox.Show(this, "Introduce the area you want to submit your paper to from this list:\n" +
                                                         areas.ToString(), "AreasInfo",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Asterisk);

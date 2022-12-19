@@ -37,6 +37,8 @@
             this.BuildAnIssueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LogOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PeopleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RegisterPersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,6 +48,7 @@
             this.MenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItem1,
             this.IssueToolStripMenuItem,
+            this.PeopleToolStripMenuItem,
             this.AccountToolStripMenuItem});
             this.MenuStrip1.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip1.Name = "MenuStrip1";
@@ -96,7 +99,7 @@
             // BuildAnIssueToolStripMenuItem
             // 
             this.BuildAnIssueToolStripMenuItem.Name = "BuildAnIssueToolStripMenuItem";
-            this.BuildAnIssueToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.BuildAnIssueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.BuildAnIssueToolStripMenuItem.Text = "Build an Issue";
             this.BuildAnIssueToolStripMenuItem.Click += new System.EventHandler(this.BuildAnIssueToolStripMenuItem_Click);
             // 
@@ -111,9 +114,24 @@
             // LogOutToolStripMenuItem
             // 
             this.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem";
-            this.LogOutToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.LogOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.LogOutToolStripMenuItem.Text = "Log Out";
             this.LogOutToolStripMenuItem.Click += new System.EventHandler(this.LogOutToolStripMenuItem_Click);
+            // 
+            // PeopleToolStripMenuItem
+            // 
+            this.PeopleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.RegisterPersonToolStripMenuItem});
+            this.PeopleToolStripMenuItem.Name = "PeopleToolStripMenuItem";
+            this.PeopleToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.PeopleToolStripMenuItem.Text = "People";
+            // 
+            // RegisterPersonToolStripMenuItem
+            // 
+            this.RegisterPersonToolStripMenuItem.Name = "RegisterPersonToolStripMenuItem";
+            this.RegisterPersonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.RegisterPersonToolStripMenuItem.Text = "Register a Person";
+            this.RegisterPersonToolStripMenuItem.Click += new System.EventHandler(this.RegisterPersonToolStripMenuItem_Click);
             // 
             // MainMenu
             // 
@@ -122,7 +140,7 @@
             this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.MenuStrip1);
             this.MainMenuStrip = this.MenuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainMenu";
             this.Text = "MainMenu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.XClicked);
@@ -144,5 +162,7 @@
         private System.Windows.Forms.ToolStripMenuItem BuildAnIssueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AccountToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem LogOutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem PeopleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem RegisterPersonToolStripMenuItem;
     }
 }

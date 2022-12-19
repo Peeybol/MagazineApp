@@ -135,7 +135,7 @@ namespace Magazine.Services
         /// </returns>
         bool isAccepted(int paperId);
 
-        List<Paper> ListEvaluationPendingPapers(Area a);
+        List<Paper> ListAllEvaluationPendingPapers();
 
         #endregion
 
