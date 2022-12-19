@@ -301,11 +301,12 @@ namespace Magazine.Services
 
         
 
-        public List<Paper> ListEvaluationPendingPapers(Area a)
+        public List<Paper> ListAllEvaluationPendingPapers()
         {
             List<Paper> PaperList = new List<Paper>();
-            foreach (Paper p in a.EvaluationPending)
-                PaperList.Add(p);
+            foreach (Area a in magazine.Areas)
+                foreach (Paper p in a.EvaluationPending)
+                    PaperList.Add(p);
             return PaperList;
         }
         
@@ -318,7 +319,7 @@ namespace Magazine.Services
             // TODO - A lo mejor crear método en magazine que sea add issue y llamarlo desde aquí, mejor que llamar a magazine.issue
             Issue issue = new Issue(number, magazine);
             magazine.Issues.Add(issue);
-            return issue.Id;
+            return issue.Id;    
         }
 
         public List<Area> GetAllAreas()
@@ -357,6 +358,13 @@ namespace Magazine.Services
             p.BelongingArea.PublicationPending.Add(p);
             p.Issue.PublishedPapers.Remove(p);
             Commit();
+        }
+
+        public int LastIssueNumber()
+        {
+            Issue myIssue = magazine.Issues.LastOrDefault();
+            if (myIssue == null) return 1;
+            else return myIssue.Number + 1;
         }
 
         #endregion
@@ -409,6 +417,11 @@ namespace Magazine.Services
             Area area = magazine.GetAreaByName(areaName);
             if (area == null) throw new ServiceException(resourceManager.GetString("InvalidAreaName"));
             else return area.Id;
+        }
+
+        public Area GetAreaByName(string areaName)
+        {
+            return magazine.GetAreaByName(areaName);
         }
              
         #endregion
@@ -464,6 +477,11 @@ namespace Magazine.Services
         public List<Area> ListAllAreas()
         {
             return magazine.Areas.ToList();
+        }
+
+        public List<Person> ListAllPersons()
+        {
+            return dal.GetAll<Person>().ToList();
         }
 
         public bool IsAreaEditor(User user, out Area area)

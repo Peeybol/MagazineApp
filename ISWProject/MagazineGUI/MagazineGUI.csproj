@@ -74,6 +74,12 @@
     <Compile Include="ListAllPapers.Designer.cs">
       <DependentUpon>ListAllPapers.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListPerson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListPerson.Designer.cs">
+      <DependentUpon>ListPerson.cs</DependentUpon>
+    </Compile>
     <Compile Include="MagazineApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,12 @@
     </Compile>
     <Compile Include="MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PaperEvaluation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaperEvaluation.Designer.cs">
+      <DependentUpon>PaperEvaluation.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -115,11 +127,17 @@
     <EmbeddedResource Include="ListAllPapers.resx">
       <DependentUpon>ListAllPapers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ListPerson.resx">
+      <DependentUpon>ListPerson.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MagazineApp.resx">
       <DependentUpon>MagazineApp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaperEvaluation.resx">
+      <DependentUpon>PaperEvaluation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
