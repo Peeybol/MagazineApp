@@ -23,6 +23,7 @@ namespace MagazineGUI
             this.MaximizeBox = false;
             InitializeComponent();
             Data = service.ListAllPersons();
+            initializeData(Data);
         }
 
         public void initializeData(List<Person> Data)
