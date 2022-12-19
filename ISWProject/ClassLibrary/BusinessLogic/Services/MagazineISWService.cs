@@ -187,7 +187,6 @@ namespace Magazine.Services
         #endregion
 
         #region Paper
-        // añadir metodo lanzadera pasandole el nombre del area como parametro
         public int SubmitPaper(int areaId, string title, DateTime uploadDate)
         {
             if (title == null || title.Equals("")) { throw new ServiceException(resourceManager.GetString("InvalidTitle")); }
@@ -195,10 +194,8 @@ namespace Magazine.Services
             ValidateLoggedUser(true);
             Area area = magazine.GetAreaById(areaId);
             if (area == null) throw new ServiceException(resourceManager.GetString("InvalidAreaName"));
-            // TODO - El editor de un area puede intentar publicar en otra como usuario normal?
             if (loggedUser.Equals(magazine.ChiefEditor) || loggedUser.Equals(area.Editor)) 
             { throw new ServiceException(resourceManager.GetString("NoSubPermission")); }
-            // TODO - Para mirar si está publicado, miramos id o título? Título es único?
             Paper paper = new Paper(title, uploadDate, area, loggedUser);
             area.Papers.Add(paper);
             area.EvaluationPending.Add(paper);

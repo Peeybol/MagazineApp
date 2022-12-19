@@ -95,7 +95,7 @@
             this.acceptButton.Name = "acceptButton";
             this.acceptButton.Size = new System.Drawing.Size(86, 37);
             this.acceptButton.TabIndex = 5;
-            this.acceptButton.Text = "Accept";
+            this.acceptButton.Text = "Submit";
             this.acceptButton.UseVisualStyleBackColor = true;
             this.acceptButton.Click += new System.EventHandler(this.AcceptClick);
             // 
@@ -104,7 +104,7 @@
             this.errorLabel.AutoSize = true;
             this.errorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorLabel.ForeColor = System.Drawing.Color.Red;
-            this.errorLabel.Location = new System.Drawing.Point(24, 166);
+            this.errorLabel.Location = new System.Drawing.Point(26, 166);
             this.errorLabel.Name = "errorLabel";
             this.errorLabel.Size = new System.Drawing.Size(99, 16);
             this.errorLabel.TabIndex = 6;

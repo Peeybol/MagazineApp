@@ -74,5 +74,13 @@ namespace MagazineGUI
             service.Logout();
             Application.Exit();
         }
+
+        private void RegisterPersonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RegisterPerson registerPerson = new RegisterPerson(service);
+            registerPerson.FormClosed += (s, args) => this.Show();
+            registerPerson.Show();
+        }
     }
 }
