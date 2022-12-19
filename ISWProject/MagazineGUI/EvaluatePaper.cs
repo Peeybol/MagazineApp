@@ -27,10 +27,21 @@ namespace MagazineGUI
 
             //Area a = CurrentUser.Area;
 
-            foreach (Paper p in CurrentUser.Area.EvaluationPending)
+            if (!service.IsChiefEditor(CurrentUser))
             {
-                ListViewItem item = new ListViewItem(p.Id  + "");
-                listView1.Items.Add(item);
+                foreach (Paper p in service.ListAllPapers())
+                {
+                    ListViewItem item = new ListViewItem(p.Id + "");
+                    listView1.Items.Add(item);
+                }
+            }
+            else
+            {
+                foreach (Paper p in CurrentUser.Area.EvaluationPending)
+                {
+                    ListViewItem item = new ListViewItem(p.Id + "");
+                    listView1.Items.Add(item);
+                }
             }
         }
     }
