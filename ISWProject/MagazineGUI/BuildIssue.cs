@@ -15,7 +15,6 @@ namespace MagazineGUI
     public partial class BuildIssue : Form
     {
         private IMagazineISWService service;
-        private Area area;
         public BuildIssue(IMagazineISWService service)
         {
             InitializeComponent();
@@ -31,22 +30,17 @@ namespace MagazineGUI
         {
             listview_pendingPapers.Items.Clear();
             listview_publicatedPapers.Items.Clear();
-            //dateTime.MinDate = DateTime.Now;
-            Issue lastIssue = service.GetLastIssue();
-            if (lastIssue == null) { service.AddIssue(1); issue_number.Text = "1"; }
-            else if (lastIssue.PublicationDate != null) 
-            { 
-                service.AddIssue(lastIssue.Number + 1); 
-                issue_number.Text = (lastIssue.Number + 1) + "";
-
-            } else { issue_number.Text = lastIssue.Number.ToString(); }
-
-            ICollection<Area> areas = service.GetAllAreas();
+            dateTime.MinDate = DateTime.Now;
+            int lastIssue = service.GetLastIssueNumberAndAddANewOne();
+            issue_number.Text = lastIssue + "";
+            
+            ICollection<string> areas = service.GetAllAreasNames();
+            
             areas_comboBox.Items.Clear();
             if(areas != null)
             {
-                foreach (Area a in areas)
-                    areas_comboBox.Items.Add(a.Name);
+                foreach (string a in areas)
+                    areas_comboBox.Items.Add(a);
                 areas_comboBox.SelectedIndex = -1;
                 areas_comboBox.ResetText();
                 areas_comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -58,26 +52,14 @@ namespace MagazineGUI
         private void Areas_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string areaName = (string) areas_comboBox.SelectedItem;
-            area = service.GetAreaByName(areaName);
-
-            ICollection<Paper> pendingPapers = area.PublicationPending;
-            ICollection<Paper> EvaluationPendingPapers = area.EvaluationPending;
-            ICollection<Paper> publicatedPapers = area.Papers.Except(EvaluationPendingPapers).ToList();
-            publicatedPapers = publicatedPapers.Except(pendingPapers).ToList();
-            InitializeData(pendingPapers, publicatedPapers);
+            ICollection<Paper> pendingPapers = service.GetAllPendingPapersInAnArea(areaName);
+            InitializeData(pendingPapers);
         }
 
-        public void InitializeData(ICollection<Paper> pendingPapers, ICollection<Paper> publicatedPapers)
+        public void InitializeData(ICollection<Paper> pendingPapers)
         {
             listview_pendingPapers.Items.Clear();
             listview_publicatedPapers.Items.Clear();
-
-            listview_publicatedPapers.Items.AddRange(publicatedPapers.Select(p =>
-            {
-                ListViewItem item = new ListViewItem(p.Id + "");
-                item.SubItems.Add(p.Title);
-                return item;
-            }).ToArray());
 
             listview_pendingPapers.Items.AddRange(pendingPapers.Select(p =>
             {
@@ -95,6 +77,7 @@ namespace MagazineGUI
                 listview_publicatedPapers.Items.Add(item);
                 item.Selected = false;
             }
+            if (listview_publicatedPapers.Items.Count > 0) buildIssue_button.Enabled = true;
         }
 
         private void MoveToPending_button_Click(object sender, EventArgs e)
@@ -106,37 +89,27 @@ namespace MagazineGUI
                 listview_pendingPapers.Items.Add(item);
                 item.Selected = false;
             }
+            if (listview_publicatedPapers.Items.Count <= 0) buildIssue_button.Enabled = false;
         }
 
         private void BuildIssue_button_Click(object sender, EventArgs e)
         {
-            ICollection<Paper> pendingPapers = new List<Paper>(); 
-
-            foreach(ListViewItem item in listview_pendingPapers.Items)
-            {
-                pendingPapers.Add(service.GetPaperById(Int32.Parse(item.Text)));
-            }
-
-            area.PublicationPending = pendingPapers;
-
             try
             {
-                Issue issue = service.GetLastIssue();
-                foreach(ListViewItem item in listview_publicatedPapers.Items)
+                foreach (ListViewItem item in listview_publicatedPapers.Items)
                 {
-                    issue.PublishedPapers.Add(service.GetPaperById(Int32.Parse(item.Text)));
+                    service.PublishPaper(Int32.Parse(item.Text));
                 }
-                service.ModifyIssue(issue.Id, dateTime.Value);
-
-                DialogResult answer = MessageBox.Show(this, "The Issue has been built",
-                                    "Issue Built",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-
-                LoadData();
-
-
             } catch (Exception ex) { MessageBox.Show(ex.Message); }
+
+            service.BuildAnIssue(dateTime.Value);
+
+            DialogResult answer = MessageBox.Show(this, "The Issue has been built",
+                                "Issue Built",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Information);
+
+            LoadData();
         }
     }
 }

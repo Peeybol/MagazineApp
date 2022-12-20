@@ -171,6 +171,7 @@
             // 
             // buildIssue_button
             // 
+            this.buildIssue_button.Enabled = false;
             this.buildIssue_button.Location = new System.Drawing.Point(395, 631);
             this.buildIssue_button.Name = "buildIssue_button";
             this.buildIssue_button.Size = new System.Drawing.Size(137, 31);

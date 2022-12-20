@@ -104,5 +104,25 @@ namespace Magazine.Entities
             }
             return false;
         }
+
+        public int AddIssue(Issue issue)
+        {
+            this.Issues.Add(issue);
+            return issue.Id;
+        } 
+
+        public List<Area> GetAllAreas()
+        {
+            return this.Areas.ToList<Area>();
+        }
+
+        public List<Paper> GetAllPendingPapersInAnArea(string areaName)
+        {
+            List<Paper> papers = new List<Paper>();
+            Area area = GetAreaByName(areaName);
+            foreach (Paper paper in area.PublicationPending)
+                papers.Add(paper);
+            return papers;
+        }
     }
 }

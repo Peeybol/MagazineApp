@@ -303,17 +303,13 @@ namespace Magazine.Services
 
         public void PublishPaper(int paperId)
         {
-            Issue issue = magazine.GetOpenIssue();
-            if (issue == null)
-            {
-                int number;
-                if (magazine.GetLastIssue() == null) number = 1;
-                else number = magazine.GetLastIssue().Number + 1;
-                issue = new Issue(number, magazine);
-            }
-            Paper paper = magazine.GetPubPendingPaperById(paperId);
-            if (paper == null) throw new ServiceException(resourceManager.GetString("NoPubPendingPaper"));
+            Paper paper = GetPaperById(paperId);
+            if(paper == null) throw new ServiceException(resourceManager.GetString("PaperNotExists"));
+            Issue issue = magazine.GetLastIssue();
+            if(issue == null) throw new ServiceException(resourceManager.GetString("IssueNotExists"));
             issue.PublishedPapers.Add(paper);
+            paper.BelongingArea.PublicationPending.Remove(paper);
+            paper.Issue = issue;
             Commit();
         }
 
@@ -340,16 +336,23 @@ namespace Magazine.Services
         public int AddIssue(int number)
         {
             if (loggedUser != magazine.ChiefEditor) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
-            // TODO - A lo mejor crear método en magazine que sea add issue y llamarlo desde aquí, mejor que llamar a magazine.issue
             Issue issue = new Issue(number, magazine);
-            magazine.Issues.Add(issue);
-            return issue.Id;    
+            Commit();
+            return magazine.AddIssue(issue);    
         }
 
         public List<Area> GetAllAreas()
         {
-            // TODO - Mover este método a la clase Magazine, mejor que llamar a Areas desde aquí
-            return magazine.Areas.ToList<Area>();
+            return magazine.GetAllAreas();
+        }
+
+        public List<string> GetAllAreasNames()
+        {
+            List<string> names = new List<string>();
+            List<Area> areas = magazine.GetAllAreas();
+            foreach (Area area in areas)
+                names.Add(area.Name);
+            return names;
         }
 
         public List<Paper> GetAllPendingPapers()
@@ -361,12 +364,18 @@ namespace Magazine.Services
 
             return paperList;
         }
+            
+        public List<Paper> GetAllPendingPapersInAnArea(string areaName)
+        {
+            return magazine.GetAllPendingPapersInAnArea(areaName);
+        }
 
-        public void ModifyIssue(int Id, DateTime newPublicationDate)
+        public void BuildAnIssue(DateTime newPublicationDate)
         {
             if(loggedUser != magazine.ChiefEditor) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
-            Issue issue = magazine.Issues.FirstOrDefault(i => i.Id == Id);
-            if(issue == null) { throw new ServiceException(resourceManager.GetString("IssueNotExists")); }
+            Issue issue = magazine.GetLastIssue();
+            if(issue.PublicationDate != null) throw new ServiceException(resourceManager.GetString("IncorrectDate"));
+            if (issue == null) { throw new ServiceException(resourceManager.GetString("IssueNotExists")); }
             if(newPublicationDate.Date <  DateTime.Now.Date) throw new ServiceException(resourceManager.GetString("IncorrectDate"));
             issue.PublicationDate = newPublicationDate;
             Commit();
@@ -386,6 +395,22 @@ namespace Magazine.Services
             Commit();
         }
 
+        //We obtain the number of the current issue, if the last was publicated we create a new one and we return that number
+        public int GetLastIssueNumberAndAddANewOne()
+        {
+            if(!IsChiefEditor(loggedUser)) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
+            Issue myIssue = magazine.GetLastIssue();
+            if (myIssue == null)
+            {
+                AddIssue(1);
+                return 1;
+            }
+            else if (myIssue.PublicationDate != null)
+            {
+                AddIssue(myIssue.Number+1);
+                return myIssue.Number+1;
+
+            } else return myIssue.Number;
 
         // si esto puede devolver null
         public Issue GetLastIssue()
@@ -443,11 +468,6 @@ namespace Magazine.Services
             Area area = magazine.GetAreaByName(areaName);
             if (area == null) throw new ServiceException(resourceManager.GetString("InvalidAreaName"));
             else return area.Id;
-        }
-
-        public Area GetAreaByName(string areaName)
-        {
-            return magazine.GetAreaByName(areaName);
         }
              
         #endregion
