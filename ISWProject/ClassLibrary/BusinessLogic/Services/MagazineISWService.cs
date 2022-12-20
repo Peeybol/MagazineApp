@@ -31,14 +31,14 @@ namespace Magazine.Services
         private User loggedUser;
 
         private Entities.Magazine magazine;
-        public  MagazineISWService(IDAL dal){
+        public MagazineISWService(IDAL dal) {
             this.dal = dal;
 
             // Resource manager for internationalization of error messages is created
             resourceManager = new ResourceManager("ClassLibrary.Resources.ExceptionMessages", Assembly.GetExecutingAssembly());
             // Only one magazine object exists in our system
             magazine = dal.GetAll<Entities.Magazine>().FirstOrDefault();
-            if(magazine == null)
+            if (magazine == null)
             {
                 DBInitialization();
             }
@@ -49,7 +49,7 @@ namespace Magazine.Services
             dal.Commit();
         }
 
-        public bool IsValidEmail(string email) 
+        public bool IsValidEmail(string email)
         {
             if (email == null || email.Length <= 4) return false;
             int indexAt = email.IndexOf('@');
@@ -65,7 +65,7 @@ namespace Magazine.Services
         {
             if (password == null || password.Length < 8 || password.Length > 32) return false;
             int conds = 0;
-            foreach(char c in password)
+            foreach (char c in password)
             {
                 if (c >= 'a' && c <= 'z')
                 {
@@ -73,7 +73,7 @@ namespace Magazine.Services
                     break;
                 }
             }
-            foreach(char c in password)
+            foreach (char c in password)
             {
                 if (c >= 'A' && c <= 'Z')
                 {
@@ -81,7 +81,7 @@ namespace Magazine.Services
                     break;
                 }
             }
-            foreach(char c in password)
+            foreach (char c in password)
             {
                 if (c >= '0' && c <= '9')
                 {
@@ -89,7 +89,7 @@ namespace Magazine.Services
                     break;
                 }
             }
-            char[] specialCharacters = {'?', '-', '+', '=', '_', '@', '#', '!', '&','$'};
+            char[] specialCharacters = { '?', '-', '+', '=', '_', '@', '#', '!', '&', '$' };
             if (password.IndexOfAny(specialCharacters) != -1) conds++;
             if (conds < 4) return false;
             return true;
@@ -97,7 +97,7 @@ namespace Magazine.Services
 
         public bool IsValidUser(string login)
         {
-            if(login == null || login.Length == 0 || login.Length > 30) return false;
+            if (login == null || login.Length == 0 || login.Length > 30) return false;
             return true;
         }
 
@@ -116,18 +116,18 @@ namespace Magazine.Services
         {
             // Chief editor registered
             RegisterUser("66666666A", "Javier", "Jaen", false, "HCI, Software Engineering", "fjaen@upv.es", "fjaen", "Manolo123?");
-            
+
             // Area editors registered
             RegisterUser("77777777B", "Jorge", "Montaner", false, "Software Engineering", "jormonm5@upv.es", "jmontaner", "Manolo123?");
             RegisterUser("88888888C", "Fernando", "Alonso", false, "HCI", "falonso@upv.es", "falonso", "Manolo123?");
-            
+
             // Author registered
             RegisterUser("99999999D", "Carlos", "Sainz", false, "HCI", "csainz@upv.es", "csainz", "Manolo123?");
-            
+
             // Magazine created and stored in "magazine" reference
-            int magazineId = AddMagazine("University Magazine","66666666A");
+            int magazineId = AddMagazine("University Magazine", "66666666A");
             magazine = dal.GetById<Entities.Magazine>(magazineId);
-            
+
             // Two Areas added, Login required because only chief editor is allowed to do this 
             Login("fjaen", "Manolo123?");
             AddArea("HCI", "77777777B");
@@ -139,7 +139,7 @@ namespace Magazine.Services
 
         public bool CheckAreasExist(string aof)
         {
-            string [] areas = aof.Split(',');
+            string[] areas = aof.Split(',');
             foreach (string area in areas)
             {
                 if (magazine != null && magazine.GetAreaByName(area.Trim()) == null) return false;
@@ -171,17 +171,17 @@ namespace Magazine.Services
         public string Login(string login, string password)
         {
             ValidateLoggedUser(false);
-            if(!IsValidUser(login)) { throw new ServiceException(resourceManager.GetString("InvalidUser"));}
-            if(!IsValidPassword(password)) { throw new ServiceException(resourceManager.GetString("InvalidPassword"));}
+            if (!IsValidUser(login)) { throw new ServiceException(resourceManager.GetString("InvalidUser")); }
+            if (!IsValidPassword(password)) { throw new ServiceException(resourceManager.GetString("InvalidPassword")); }
             User myUser = dal.GetWhere<User>((u) => u.Login.Equals(login)).FirstOrDefault();
-            if (myUser == null) {throw new ServiceException(resourceManager.GetString("UserNotExists"));}
-            if (!myUser.Password.Equals(password)) { throw new ServiceException(resourceManager.GetString("IncorrectPassword"));}
-            loggedUser = myUser; 
-            return myUser.Id; 
+            if (myUser == null) { throw new ServiceException(resourceManager.GetString("UserNotExists")); }
+            if (!myUser.Password.Equals(password)) { throw new ServiceException(resourceManager.GetString("IncorrectPassword")); }
+            loggedUser = myUser;
+            return myUser.Id;
         }
 
         public void Logout() {
-            loggedUser = null;  
+            loggedUser = null;
         }
 
         public User GetCurrentUser()
@@ -199,7 +199,7 @@ namespace Magazine.Services
             ValidateLoggedUser(true);
             Area area = magazine.GetAreaById(areaId);
             if (area == null) throw new ServiceException(resourceManager.GetString("InvalidAreaName"));
-            if (loggedUser.Equals(magazine.ChiefEditor) || loggedUser.Equals(area.Editor)) 
+            if (loggedUser.Equals(magazine.ChiefEditor) || loggedUser.Equals(area.Editor))
             { throw new ServiceException(resourceManager.GetString("NoSubPermission")); }
             Paper paper = new Paper(title, uploadDate, area, loggedUser);
             area.Papers.Add(paper);
@@ -232,7 +232,7 @@ namespace Magazine.Services
             dal.Insert<Person>(regPerson);
             Commit();
         }
-        public Person GetPersonById (string id) 
+        public Person GetPersonById(string id)
         {
             Person person = dal.GetById<Person>(id);
             if (person != null) return person;
@@ -240,12 +240,12 @@ namespace Magazine.Services
         }
         // añadir metodo lanzadera pasandole nombre y apellidos de la persona
         // añadir método para crear persona en caso de que no exista
-        public void AddCoauthor (int paperId, string id)
+        public void AddCoauthor(int paperId, string id)
         {
             Paper paper = magazine.GetPaperById(paperId);
-            if(paper.CoAuthors.Count() == 4) throw new ServiceException(resourceManager.GetString("MaximumNumberCoauthors"));
+            if (paper.CoAuthors.Count() == 4) throw new ServiceException(resourceManager.GetString("MaximumNumberCoauthors"));
             Person person = GetPersonById(id);
-            if(person == null) { }
+            if (person == null) { }
             paper.AddCoauthor(person);
             Commit();
         }
@@ -256,11 +256,11 @@ namespace Magazine.Services
             ValidateLoggedUser(true);
             // TODO - Tenemos apuntado del profe que esto está mal, pero estamos comprobando si son nulos no?????
             if (comments == null) comments = "";
-            if(date == null) throw new ServiceException(resourceManager.GetString("InvalidDate"));
+            if (date == null) throw new ServiceException(resourceManager.GetString("InvalidDate"));
             Evaluation evaluation = new Evaluation(accepted, comments, date);
             Paper paper = magazine.GetEvPendingPaperById(paperId);
             if (paper == null) throw new ServiceException(resourceManager.GetString("PaperNotPendingOfEvaluation"));
-            if(loggedUser != paper.BelongingArea.Editor && loggedUser != magazine.ChiefEditor) throw new ServiceException(resourceManager.GetString("NotEditor"));
+            if (loggedUser != paper.BelongingArea.Editor && loggedUser != magazine.ChiefEditor) throw new ServiceException(resourceManager.GetString("NotEditor"));
             paper.Evaluation = evaluation;
             paper.BelongingArea.EvaluationPending.Remove(paper);
             paper.EvaluationPendingArea = null;
@@ -279,13 +279,13 @@ namespace Magazine.Services
         public bool isAccepted(int paperId)
         {
             Paper myPaper = magazine.GetPaperById(paperId);
-            if(myPaper == null) { throw new ServiceException(resourceManager.GetString("PaperNotExists")); }
+            if (myPaper == null) { throw new ServiceException(resourceManager.GetString("PaperNotExists")); }
             else
             {
-                if(myPaper.Evaluation == null) { throw new ServiceException(resourceManager.GetString("NotEvaluatedPaper")); }
+                if (myPaper.Evaluation == null) { throw new ServiceException(resourceManager.GetString("NotEvaluatedPaper")); }
                 else return myPaper.Evaluation.Accepted;
             }
-            
+
         }
 
         public bool isEvaluationPending(int paperId)
@@ -303,17 +303,13 @@ namespace Magazine.Services
 
         public void PublishPaper(int paperId)
         {
-            Issue issue = magazine.GetOpenIssue();
-            if (issue == null)
-            {
-                int number;
-                if (magazine.GetLastIssue() == null) number = 1;
-                else number = magazine.GetLastIssue().Number + 1;
-                issue = new Issue(number, magazine);
-            }
-            Paper paper = magazine.GetPubPendingPaperById(paperId);
-            if (paper == null) throw new ServiceException(resourceManager.GetString("NoPubPendingPaper"));
+            Paper paper = GetPaperById(paperId);
+            if (paper == null) throw new ServiceException(resourceManager.GetString("PaperNotExists"));
+            Issue issue = magazine.GetLastIssue();
+            if (issue == null) throw new ServiceException(resourceManager.GetString("IssueNotExists"));
             issue.PublishedPapers.Add(paper);
+            paper.BelongingArea.PublicationPending.Remove(paper);
+            paper.Issue = issue;
             Commit();
         }
 
@@ -322,7 +318,7 @@ namespace Magazine.Services
             return magazine.GetPublishedPaperById(paperId) != null;
         }
 
-        
+
 
         public List<Paper> ListAllEvaluationPendingPapers()
         {
@@ -332,7 +328,7 @@ namespace Magazine.Services
                     PaperList.Add(p);
             return PaperList;
         }
-        
+
         #endregion
 
 
@@ -340,16 +336,23 @@ namespace Magazine.Services
         public int AddIssue(int number)
         {
             if (loggedUser != magazine.ChiefEditor) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
-            // TODO - A lo mejor crear método en magazine que sea add issue y llamarlo desde aquí, mejor que llamar a magazine.issue
             Issue issue = new Issue(number, magazine);
-            magazine.Issues.Add(issue);
-            return issue.Id;    
+            Commit();
+            return magazine.AddIssue(issue);
         }
 
         public List<Area> GetAllAreas()
         {
-            // TODO - Mover este método a la clase Magazine, mejor que llamar a Areas desde aquí
-            return magazine.Areas.ToList<Area>();
+            return magazine.GetAllAreas();
+        }
+
+        public List<string> GetAllAreasNames()
+        {
+            List<string> names = new List<string>();
+            List<Area> areas = magazine.GetAllAreas();
+            foreach (Area area in areas)
+                names.Add(area.Name);
+            return names;
         }
 
         public List<Paper> GetAllPendingPapers()
@@ -362,12 +365,18 @@ namespace Magazine.Services
             return paperList;
         }
 
-        public void ModifyIssue(int Id, DateTime newPublicationDate)
+        public List<Paper> GetAllPendingPapersInAnArea(string areaName)
         {
-            if(loggedUser != magazine.ChiefEditor) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
-            Issue issue = magazine.Issues.FirstOrDefault(i => i.Id == Id);
-            if(issue == null) { throw new ServiceException(resourceManager.GetString("IssueNotExists")); }
-            if(newPublicationDate.Date <  DateTime.Now.Date) throw new ServiceException(resourceManager.GetString("IncorrectDate"));
+            return magazine.GetAllPendingPapersInAnArea(areaName);
+        }
+
+        public void BuildAnIssue(DateTime newPublicationDate)
+        {
+            if (loggedUser != magazine.ChiefEditor) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
+            Issue issue = magazine.GetLastIssue();
+            if (issue.PublicationDate != null) throw new ServiceException(resourceManager.GetString("IncorrectDate"));
+            if (issue == null) { throw new ServiceException(resourceManager.GetString("IssueNotExists")); }
+            if (newPublicationDate.Date < DateTime.Now.Date) throw new ServiceException(resourceManager.GetString("IncorrectDate"));
             issue.PublicationDate = newPublicationDate;
             Commit();
         }
@@ -386,14 +395,32 @@ namespace Magazine.Services
             Commit();
         }
 
+        //We obtain the number of the current issue, if the last was publicated we create a new one and we return that number
+        public int GetLastIssueNumberAndAddANewOne()
+        {
+            if (!IsChiefEditor(loggedUser)) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
+            Issue myIssue = magazine.GetLastIssue();
+            if (myIssue == null)
+            {
+                AddIssue(1);
+                return 1;
+            }
+            else if (myIssue.PublicationDate != null)
+            {
+                AddIssue(myIssue.Number + 1);
+                return myIssue.Number + 1;
+
+            }
+            else return myIssue.Number;
+        }
 
         // si esto puede devolver null
         public Issue GetLastIssue()
         {
-            return magazine.Issues.LastOrDefault();
+             return magazine.Issues.LastOrDefault();
         }
 
-        #endregion
+            #endregion
 
         #region Area
 
@@ -413,23 +440,23 @@ namespace Magazine.Services
             ValidateLoggedUser(true);
 
             // validate user is chief editor
-            if (loggedUser.Magazine==null) throw new ServiceException(resourceManager.GetString("InvalidAddAreaUser"));
+            if (loggedUser.Magazine == null) throw new ServiceException(resourceManager.GetString("InvalidAddAreaUser"));
 
             // validate magazine exists
             if (magazine == null) throw new ServiceException(resourceManager.GetString("MagazineNotExists"));
 
             // validate area name not empty
-            if ((areaName == null)||(areaName.Length == 0)) throw new ServiceException(resourceManager.GetString("InvalidAreaName"));
-            
+            if ((areaName == null) || (areaName.Length == 0)) throw new ServiceException(resourceManager.GetString("InvalidAreaName"));
+
             // validate not another area with same name
             if (magazine.GetAreaByName(areaName) != null) throw new ServiceException(resourceManager.GetString("InvalidAreaName"));
-            
+
             // validate editor id not empty
             if ((editorId == null) || (editorId.Length == 0)) throw new ServiceException(resourceManager.GetString("NullUserId"));
 
             // validate editor exists
             var editor = dal.GetById<User>(editorId);
-            if (editor==null) throw new ServiceException(resourceManager.GetString("UserNotExists"));            
+            if (editor == null) throw new ServiceException(resourceManager.GetString("UserNotExists"));
 
             // inserts area
             Area area = new Area(areaName, editor, magazine);
@@ -438,18 +465,13 @@ namespace Magazine.Services
             return area.Id;
         }
 
-        public int GetIdByAreaName (string areaName)
+        public int GetIdByAreaName(string areaName)
         {
             Area area = magazine.GetAreaByName(areaName);
             if (area == null) throw new ServiceException(resourceManager.GetString("InvalidAreaName"));
             else return area.Id;
         }
 
-        public Area GetAreaByName(string areaName)
-        {
-            return magazine.GetAreaByName(areaName);
-        }
-             
         #endregion
 
         #region Magazine
@@ -466,13 +488,13 @@ namespace Magazine.Services
         public int AddMagazine(string name, string chiefEditorId)
         {
             // validate magazine name not empty
-            if ((name == null)||(name.Equals(""))) throw new ServiceException(resourceManager.GetString("InvalidMagazineName"));            
-            
+            if ((name == null) || (name.Equals(""))) throw new ServiceException(resourceManager.GetString("InvalidMagazineName"));
+
             // validate chief editor id not empty
-            if ((chiefEditorId==null)||(chiefEditorId.Length==0)) throw new ServiceException(resourceManager.GetString("NullUserId"));
-            
+            if ((chiefEditorId == null) || (chiefEditorId.Length == 0)) throw new ServiceException(resourceManager.GetString("NullUserId"));
+
             // validate chief editor exists
-            var chief =dal.GetById<User>(chiefEditorId);
+            var chief = dal.GetById<User>(chiefEditorId);
             if (chief == null) throw new ServiceException(resourceManager.GetString("UserNotExists"));
 
             // insert magazine
@@ -529,5 +551,6 @@ namespace Magazine.Services
             return magazine.ChiefEditor == user;
         }
         #endregion
-    }
+        
+    } 
 }

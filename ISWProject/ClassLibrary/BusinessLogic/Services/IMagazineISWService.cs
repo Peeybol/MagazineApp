@@ -1,4 +1,4 @@
-﻿using Magazine.Entities;
+﻿    using Magazine.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +13,11 @@ namespace Magazine.Services
 
         // YOU MAY ADD ANY ADDITIONAL NEEDED SERVICES TO THIS INTERFACE
         bool IsValidEmail(string email);
-        Issue GetLastIssue();
-        List<Area> GetAllAreas();
-        Area GetAreaByName(string areaName);
+        int GetLastIssueNumberAndAddANewOne();
+        List<string> GetAllAreasNames();
+        List<Paper> GetAllPendingPapersInAnArea(string areaName);
         Paper GetPaperById(int id);
+        void BuildAnIssue(DateTime newPublicationDate);
 
         /// <summary>   Initializes Database with some data</summary>        
         void DBInitialization();
@@ -157,8 +158,6 @@ namespace Magazine.Services
         ///             Any required ServiceExceptions 
         /// </returns>
         int AddIssue(int number);
-
-        void ModifyIssue(int Id, DateTime newPublicationDate);
 
         #endregion
 
