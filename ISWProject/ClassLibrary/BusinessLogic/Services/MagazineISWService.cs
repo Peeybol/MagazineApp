@@ -158,8 +158,9 @@ namespace Magazine.Services
             if (!IsValidUser(login) || !CheckUsername(login)) throw new ServiceException(resourceManager.GetString("InvalidUser"));
             if (!IsValidPassword(password)) throw new ServiceException(resourceManager.GetString("InvalidPassword"));
             if (!CheckAreasExist(areasOfInterest)) throw new ServiceException(resourceManager.GetString("InvalidAreaName"));
-            Magazine.Entities.User regUser = new Magazine.Entities.User(id, name, surname, alerted, areasOfInterest, email, login, password);
-            dal.Insert<User>(regUser);
+            Person p = dal.GetById<Person>(id);
+            p = new Magazine.Entities.User(id, name, surname, alerted, areasOfInterest, email, login, password);
+            dal.Insert<User>((User)p);
             Commit();
         }
 
