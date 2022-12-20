@@ -195,8 +195,6 @@ namespace Magazine.Services
 
         List<Paper> ListPapersByArea(Area a);
 
-        void RemovePaper(int paperId);
-
         List<Person> ListAllPersons();
 
         bool IsAreaEditor(User user, out Area area);

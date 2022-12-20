@@ -87,24 +87,6 @@ namespace Magazine.Entities
             return Issues.LastOrDefault();
         }
 
-        public bool RemovePaperById(int id)
-        {
-            foreach(Area a in Areas)
-            {
-                Paper paper = a.Papers.FirstOrDefault(p =>p.Id == id);
-                if (paper != null)
-                {
-                    paper.EvaluationPendingArea= null;
-                    paper.PublicationPendingArea= null;
-                    paper.BelongingArea= null;
-                    a.EvaluationPending.Remove(paper);
-                    a.PublicationPending.Remove(paper);
-                    return a.Papers.Remove(paper);
-                }
-            }
-            return false;
-        }
-
         public int AddIssue(Issue issue)
         {
             this.Issues.Add(issue);

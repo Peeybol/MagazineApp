@@ -211,14 +211,6 @@ namespace Magazine.Services
             return paper.Id;
         }
 
-        public void RemovePaper(int paperId)
-        {
-            //Esto no se puede hacer así pero necesito poder probar la interfaz y no se me ocurre qué mas hacer
-            dal.Delete<Paper>(magazine.GetPaperById(paperId));
-            //if(!magazine.RemovePaperById(paperId)) throw new ServiceException(resourceManager.GetString("PaperNotExists"));
-            Commit();
-        }
-
         public Paper GetPaperById(int id)
         {
             return magazine.GetPaperById(id);
@@ -319,8 +311,6 @@ namespace Magazine.Services
             return magazine.GetPublishedPaperById(paperId) != null;
         }
 
-
-
         public List<Paper> ListAllEvaluationPendingPapers()
         {
             List<Paper> PaperList = new List<Paper>();
@@ -328,6 +318,20 @@ namespace Magazine.Services
                 foreach (Paper p in a.EvaluationPending)
                     PaperList.Add(p);
             return PaperList;
+        }
+
+        public void UnPublishPaper(int paperId)
+        {
+            // TODO - Comprobar si solo lo puede hacer el chiefEditor o tb el Editor del Area en el que esté seleccionado para publicar.
+            // Comprobar que el Use Case dice esto, porque me parece que no es lo mismo published que selected to publish
+            // Comprobar que el paper se tiene que buscar de todos los Issue de la Magazine, o solo del último ya que es el que aún
+            // no se ha publicado (último => publicationDate == null)
+            //if (!loggedUser.Equals(magazine.ChiefEditor)) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
+            Paper p = magazine.GetPublishedPaperById(paperId);
+            if (p == null) throw new ServiceException(resourceManager.GetString("PaperNotPublished"));
+            p.BelongingArea.PublicationPending.Add(p);
+            p.Issue.PublishedPapers.Remove(p);
+            Commit();
         }
 
         #endregion
@@ -379,20 +383,6 @@ namespace Magazine.Services
             if (issue == null) { throw new ServiceException(resourceManager.GetString("IssueNotExists")); }
             if (newPublicationDate.Date < DateTime.Now.Date) throw new ServiceException(resourceManager.GetString("IncorrectDate"));
             issue.PublicationDate = newPublicationDate;
-            Commit();
-        }
-
-        public void UnPublishPaper(int paperId)
-        {
-            // TODO - Comprobar si solo lo puede hacer el chiefEditor o tb el Editor del Area en el que esté seleccionado para publicar.
-            // Comprobar que el Use Case dice esto, porque me parece que no es lo mismo published que selected to publish
-            // Comprobar que el paper se tiene que buscar de todos los Issue de la Magazine, o solo del último ya que es el que aún
-            // no se ha publicado (último => publicationDate == null)
-            //if (!loggedUser.Equals(magazine.ChiefEditor)) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
-            Paper p = magazine.GetPublishedPaperById(paperId);
-            if (p == null) throw new ServiceException(resourceManager.GetString("PaperNotPublished"));
-            p.BelongingArea.PublicationPending.Add(p);
-            p.Issue.PublishedPapers.Remove(p);
             Commit();
         }
 

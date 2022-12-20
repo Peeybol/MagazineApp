@@ -67,23 +67,6 @@ namespace MagazineGUI
             }).ToArray());
         }
 
-        private void removeButton_Click(object sender, EventArgs e)
-        {
-            foreach(ListViewItem i in listView1.SelectedItems)
-            {
-                try
-                {
-                    Console.Write(Int32.Parse(i.Text) + "\n");
-                    service.RemovePaper(Int32.Parse(i.Text));
-                    listView1.Items.Remove(i);
-                }
-                catch(Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-            }
-        }
-
         private void filterButton_Click(object sender, EventArgs e)
         {
             initializeData(Data);
@@ -91,23 +74,6 @@ namespace MagazineGUI
             foreach(ListViewItem i in listView1.Items)
             {
                 if (i.SubItems[ISSUE].Text != filterTextbox.Text) listView1.Items.Remove(i);
-            }
-        }
-
-        private void unpublishButton_Click(object sender, EventArgs e)
-        {
-            foreach (ListViewItem i in listView1.SelectedItems)
-            {
-                try
-                {
-                    Console.Write(Int32.Parse(i.Text) + "\n");
-                    service.UnPublishPaper(Int32.Parse(i.Text));
-                    i.SubItems[3].Text = "pending publication"; 
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
             }
         }
     }
