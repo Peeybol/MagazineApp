@@ -1,4 +1,4 @@
-﻿using Magazine.Entities;
+﻿    using Magazine.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
