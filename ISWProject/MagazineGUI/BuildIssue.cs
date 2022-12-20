@@ -95,7 +95,7 @@ namespace MagazineGUI
             
             foreach (ListViewItem item in listview_publicatedPapers.SelectedItems)
             {
-                service.UnPublishPaper2(Int32.Parse(item.Text));
+                service.UnPublishPaper(Int32.Parse(item.Text));
                 listview_publicatedPapers.Items.Remove(item);
             }
 

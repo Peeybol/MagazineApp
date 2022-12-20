@@ -200,8 +200,6 @@ namespace Magazine.Services
             ValidateLoggedUser(true);
             Area area = magazine.GetAreaById(areaId);
             if (area == null) throw new ServiceException(resourceManager.GetString("InvalidAreaName"));
-            if (loggedUser.Equals(magazine.ChiefEditor) || loggedUser.Equals(area.Editor))
-            { throw new ServiceException(resourceManager.GetString("NoSubPermission")); }
             Paper paper = new Paper(title, uploadDate, area, loggedUser);
             area.Papers.Add(paper);
             area.EvaluationPending.Add(paper);
@@ -247,13 +245,12 @@ namespace Magazine.Services
         public void EvaluatePaper(bool accepted, string comments, DateTime date, int paperId)
         {
             ValidateLoggedUser(true);
-            // TODO - Tenemos apuntado del profe que esto está mal, pero estamos comprobando si son nulos no?????
-            if (comments == null) comments = "";
+            if (comments == "") throw new ServiceException(resourceManager.GetString("CommentsNotExist"));
             if (date == null) throw new ServiceException(resourceManager.GetString("InvalidDate"));
             Evaluation evaluation = new Evaluation(accepted, comments, date);
             Paper paper = magazine.GetEvPendingPaperById(paperId);
             if (paper == null) throw new ServiceException(resourceManager.GetString("PaperNotPendingOfEvaluation"));
-            if (loggedUser != paper.BelongingArea.Editor && loggedUser != magazine.ChiefEditor) throw new ServiceException(resourceManager.GetString("NotEditor"));
+            if (loggedUser != paper.BelongingArea.Editor) throw new ServiceException(resourceManager.GetString("NotEditor"));
             paper.Evaluation = evaluation;
             paper.BelongingArea.EvaluationPending.Remove(paper);
             paper.EvaluationPendingArea = null;
@@ -296,6 +293,7 @@ namespace Magazine.Services
 
         public void PublishPaper(int paperId)
         {
+            if (!loggedUser.Equals(magazine.ChiefEditor)) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
             Paper paper = GetPaperById(paperId);
             if (paper == null) throw new ServiceException(resourceManager.GetString("PaperNotExists"));
             Issue issue = magazine.GetLastIssue();
@@ -319,6 +317,19 @@ namespace Magazine.Services
                 foreach (Paper p in a.EvaluationPending)
                     PaperList.Add(p);
             return PaperList;
+        }
+
+        public void UnPublishPaper(int paperId)
+        {
+            if (!loggedUser.Equals(magazine.ChiefEditor)) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
+            Paper paper = magazine.GetPaperById(paperId);
+            if (paper == null) throw new ServiceException(resourceManager.GetString("PaperNotExists"));
+            Issue issue = magazine.GetLastIssue();
+            if (issue == null) throw new ServiceException(resourceManager.GetString("IssueNotExists"));
+            issue.PublishedPapers.Remove(paper);
+            paper.Issue = null;
+            paper.BelongingArea.PublicationPending.Add(paper);
+            Commit();
         }
 
         #endregion
@@ -376,33 +387,6 @@ namespace Magazine.Services
             if (newPublicationDate.Date < DateTime.Now.Date) throw new ServiceException(resourceManager.GetString("IncorrectDate"));
             issue.PublicationDate = newPublicationDate;
             Commit();
-        }
-
-        public void UnPublishPaper(int paperId)
-        {
-            // TODO - Comprobar si solo lo puede hacer el chiefEditor o tb el Editor del Area en el que esté seleccionado para publicar.
-            // Comprobar que el Use Case dice esto, porque me parece que no es lo mismo published que selected to publish
-            // Comprobar que el paper se tiene que buscar de todos los Issue de la Magazine, o solo del último ya que es el que aún
-            // no se ha publicado (último => publicationDate == null)
-            //if (!loggedUser.Equals(magazine.ChiefEditor)) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
-            Paper p = magazine.GetPublishedPaperById(paperId);
-            if (p == null) throw new ServiceException(resourceManager.GetString("PaperNotPublished"));
-            p.BelongingArea.PublicationPending.Add(p);
-            p.Issue.PublishedPapers.Remove(p);
-            Commit();
-        }
-
-        public void UnPublishPaper2(int paperId)
-        {
-            Paper paper = magazine.GetPaperById(paperId);
-            if (paper == null) throw new ServiceException(resourceManager.GetString("PaperNotExists"));
-            Issue issue = magazine.GetLastIssue();
-            if (issue == null) throw new ServiceException(resourceManager.GetString("IssueNotExists"));
-            issue.PublishedPapers.Remove(paper);
-            paper.Issue = null;
-            paper.BelongingArea.PublicationPending.Add(paper);
-            Commit();
-
         }
 
     //We obtain the number of the current issue, if the last was publicated we create a new one and we return that number

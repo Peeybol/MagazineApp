@@ -219,4 +219,7 @@
   <data name="IncorrectDate" xml:space="preserve">
     <value>The date selected is incorrect (Date from the past)</value>
   </data>
+  <data name="CommentsNotExist" xml:space="preserve">
+    <value>Comments field is empty.</value>
+  </data>
 </root>

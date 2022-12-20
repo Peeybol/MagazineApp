@@ -82,7 +82,7 @@
             // cancelButton
             // 
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(179, 296);
+            this.cancelButton.Location = new System.Drawing.Point(179, 336);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(86, 37);
             this.cancelButton.TabIndex = 4;
@@ -94,7 +94,7 @@
             // 
             this.acceptButton.Enabled = false;
             this.acceptButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.acceptButton.Location = new System.Drawing.Point(87, 296);
+            this.acceptButton.Location = new System.Drawing.Point(87, 336);
             this.acceptButton.Name = "acceptButton";
             this.acceptButton.Size = new System.Drawing.Size(86, 37);
             this.acceptButton.TabIndex = 5;
@@ -107,7 +107,7 @@
             this.errorLabel.AutoSize = true;
             this.errorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorLabel.ForeColor = System.Drawing.Color.Red;
-            this.errorLabel.Location = new System.Drawing.Point(26, 241);
+            this.errorLabel.Location = new System.Drawing.Point(27, 289);
             this.errorLabel.Name = "errorLabel";
             this.errorLabel.Size = new System.Drawing.Size(99, 16);
             this.errorLabel.TabIndex = 6;
@@ -138,7 +138,7 @@
             // 
             this.coauthorsBox.Enabled = false;
             this.coauthorsBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.coauthorsBox.Location = new System.Drawing.Point(27, 181);
+            this.coauthorsBox.Location = new System.Drawing.Point(27, 180);
             this.coauthorsBox.Multiline = true;
             this.coauthorsBox.Name = "coauthorsBox";
             this.coauthorsBox.Size = new System.Drawing.Size(238, 100);
@@ -158,7 +158,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(315, 345);
+            this.ClientSize = new System.Drawing.Size(312, 385);
             this.Controls.Add(this.coauthorsButton);
             this.Controls.Add(this.coauthorsBox);
             this.Controls.Add(this.coauthorsLabel);

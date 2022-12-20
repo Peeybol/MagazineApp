@@ -117,7 +117,7 @@
             // RegisterPersonToolStripMenuItem
             // 
             this.RegisterPersonToolStripMenuItem.Name = "RegisterPersonToolStripMenuItem";
-            this.RegisterPersonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.RegisterPersonToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.RegisterPersonToolStripMenuItem.Text = "Register a Person";
             this.RegisterPersonToolStripMenuItem.Click += new System.EventHandler(this.RegisterPersonToolStripMenuItem_Click);
             // 
@@ -132,7 +132,7 @@
             // LogOutToolStripMenuItem
             // 
             this.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem";
-            this.LogOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.LogOutToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.LogOutToolStripMenuItem.Text = "Log Out";
             this.LogOutToolStripMenuItem.Click += new System.EventHandler(this.LogOutToolStripMenuItem_Click);
             // 

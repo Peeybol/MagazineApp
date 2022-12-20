@@ -26,13 +26,7 @@ namespace MagazineGUI
 
             CurrentUser = service.GetCurrentUser();
 
-            
-
-            if (service.IsChiefEditor(CurrentUser))
-            {
-                InitializeData(service.ListAllEvaluationPendingPapers());
-            }
-            else if (service.IsAreaEditor(CurrentUser, out a))
+            if (service.IsAreaEditor(CurrentUser, out a))
             {
                 InitializeData(a.EvaluationPending.ToList());
             }

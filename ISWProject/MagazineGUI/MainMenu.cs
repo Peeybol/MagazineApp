@@ -28,11 +28,9 @@ namespace MagazineGUI
             {
                 ListPapersToolStripMenuItem.Visible = true;
                 IssueToolStripMenuItem.Visible = true;
-                EvaluateAPaperToolStripMenuItem.Visible = true;
             }
             else if(service.IsAreaEditor(currentUser, out _))
             {
-                ListPapersToolStripMenuItem.Visible = true;
                 EvaluateAPaperToolStripMenuItem.Visible = true;
             }
         }

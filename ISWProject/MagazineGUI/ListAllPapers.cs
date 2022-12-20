@@ -35,11 +35,6 @@ namespace MagazineGUI
             {
                 Data = service.ListAllPapers();
             }
-            else if (service.IsAreaEditor(currentUser, out a))
-            {
-                Data = service.ListPapersByArea(a);
-            }
-            else return;
             initializeData(Data);
 
         }
