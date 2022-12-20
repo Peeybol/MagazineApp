@@ -42,7 +42,7 @@ namespace MagazineGUI
             {
                 foreach (string a in areas)
                     areas_comboBox.Items.Add(a);
-                areas_comboBox.SelectedIndex = -1;
+                areas_comboBox.SelectedIndex = 0;
                 areas_comboBox.ResetText();
                 areas_comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             }
@@ -76,6 +76,7 @@ namespace MagazineGUI
                 item.SubItems.Add(p.Title);
                 return item;
             }).ToArray());
+            buildIssue_button.Enabled = (listview_publicatedPapers.Items.Count > 0);
         }
 
         private void PendingToPublicated_button_Click(object sender, EventArgs e)
