@@ -6,7 +6,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -83,9 +85,16 @@ namespace MagazineGUI
         private void CoauthorsButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ListPerson listPerson = new ListPerson(service, coauthorsBox, ids, currentUser.Id);
+            int numCoauthors = coauthorsBox.Text.Split('\n').Length - 1;
+            ListPerson listPerson = new ListPerson(service, coauthorsBox, ids, currentUser.Id, numCoauthors);
             listPerson.FormClosed += (s, args) => this.Show();
             listPerson.Show();
+        }
+
+        private void CoauthorsBoxTextChanged(object sender, EventArgs e)
+        {
+            if (coauthorsBox.Text.Split('\n').Length - 1 >= 4)
+                coauthorsButton.Enabled = false;
         }
 
         private void TitleTextChanged(object sender, EventArgs e)

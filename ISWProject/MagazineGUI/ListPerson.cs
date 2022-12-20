@@ -20,7 +20,8 @@ namespace MagazineGUI
         private TextBox coauthors;
         private List<string> ids;
         private string userId;
-        public ListPerson(IMagazineISWService service, TextBox coauthors, List<string> ids, string userId)
+        private int numCoauthors;
+        public ListPerson(IMagazineISWService service, TextBox coauthors, List<string> ids, string userId, int numCoauthors)
         {
             this.service = service;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -28,6 +29,7 @@ namespace MagazineGUI
             this.coauthors = coauthors;
             this.ids = ids;
             this.userId = userId;
+            this.numCoauthors = numCoauthors;
             InitializeComponent();
             Data = service.ListAllPersons();
             InitializeData(Data);
@@ -54,16 +56,26 @@ namespace MagazineGUI
 
         private void Select_Click(object sender, EventArgs e)
         {
-            StringBuilder sb = new StringBuilder();
-            foreach (ListViewItem item in listView.SelectedItems)
+            if (listView.SelectedItems.Count > 4 - numCoauthors)
             {
-                sb.Append(item.SubItems[NAME].Text + " " +
-                    item.SubItems[SURNAME].Text + "\r\n");
-                ids.Add(Data[item.Index].Id);
+                DialogResult answer = MessageBox.Show(this, "Maximum number of coauthors exceeded!",
+                                    "Maximum Coauthors",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Asterisk);
             }
-            
-            coauthors.Text += sb.ToString();
-            this.Close();
+            else
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (ListViewItem item in listView.SelectedItems)
+                {
+                    sb.Append(item.SubItems[NAME].Text + " " +
+                        item.SubItems[SURNAME].Text + "\r\n");
+                    ids.Add(Data[item.Index].Id);
+                }
+
+                coauthors.Text += sb.ToString();
+                this.Close();
+            }
         }
     }
 }
