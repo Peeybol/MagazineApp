@@ -267,11 +267,12 @@ namespace Magazine.Services
             if (!accepted)
             {
                 paper.BelongingArea.EvaluationPending.Remove(paper);
-                paper.BelongingArea.Papers.Remove(paper);
-                return;
             }
-            paper.PublicationPendingArea = paper.BelongingArea;
-            paper.BelongingArea.PublicationPending.Add(paper);
+            else
+            {
+                paper.PublicationPendingArea = paper.BelongingArea;
+                paper.BelongingArea.PublicationPending.Add(paper);
+            }
             Commit();
         }
 
