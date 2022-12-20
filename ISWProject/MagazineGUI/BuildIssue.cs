@@ -97,6 +97,7 @@ namespace MagazineGUI
             {
                 service.UnPublishPaper(Int32.Parse(item.Text));
                 listview_publicatedPapers.Items.Remove(item);
+                item.Selected = false;
             }
 
             listview_pendingPapers.Items.Clear();
