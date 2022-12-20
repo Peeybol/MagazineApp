@@ -29,7 +29,7 @@ namespace MagazineGUI
             try
             {
                 service.RegisterPerson(idBox.Text, nameBox.Text, surnameBox.Text);
-                DialogResult answer = MessageBox.Show(this, "Person registered succesfully!",
+                MessageBox.Show(this, "Person registered succesfully!",
                                     "Person Registered",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);

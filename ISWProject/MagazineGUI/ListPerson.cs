@@ -58,7 +58,7 @@ namespace MagazineGUI
         {
             if (listView.SelectedItems.Count > 4 - numCoauthors)
             {
-                DialogResult answer = MessageBox.Show(this, "Maximum number of coauthors exceeded!",
+                MessageBox.Show(this, "Maximum number of coauthors exceeded!",
                                     "Maximum Coauthors",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Asterisk);

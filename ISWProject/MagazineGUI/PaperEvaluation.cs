@@ -29,22 +29,43 @@ namespace MagazineGUI
 
         private void AcceptButton_Click(object sender, EventArgs e)
         {
-            service.EvaluatePaper(true, CommentsTextBox.Text, DateTime.Now, Id);
-            DialogResult answer = MessageBox.Show(this, "Paper accepted succesfully!",
-                                    "Paper Accepted",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-            this.Close();
+            try
+            {
+                service.EvaluatePaper(true, CommentsTextBox.Text, DateTime.Now, Id);
+                MessageBox.Show(this, "Paper accepted succesfully!",
+                                        "Paper Accepted",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                this.Close();
+            }
+            catch(Exception)
+            {
+                MessageBox.Show(this, "Please enter some comments!",
+                                        "Comments field empty",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
         }
 
         private void RejectButton_Click(object sender, EventArgs e)
         {
-            service.EvaluatePaper(false, CommentsTextBox.Text, DateTime.Now, Id);
-            DialogResult answer = MessageBox.Show(this, "Paper rejected succesfully!",
-                                    "Paper Rejecteds",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-            this.Close();
+            try
+            {
+                service.EvaluatePaper(false, CommentsTextBox.Text, DateTime.Now, Id);
+                MessageBox.Show(this, "Paper rejected succesfully!",
+                                        "Paper Rejecteds",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                this.Close();
+            }
+            
+            catch (Exception)
+            {
+                MessageBox.Show(this, "Please enter some comments!",
+                                        "Comments field empty",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
         }
     }
 }

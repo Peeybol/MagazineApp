@@ -41,7 +41,7 @@ namespace MagazineGUI
                 {
                     service.AddCoauthor(paperId, authorId);
                 }
-                DialogResult answer = MessageBox.Show(this, "Paper submitted succesfully!",
+                MessageBox.Show(this, "Paper submitted succesfully!",
                                     "Paper submitted",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
@@ -76,7 +76,7 @@ namespace MagazineGUI
         {
             StringBuilder areas = new StringBuilder();
             service.ListAllAreas().ForEach(a => areas.Append(a.Name + "\n"));
-            DialogResult answer = MessageBox.Show(this, "Introduce the area you want to submit your paper to from this list:\n" +
+            MessageBox.Show(this, "Introduce the area you want to submit your paper to from this list:\n" +
                                                         areas.ToString(), "AreasInfo",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Asterisk);

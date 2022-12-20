@@ -116,7 +116,7 @@ namespace MagazineGUI
             try { service.BuildAnIssue(dateTime.Value); } 
             catch (Exception ex) { MessageBox.Show(ex.Message); }
 
-            DialogResult answer = MessageBox.Show(this, "The Issue has been built",
+            MessageBox.Show(this, "The Issue has been built",
                                 "Issue Built",
             MessageBoxButtons.OK,
             MessageBoxIcon.Information);
