@@ -45,10 +45,11 @@
             this.columnHeader3});
             this.listView.FullRowSelect = true;
             this.listView.HideSelection = false;
-            this.listView.Location = new System.Drawing.Point(12, 10);
+            this.listView.Location = new System.Drawing.Point(16, 12);
+            this.listView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listView.Name = "listView";
             this.listView.Scrollable = false;
-            this.listView.Size = new System.Drawing.Size(333, 329);
+            this.listView.Size = new System.Drawing.Size(443, 404);
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
@@ -69,9 +70,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(37, 345);
+            this.button1.Location = new System.Drawing.Point(49, 425);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(127, 30);
+            this.button1.Size = new System.Drawing.Size(169, 37);
             this.button1.TabIndex = 1;
             this.button1.Text = "Select";
             this.button1.UseVisualStyleBackColor = true;
@@ -79,9 +81,10 @@
             // 
             // registerButton
             // 
-            this.registerButton.Location = new System.Drawing.Point(192, 345);
+            this.registerButton.Location = new System.Drawing.Point(256, 425);
+            this.registerButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.registerButton.Name = "registerButton";
-            this.registerButton.Size = new System.Drawing.Size(127, 30);
+            this.registerButton.Size = new System.Drawing.Size(169, 37);
             this.registerButton.TabIndex = 2;
             this.registerButton.Text = "Register new person";
             this.registerButton.UseVisualStyleBackColor = true;
@@ -89,12 +92,13 @@
             // 
             // ListPerson
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(360, 396);
+            this.ClientSize = new System.Drawing.Size(480, 487);
             this.Controls.Add(this.registerButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ListPerson";
             this.Text = "Person List";
             this.ResumeLayout(false);
