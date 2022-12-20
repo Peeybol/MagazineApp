@@ -300,6 +300,7 @@ namespace Magazine.Services
             if (paper == null) throw new ServiceException(resourceManager.GetString("PaperNotExists"));
             Issue issue = magazine.GetLastIssue();
             if (issue == null) throw new ServiceException(resourceManager.GetString("IssueNotExists"));
+            if (issue.PublishedPapers.Contains(paper)) return;
             issue.PublishedPapers.Add(paper);
             paper.BelongingArea.PublicationPending.Remove(paper);
             paper.Issue = issue;
@@ -318,20 +319,6 @@ namespace Magazine.Services
                 foreach (Paper p in a.EvaluationPending)
                     PaperList.Add(p);
             return PaperList;
-        }
-
-        public void UnPublishPaper(int paperId)
-        {
-            // TODO - Comprobar si solo lo puede hacer el chiefEditor o tb el Editor del Area en el que esté seleccionado para publicar.
-            // Comprobar que el Use Case dice esto, porque me parece que no es lo mismo published que selected to publish
-            // Comprobar que el paper se tiene que buscar de todos los Issue de la Magazine, o solo del último ya que es el que aún
-            // no se ha publicado (último => publicationDate == null)
-            //if (!loggedUser.Equals(magazine.ChiefEditor)) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
-            Paper p = magazine.GetPublishedPaperById(paperId);
-            if (p == null) throw new ServiceException(resourceManager.GetString("PaperNotPublished"));
-            p.BelongingArea.PublicationPending.Add(p);
-            p.Issue.PublishedPapers.Remove(p);
-            Commit();
         }
 
         #endregion
@@ -375,6 +362,11 @@ namespace Magazine.Services
             return magazine.GetAllPendingPapersInAnArea(areaName);
         }
 
+        public ICollection<Paper> GetAllPublishedPapersInTheLastIssue()
+        {
+            return magazine.GetLastIssue().PublishedPapers;
+        }
+
         public void BuildAnIssue(DateTime newPublicationDate)
         {
             if (loggedUser != magazine.ChiefEditor) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
@@ -386,8 +378,35 @@ namespace Magazine.Services
             Commit();
         }
 
-        //We obtain the number of the current issue, if the last was publicated we create a new one and we return that number
-        public int GetLastIssueNumberAndAddANewOne()
+        public void UnPublishPaper(int paperId)
+        {
+            // TODO - Comprobar si solo lo puede hacer el chiefEditor o tb el Editor del Area en el que esté seleccionado para publicar.
+            // Comprobar que el Use Case dice esto, porque me parece que no es lo mismo published que selected to publish
+            // Comprobar que el paper se tiene que buscar de todos los Issue de la Magazine, o solo del último ya que es el que aún
+            // no se ha publicado (último => publicationDate == null)
+            //if (!loggedUser.Equals(magazine.ChiefEditor)) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
+            Paper p = magazine.GetPublishedPaperById(paperId);
+            if (p == null) throw new ServiceException(resourceManager.GetString("PaperNotPublished"));
+            p.BelongingArea.PublicationPending.Add(p);
+            p.Issue.PublishedPapers.Remove(p);
+            Commit();
+        }
+
+        public void UnPublishPaper2(int paperId)
+        {
+            Paper paper = magazine.GetPaperById(paperId);
+            if (paper == null) throw new ServiceException(resourceManager.GetString("PaperNotExists"));
+            Issue issue = magazine.GetLastIssue();
+            if (issue == null) throw new ServiceException(resourceManager.GetString("IssueNotExists"));
+            issue.PublishedPapers.Remove(paper);
+            paper.Issue = null;
+            paper.BelongingArea.PublicationPending.Add(paper);
+            Commit();
+
+        }
+
+    //We obtain the number of the current issue, if the last was publicated we create a new one and we return that number
+    public int GetLastIssueNumberAndAddANewOne()
         {
             if (!IsChiefEditor(loggedUser)) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
             Issue myIssue = magazine.GetLastIssue();

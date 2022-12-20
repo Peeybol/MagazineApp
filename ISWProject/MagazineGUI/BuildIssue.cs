@@ -28,6 +28,7 @@ namespace MagazineGUI
 
         public void LoadData()
         {
+            buildIssue_button.Enabled = false;
             listview_pendingPapers.Items.Clear();
             listview_publicatedPapers.Items.Clear();
             dateTime.MinDate = DateTime.Now;
@@ -53,15 +54,23 @@ namespace MagazineGUI
         {
             string areaName = (string) areas_comboBox.SelectedItem;
             ICollection<Paper> pendingPapers = service.GetAllPendingPapersInAnArea(areaName);
-            InitializeData(pendingPapers);
+            ICollection<Paper> publishedPapers = service.GetAllPublishedPapersInTheLastIssue();
+            InitializeData(pendingPapers, publishedPapers);
         }
 
-        public void InitializeData(ICollection<Paper> pendingPapers)
+        public void InitializeData(ICollection<Paper> pendingPapers, ICollection<Paper> publishedPapers)
         {
             listview_pendingPapers.Items.Clear();
             listview_publicatedPapers.Items.Clear();
 
             listview_pendingPapers.Items.AddRange(pendingPapers.Select(p =>
+            {
+                ListViewItem item = new ListViewItem(p.Id + "");
+                item.SubItems.Add(p.Title);
+                return item;
+            }).ToArray());
+
+            listview_publicatedPapers.Items.AddRange(publishedPapers.Select(p =>
             {
                 ListViewItem item = new ListViewItem(p.Id + "");
                 item.SubItems.Add(p.Title);
@@ -73,6 +82,7 @@ namespace MagazineGUI
         {
             foreach(ListViewItem item in listview_pendingPapers.SelectedItems)
             {
+                service.PublishPaper(Int32.Parse(item.Text));
                 listview_pendingPapers.Items.Remove(item);
                 listview_publicatedPapers.Items.Add(item);
                 item.Selected = false;
@@ -85,24 +95,26 @@ namespace MagazineGUI
             
             foreach (ListViewItem item in listview_publicatedPapers.SelectedItems)
             {
+                service.UnPublishPaper2(Int32.Parse(item.Text));
                 listview_publicatedPapers.Items.Remove(item);
-                listview_pendingPapers.Items.Add(item);
-                item.Selected = false;
             }
+
+            listview_pendingPapers.Items.Clear();
+            string areaName = (string)areas_comboBox.SelectedItem;
+            ICollection<Paper> pendingPapers = service.GetAllPendingPapersInAnArea(areaName);
+            listview_pendingPapers.Items.AddRange(pendingPapers.Select(p =>
+            {
+                ListViewItem item = new ListViewItem(p.Id + "");
+                item.SubItems.Add(p.Title);
+                return item;
+            }).ToArray());
             if (listview_publicatedPapers.Items.Count <= 0) buildIssue_button.Enabled = false;
         }
 
         private void BuildIssue_button_Click(object sender, EventArgs e)
         {
-            try
-            {
-                foreach (ListViewItem item in listview_publicatedPapers.Items)
-                {
-                    service.PublishPaper(Int32.Parse(item.Text));
-                }
-            } catch (Exception ex) { MessageBox.Show(ex.Message); }
-
-            service.BuildAnIssue(dateTime.Value);
+            try { service.BuildAnIssue(dateTime.Value); } 
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
 
             DialogResult answer = MessageBox.Show(this, "The Issue has been built",
                                 "Issue Built",
@@ -110,6 +122,11 @@ namespace MagazineGUI
             MessageBoxIcon.Information);
 
             LoadData();
+        }
+
+        private void BuildIssue_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
         }
     }
 }

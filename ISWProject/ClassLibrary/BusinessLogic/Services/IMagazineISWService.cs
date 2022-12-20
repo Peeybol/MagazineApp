@@ -18,6 +18,8 @@ namespace Magazine.Services
         List<Paper> GetAllPendingPapersInAnArea(string areaName);
         Paper GetPaperById(int id);
         void BuildAnIssue(DateTime newPublicationDate);
+        void UnPublishPaper2(int paperId);
+        ICollection<Paper> GetAllPublishedPapersInTheLastIssue();
 
         /// <summary>   Initializes Database with some data</summary>        
         void DBInitialization();

@@ -210,6 +210,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BuildIssue";
             this.Text = "Build an Issue";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BuildIssue_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
