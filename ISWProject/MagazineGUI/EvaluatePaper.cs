@@ -16,6 +16,7 @@ namespace MagazineGUI
     {
         private IMagazineISWService service;
         private User CurrentUser;
+        private Area a;
 
         public EvaluatePaper(IMagazineISWService service)
         {
@@ -25,15 +26,15 @@ namespace MagazineGUI
 
             CurrentUser = service.GetCurrentUser();
 
-            //Area a = CurrentUser.Area;
+            
 
             if (service.IsChiefEditor(CurrentUser))
             {
                 InitializeData(service.ListAllEvaluationPendingPapers());
             }
-            else
+            else if (service.IsAreaEditor(CurrentUser, out a))
             {
-                InitializeData(CurrentUser.Area.EvaluationPending.ToList()); //Revisar
+                InitializeData(a.EvaluationPending.ToList());
             }
         }
 
@@ -42,10 +43,10 @@ namespace MagazineGUI
             listView1.Items.Clear();
             listView1.Items.AddRange(Data.Select(p =>
             {
-                StringBuilder sb = new StringBuilder(p.Responsible.Name + " " + p.Responsible.Surname);
+                string s = p.Responsible.Name + " " + p.Responsible.Surname;
                 ListViewItem item = new ListViewItem(p.Id + "");
                 item.SubItems.Add(p.Title);
-                item.SubItems.Add(sb.ToString());
+                item.SubItems.Add(s);
                 item.SubItems.Add(p.UploadDate.ToString());
                 return item;
             }).ToArray());
@@ -61,7 +62,7 @@ namespace MagazineGUI
             this.Hide();
             int id = Int32.Parse(listView1.SelectedItems[0].SubItems[0].Text);
             PaperEvaluation PaperEvaluation = new PaperEvaluation(service, id);
-            PaperEvaluation.FormClosed += (s, args) => this.Show();
+            PaperEvaluation.FormClosed += (s, args) => this.Close();
             PaperEvaluation.Show();
         }
 

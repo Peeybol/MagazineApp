@@ -263,8 +263,13 @@ namespace Magazine.Services
             if(loggedUser != paper.BelongingArea.Editor && loggedUser != magazine.ChiefEditor) throw new ServiceException(resourceManager.GetString("NotEditor"));
             paper.Evaluation = evaluation;
             paper.BelongingArea.EvaluationPending.Remove(paper);
-            if (!accepted) return; //If the paper is rejected, do nothing else
             paper.EvaluationPendingArea = null;
+            if (!accepted)
+            {
+                paper.BelongingArea.EvaluationPending.Remove(paper);
+                paper.BelongingArea.Papers.Remove(paper);
+                return;
+            }
             paper.PublicationPendingArea = paper.BelongingArea;
             paper.BelongingArea.PublicationPending.Add(paper);
             Commit();
