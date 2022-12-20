@@ -19,13 +19,15 @@ namespace MagazineGUI
         private List<Person> Data;
         private TextBox coauthors;
         private List<string> ids;
-        public ListPerson(IMagazineISWService service, TextBox coauthors, List<string> ids)
+        private string userId;
+        public ListPerson(IMagazineISWService service, TextBox coauthors, List<string> ids, string userId)
         {
             this.service = service;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.coauthors = coauthors;
             this.ids = ids;
+            this.userId = userId;
             InitializeComponent();
             Data = service.ListAllPersons();
             InitializeData(Data);
@@ -34,8 +36,8 @@ namespace MagazineGUI
         public void InitializeData(List<Person> Data)
         {
             listView.Items.Clear();
-            listView.Items.AddRange(Data.Select(p =>
-            {
+            listView.Items.AddRange(Data.Where(p => p.Id != userId).Select(p =>
+            { 
                 ListViewItem item = new ListViewItem(p.Name);
                 item.SubItems.Add(p.Surname);
                 return item;

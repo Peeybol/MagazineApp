@@ -36,6 +36,8 @@ namespace Magazine.Services
         /// <summary>   Performs a log out operation </summary>
         void Logout();
 
+        bool CheckUsername(string username);
+
 
         /// <summary>   Performs User info validation and registers a new user. </summary>
         /// <param>     <c>id</c> is the user identification. 

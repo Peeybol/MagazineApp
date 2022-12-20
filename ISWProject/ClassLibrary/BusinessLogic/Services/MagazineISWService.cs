@@ -155,12 +155,17 @@ namespace Magazine.Services
             if ((name == null) || (name.Length < 2)) throw new ServiceException(resourceManager.GetString("InvalidUserName"));
             if ((surname == null) || (surname.Length < 2)) throw new ServiceException(resourceManager.GetString("InvalidUserSurname"));
             if (!IsValidEmail(email)) throw new ServiceException(resourceManager.GetString("InvalidEmail"));
-            if (!IsValidUser(login) || dal.GetWhere<User>(u => u.Login.Equals(login)).FirstOrDefault() != null) throw new ServiceException(resourceManager.GetString("InvalidUser"));
+            if (!IsValidUser(login) || !CheckUsername(login)) throw new ServiceException(resourceManager.GetString("InvalidUser"));
             if (!IsValidPassword(password)) throw new ServiceException(resourceManager.GetString("InvalidPassword"));
             if (!CheckAreasExist(areasOfInterest)) throw new ServiceException(resourceManager.GetString("InvalidAreaName"));
             Magazine.Entities.User regUser = new Magazine.Entities.User(id, name, surname, alerted, areasOfInterest, email, login, password);
             dal.Insert<User>(regUser);
             Commit();
+        }
+
+        public bool CheckUsername(string username)
+        {
+            return dal.GetWhere<User>(u => u.Login.Equals(username)).FirstOrDefault() == null;
         }
 
         public string Login(string login, string password)

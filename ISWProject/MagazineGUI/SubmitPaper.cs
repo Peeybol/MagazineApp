@@ -1,4 +1,5 @@
-﻿using Magazine.Services;
+﻿using Magazine.Entities;
+using Magazine.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,7 @@ namespace MagazineGUI
         private IMagazineISWService service;
         private bool areaOk = false, titleOk = false;
         private List<string> ids;
+        private User currentUser;
         public SubmitPaper(IMagazineISWService service)
         {
             InitializeComponent();
@@ -23,8 +25,8 @@ namespace MagazineGUI
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             ids = new List<string>();
-
-            coauthorsBox.Text = service.GetCurrentUser().Name + " " + service.GetCurrentUser().Surname + "\r\n";
+            currentUser = service.GetCurrentUser();
+            coauthorsBox.Text = currentUser.Name + " " + currentUser.Surname + "\r\n";
         }
 
         private void AcceptClick(object sender, EventArgs e)
@@ -81,7 +83,7 @@ namespace MagazineGUI
         private void CoauthorsButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ListPerson listPerson = new ListPerson(service, coauthorsBox, ids);
+            ListPerson listPerson = new ListPerson(service, coauthorsBox, ids, currentUser.Id);
             listPerson.FormClosed += (s, args) => this.Show();
             listPerson.Show();
         }

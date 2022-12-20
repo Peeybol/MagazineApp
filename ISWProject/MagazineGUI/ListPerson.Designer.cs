@@ -38,6 +38,7 @@
             // 
             // listView
             // 
+            this.listView.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
