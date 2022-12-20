@@ -14,7 +14,7 @@ namespace MagazineGUI
     public partial class SubmitPaper : Form
     {
         private IMagazineISWService service;
-        private Boolean areaOk = false, titleOk = false;
+        private bool areaOk = false, titleOk = false;
         private List<string> ids;
         public SubmitPaper(IMagazineISWService service)
         {

@@ -200,6 +200,7 @@ namespace Magazine.Services
             area.Papers.Add(paper);
             area.EvaluationPending.Add(paper);
             paper.EvaluationPendingArea = area;
+            paper.BelongingArea = area;
             Commit();
             return paper.Id;
         }
@@ -305,6 +306,11 @@ namespace Magazine.Services
             Commit();
         }
 
+        public bool IsPublished(int paperId)
+        {
+            return magazine.GetPublishedPaperById(paperId) != null;
+        }
+
         
 
         public List<Paper> ListAllEvaluationPendingPapers()
@@ -369,6 +375,8 @@ namespace Magazine.Services
             Commit();
         }
 
+
+        // si esto puede devolver null
         public Issue GetLastIssue()
         {
             return magazine.Issues.LastOrDefault();

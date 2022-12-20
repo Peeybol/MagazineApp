@@ -45,7 +45,6 @@
             this.listView.FullRowSelect = true;
             this.listView.HideSelection = false;
             this.listView.Location = new System.Drawing.Point(12, 10);
-            this.listView.MultiSelect = false;
             this.listView.Name = "listView";
             this.listView.Scrollable = false;
             this.listView.Size = new System.Drawing.Size(333, 329);

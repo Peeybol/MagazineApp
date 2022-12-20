@@ -59,10 +59,12 @@ namespace Magazine.Services
         void RegisterUser(string id, string name, string surname, bool alerted, string areasOfInterest, string email, string login, string password);
 
         User GetCurrentUser();
-        
+
         #endregion
 
         #region Paper
+
+        bool IsPublished(int paperId);
 
         /// <summary>   Validate data, if correct, register paper submission with logged user.</summary>
         /// <param>     <c>areaid</c> is the id of the area to which the paper is submitted. 

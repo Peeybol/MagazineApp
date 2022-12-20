@@ -14,6 +14,7 @@ namespace MagazineGUI
 {
     public partial class ListPerson : Form
     {
+        private const int NAME = 0, SURNAME = 1;
         private IMagazineISWService service;
         private List<Person> Data;
         private TextBox coauthors;
@@ -51,11 +52,15 @@ namespace MagazineGUI
 
         private void Select_Click(object sender, EventArgs e)
         {
-            string selectedName = listView.SelectedItems[0].SubItems[0].Text + " " +
-                listView.SelectedItems[0].SubItems[1].Text + "\r\n";
-            coauthors.Text += selectedName;
-
-            ids.Add(Data[listView.SelectedItems[0].Index].Id);
+            StringBuilder sb = new StringBuilder();
+            foreach (ListViewItem item in listView.SelectedItems)
+            {
+                sb.Append(item.SubItems[NAME].Text + " " +
+                    item.SubItems[SURNAME].Text + "\r\n");
+                ids.Add(Data[item.Index].Id);
+            }
+            
+            coauthors.Text += sb.ToString();
             this.Close();
         }
     }
