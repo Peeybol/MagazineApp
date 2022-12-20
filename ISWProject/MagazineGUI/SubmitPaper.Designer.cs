@@ -45,30 +45,27 @@
             // 
             this.areaLabel.AutoSize = true;
             this.areaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.areaLabel.Location = new System.Drawing.Point(31, 27);
-            this.areaLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.areaLabel.Location = new System.Drawing.Point(23, 22);
             this.areaLabel.Name = "areaLabel";
-            this.areaLabel.Size = new System.Drawing.Size(63, 29);
+            this.areaLabel.Size = new System.Drawing.Size(50, 24);
             this.areaLabel.TabIndex = 0;
             this.areaLabel.Text = "Area";
             // 
             // areaBox
             // 
             this.areaBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.areaBox.Location = new System.Drawing.Point(36, 62);
-            this.areaBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.areaBox.Location = new System.Drawing.Point(27, 50);
             this.areaBox.Name = "areaBox";
-            this.areaBox.Size = new System.Drawing.Size(316, 30);
+            this.areaBox.Size = new System.Drawing.Size(238, 26);
             this.areaBox.TabIndex = 1;
             this.areaBox.TextChanged += new System.EventHandler(this.AreaTextChanged);
             // 
             // titleBox
             // 
             this.titleBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleBox.Location = new System.Drawing.Point(36, 145);
-            this.titleBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.titleBox.Location = new System.Drawing.Point(27, 118);
             this.titleBox.Name = "titleBox";
-            this.titleBox.Size = new System.Drawing.Size(316, 30);
+            this.titleBox.Size = new System.Drawing.Size(238, 26);
             this.titleBox.TabIndex = 3;
             this.titleBox.TextChanged += new System.EventHandler(this.TitleTextChanged);
             // 
@@ -76,20 +73,18 @@
             // 
             this.titleLabel.AutoSize = true;
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.Location = new System.Drawing.Point(31, 111);
-            this.titleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.titleLabel.Location = new System.Drawing.Point(23, 90);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(61, 29);
+            this.titleLabel.Size = new System.Drawing.Size(45, 24);
             this.titleLabel.TabIndex = 2;
             this.titleLabel.Text = "Title";
             // 
             // cancelButton
             // 
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(239, 364);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancelButton.Location = new System.Drawing.Point(180, 333);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(115, 46);
+            this.cancelButton.Size = new System.Drawing.Size(86, 37);
             this.cancelButton.TabIndex = 4;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -99,10 +94,9 @@
             // 
             this.acceptButton.Enabled = false;
             this.acceptButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.acceptButton.Location = new System.Drawing.Point(116, 364);
-            this.acceptButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.acceptButton.Location = new System.Drawing.Point(88, 333);
             this.acceptButton.Name = "acceptButton";
-            this.acceptButton.Size = new System.Drawing.Size(115, 46);
+            this.acceptButton.Size = new System.Drawing.Size(86, 37);
             this.acceptButton.TabIndex = 5;
             this.acceptButton.Text = "Submit";
             this.acceptButton.UseVisualStyleBackColor = true;
@@ -113,20 +107,19 @@
             this.errorLabel.AutoSize = true;
             this.errorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.errorLabel.ForeColor = System.Drawing.Color.Red;
-            this.errorLabel.Location = new System.Drawing.Point(35, 297);
-            this.errorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.errorLabel.Location = new System.Drawing.Point(24, 296);
             this.errorLabel.Name = "errorLabel";
-            this.errorLabel.Size = new System.Drawing.Size(123, 20);
+            this.errorLabel.Size = new System.Drawing.Size(99, 16);
             this.errorLabel.TabIndex = 6;
             this.errorLabel.Text = "texto de error";
             this.errorLabel.Visible = false;
+            this.errorLabel.Click += new System.EventHandler(this.errorLabel_Click);
             // 
             // passwordInfoButton
             // 
-            this.passwordInfoButton.Location = new System.Drawing.Point(361, 63);
-            this.passwordInfoButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.passwordInfoButton.Location = new System.Drawing.Point(271, 51);
             this.passwordInfoButton.Name = "passwordInfoButton";
-            this.passwordInfoButton.Size = new System.Drawing.Size(33, 32);
+            this.passwordInfoButton.Size = new System.Drawing.Size(25, 26);
             this.passwordInfoButton.TabIndex = 21;
             this.passwordInfoButton.Text = "?";
             this.passwordInfoButton.UseVisualStyleBackColor = true;
@@ -134,10 +127,9 @@
             // 
             // coauthorsButton
             // 
-            this.coauthorsButton.Location = new System.Drawing.Point(361, 224);
-            this.coauthorsButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coauthorsButton.Location = new System.Drawing.Point(271, 182);
             this.coauthorsButton.Name = "coauthorsButton";
-            this.coauthorsButton.Size = new System.Drawing.Size(33, 32);
+            this.coauthorsButton.Size = new System.Drawing.Size(25, 26);
             this.coauthorsButton.TabIndex = 24;
             this.coauthorsButton.Text = "+";
             this.coauthorsButton.UseVisualStyleBackColor = true;
@@ -147,11 +139,10 @@
             // 
             this.coauthorsBox.Enabled = false;
             this.coauthorsBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.coauthorsBox.Location = new System.Drawing.Point(36, 223);
-            this.coauthorsBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.coauthorsBox.Location = new System.Drawing.Point(27, 182);
             this.coauthorsBox.Multiline = true;
             this.coauthorsBox.Name = "coauthorsBox";
-            this.coauthorsBox.Size = new System.Drawing.Size(316, 122);
+            this.coauthorsBox.Size = new System.Drawing.Size(238, 100);
             this.coauthorsBox.TabIndex = 23;
             this.coauthorsBox.TextChanged += new System.EventHandler(this.CoauthorsBoxTextChanged);
             // 
@@ -159,18 +150,17 @@
             // 
             this.coauthorsLabel.AutoSize = true;
             this.coauthorsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.coauthorsLabel.Location = new System.Drawing.Point(31, 188);
-            this.coauthorsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.coauthorsLabel.Location = new System.Drawing.Point(23, 153);
             this.coauthorsLabel.Name = "coauthorsLabel";
-            this.coauthorsLabel.Size = new System.Drawing.Size(123, 29);
+            this.coauthorsLabel.Size = new System.Drawing.Size(96, 24);
             this.coauthorsLabel.TabIndex = 22;
             this.coauthorsLabel.Text = "Coauthors";
             // 
             // SubmitPaper
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(420, 425);
+            this.ClientSize = new System.Drawing.Size(315, 382);
             this.Controls.Add(this.coauthorsButton);
             this.Controls.Add(this.coauthorsBox);
             this.Controls.Add(this.coauthorsLabel);
@@ -182,7 +172,6 @@
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.areaBox);
             this.Controls.Add(this.areaLabel);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SubmitPaper";
             this.Text = "Submit Paper";
             this.ResumeLayout(false);
