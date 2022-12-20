@@ -86,6 +86,7 @@ namespace MagazineGUI
             {
                 areChecked[3] = true;
                 signUp_button.Enabled = AreAllTrue();
+                username_txt.ForeColor = Color.Black;
             }
         }
 
@@ -188,9 +189,13 @@ namespace MagazineGUI
             if (service.CheckUsername(username_txt.Text))
             {
                 usernametaken_label.Visible = false;
-                
+                username_txt.ForeColor = Color.Green;
             }
-            else usernametaken_label.Visible = true;
+            else
+            {
+                usernametaken_label.Visible = true;
+                username_txt.ForeColor = Color.Red;
+            }
         }
 
         private void UsernameTextOnKeyDown(object sender, KeyEventArgs e)
