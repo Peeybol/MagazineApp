@@ -185,7 +185,11 @@ namespace MagazineGUI
 
         private void TickButton_Click(object sender, EventArgs e)
         {
-            if (service.CheckUsername(username_txt.Text)) usernametaken_label.Visible = false;
+            if (service.CheckUsername(username_txt.Text))
+            {
+                usernametaken_label.Visible = false;
+                
+            }
             else usernametaken_label.Visible = true;
         }
 

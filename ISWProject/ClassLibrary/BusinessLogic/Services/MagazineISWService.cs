@@ -150,8 +150,9 @@ namespace Magazine.Services
         public void RegisterUser(string id, string name, string surname, bool alerted, string areasOfInterest, string email, string login, string password)
         {
             ValidateLoggedUser(false);
+            User u = new User();
             if (id == null || id.Length < 2) throw new ServiceException(resourceManager.GetString("InvalidID"));
-            if (dal.GetById<User>(id) != null) throw new ServiceException(resourceManager.GetString("LoggedUser"));
+            if (dal.GetById<Person>(id) != null && dal.GetById<Person>(id).GetType() == u.GetType()) throw new ServiceException(resourceManager.GetString("LoggedUser"));
             if ((name == null) || (name.Length < 2)) throw new ServiceException(resourceManager.GetString("InvalidUserName"));
             if ((surname == null) || (surname.Length < 2)) throw new ServiceException(resourceManager.GetString("InvalidUserSurname"));
             if (!IsValidEmail(email)) throw new ServiceException(resourceManager.GetString("InvalidEmail"));
@@ -159,8 +160,13 @@ namespace Magazine.Services
             if (!IsValidPassword(password)) throw new ServiceException(resourceManager.GetString("InvalidPassword"));
             if (!CheckAreasExist(areasOfInterest)) throw new ServiceException(resourceManager.GetString("InvalidAreaName"));
             Person p = dal.GetById<Person>(id);
-            p = new Magazine.Entities.User(id, name, surname, alerted, areasOfInterest, email, login, password);
-            dal.Insert<User>((User)p);
+            if (p != null)
+            {
+                dal.Delete<Person>(p);
+                Commit();
+            }
+            User regUser = new Magazine.Entities.User(id, name, surname, alerted, areasOfInterest, email, login, password);
+            dal.Insert<User>(regUser);
             Commit();
         }
 
