@@ -84,7 +84,7 @@ namespace MagazineGUI
                 }
                 catch(Exception ex)
                 {
-                    Console.WriteLine($"{ex.InnerException.Message}");
+                    Console.WriteLine(ex.Message);
                 }
             }
         }
@@ -111,7 +111,7 @@ namespace MagazineGUI
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"{ex.InnerException.Message}");
+                    Console.WriteLine(ex.Message);
                 }
             }
         }

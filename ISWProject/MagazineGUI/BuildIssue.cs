@@ -122,6 +122,10 @@ namespace MagazineGUI
             try
             {
                 Issue issue = service.GetLastIssue();
+                foreach(ListViewItem item in listview_publicatedPapers.Items)
+                {
+                    issue.PublishedPapers.Add(service.GetPaperById(Int32.Parse(item.Text)));
+                }
                 service.ModifyIssue(issue.Id, dateTime.Value);
 
                 DialogResult answer = MessageBox.Show(this, "The Issue has been built",

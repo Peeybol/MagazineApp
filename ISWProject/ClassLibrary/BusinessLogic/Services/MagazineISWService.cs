@@ -254,7 +254,7 @@ namespace Magazine.Services
             Evaluation evaluation = new Evaluation(accepted, comments, date);
             Paper paper = magazine.GetEvPendingPaperById(paperId);
             if (paper == null) throw new ServiceException(resourceManager.GetString("PaperNotPendingOfEvaluation"));
-            if(loggedUser != paper.BelongingArea.Editor) throw new ServiceException(resourceManager.GetString("NotEditor"));
+            if(loggedUser != paper.BelongingArea.Editor && loggedUser != magazine.ChiefEditor) throw new ServiceException(resourceManager.GetString("NotEditor"));
             paper.Evaluation = evaluation;
             paper.BelongingArea.EvaluationPending.Remove(paper);
             if (!accepted) return; //If the paper is rejected, do nothing else
