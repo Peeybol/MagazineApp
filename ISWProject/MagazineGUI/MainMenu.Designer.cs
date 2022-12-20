@@ -70,22 +70,24 @@
             // SubmitPaperToolStripMenuItem
             // 
             this.SubmitPaperToolStripMenuItem.Name = "SubmitPaperToolStripMenuItem";
-            this.SubmitPaperToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.SubmitPaperToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.SubmitPaperToolStripMenuItem.Text = "Submit Paper";
             this.SubmitPaperToolStripMenuItem.Click += new System.EventHandler(this.SubmitPaperToolStripMenuItem_Click);
             // 
             // EvaluateAPaperToolStripMenuItem
             // 
             this.EvaluateAPaperToolStripMenuItem.Name = "EvaluateAPaperToolStripMenuItem";
-            this.EvaluateAPaperToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.EvaluateAPaperToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.EvaluateAPaperToolStripMenuItem.Text = "Evaluate a Paper";
+            this.EvaluateAPaperToolStripMenuItem.Visible = false;
             this.EvaluateAPaperToolStripMenuItem.Click += new System.EventHandler(this.EvaluateAPaperToolStripMenuItem_Click);
             // 
             // ListPapersToolStripMenuItem
             // 
             this.ListPapersToolStripMenuItem.Name = "ListPapersToolStripMenuItem";
-            this.ListPapersToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.ListPapersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ListPapersToolStripMenuItem.Text = "List Papers";
+            this.ListPapersToolStripMenuItem.Visible = false;
             this.ListPapersToolStripMenuItem.Click += new System.EventHandler(this.ListPapersToolStripMenuItem_Click);
             // 
             // IssueToolStripMenuItem
@@ -95,11 +97,12 @@
             this.IssueToolStripMenuItem.Name = "IssueToolStripMenuItem";
             this.IssueToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.IssueToolStripMenuItem.Text = "Issue";
+            this.IssueToolStripMenuItem.Visible = false;
             // 
             // BuildAnIssueToolStripMenuItem
             // 
             this.BuildAnIssueToolStripMenuItem.Name = "BuildAnIssueToolStripMenuItem";
-            this.BuildAnIssueToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.BuildAnIssueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.BuildAnIssueToolStripMenuItem.Text = "Build an Issue";
             this.BuildAnIssueToolStripMenuItem.Click += new System.EventHandler(this.BuildAnIssueToolStripMenuItem_Click);
             // 
@@ -114,7 +117,7 @@
             // RegisterPersonToolStripMenuItem
             // 
             this.RegisterPersonToolStripMenuItem.Name = "RegisterPersonToolStripMenuItem";
-            this.RegisterPersonToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.RegisterPersonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.RegisterPersonToolStripMenuItem.Text = "Register a Person";
             this.RegisterPersonToolStripMenuItem.Click += new System.EventHandler(this.RegisterPersonToolStripMenuItem_Click);
             // 
@@ -129,7 +132,7 @@
             // LogOutToolStripMenuItem
             // 
             this.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem";
-            this.LogOutToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.LogOutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.LogOutToolStripMenuItem.Text = "Log Out";
             this.LogOutToolStripMenuItem.Click += new System.EventHandler(this.LogOutToolStripMenuItem_Click);
             // 

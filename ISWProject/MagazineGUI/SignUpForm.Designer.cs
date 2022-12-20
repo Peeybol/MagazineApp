@@ -150,6 +150,7 @@
             this.username_txt.Size = new System.Drawing.Size(382, 26);
             this.username_txt.TabIndex = 8;
             this.username_txt.TextChanged += new System.EventHandler(this.Username_txt_TextChanged);
+            this.username_txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UsernameTextOnKeyDown);
             // 
             // password_label
             // 
@@ -326,7 +327,7 @@
             this.tickButton.TabIndex = 22;
             this.tickButton.Text = "✓";
             this.tickButton.UseVisualStyleBackColor = true;
-            this.tickButton.Click += new System.EventHandler(this.tickButton_Click);
+            this.tickButton.Click += new System.EventHandler(this.TickButton_Click);
             // 
             // usernametaken_label
             // 

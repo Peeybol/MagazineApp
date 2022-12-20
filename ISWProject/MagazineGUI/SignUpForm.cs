@@ -183,10 +183,16 @@ namespace MagazineGUI
                 MessageBoxIcon.Asterisk);
         }
 
-        private void tickButton_Click(object sender, EventArgs e)
+        private void TickButton_Click(object sender, EventArgs e)
         {
             if (service.CheckUsername(username_txt.Text)) usernametaken_label.Visible = false;
             else usernametaken_label.Visible = true;
         }
+
+        private void UsernameTextOnKeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter) tickButton.PerformClick();
+        }
+
     }
 }

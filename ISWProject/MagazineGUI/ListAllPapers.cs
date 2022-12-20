@@ -21,13 +21,7 @@ namespace MagazineGUI
 
 
         //CONSTANTS in order to access the subitems in each listviewitem
-        private const int   ID = 0,
-                            TITLE = 1,
-                            DATE = 2,
-                            AUTHORS = 3,
-                            STATUS = 4,
-                            AREA = 5,
-                            ISSUE = 6;
+        private const int ISSUE = 6;
         public ListAllPapers(IMagazineISWService service)
         {
             InitializeComponent();

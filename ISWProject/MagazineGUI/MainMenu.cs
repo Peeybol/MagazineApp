@@ -1,4 +1,5 @@
-﻿using Magazine.Services;
+﻿using Magazine.Entities;
+using Magazine.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,19 @@ namespace MagazineGUI
             this.service = service;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+
+            User currentUser = service.GetCurrentUser();
+            if(service.IsChiefEditor(currentUser))
+            {
+                ListPapersToolStripMenuItem.Visible = true;
+                IssueToolStripMenuItem.Visible = true;
+                EvaluateAPaperToolStripMenuItem.Visible = true;
+            }
+            else if(service.IsAreaEditor(currentUser, out _))
+            {
+                ListPapersToolStripMenuItem.Visible = true;
+                EvaluateAPaperToolStripMenuItem.Visible = true;
+            }
         }
 
         private void SubmitPaperToolStripMenuItem_Click(object sender, EventArgs e)
