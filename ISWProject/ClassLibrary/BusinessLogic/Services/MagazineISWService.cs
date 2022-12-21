@@ -419,7 +419,7 @@ namespace Magazine.Services
             else return myIssue.Number;
         }
 
-        // si esto puede devolver null (si que puede y es lo que debe hacer >:(
+        // si esto puede devolver null // si que puede y es lo que debe hacer >:(
         public Issue GetLastIssue()
         {
              return magazine.Issues.LastOrDefault();
