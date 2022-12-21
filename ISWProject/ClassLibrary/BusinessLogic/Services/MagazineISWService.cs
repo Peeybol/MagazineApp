@@ -400,8 +400,8 @@ namespace Magazine.Services
             Commit();
         }
 
-    //We obtain the number of the current issue, if the last was publicated we create a new one and we return that number
-    public int GetLastIssueNumberAndAddANewOne()
+        //We obtain the number of the current issue, if the last was publicated we create a new one and we return that number
+        public int GetLastIssueNumberAndAddANewOne()
         {
             if (!IsChiefEditor(loggedUser)) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
             Issue myIssue = magazine.GetLastIssue();
@@ -419,7 +419,7 @@ namespace Magazine.Services
             else return myIssue.Number;
         }
 
-        // si esto puede devolver null
+        // si esto puede devolver null // si que puede y es lo que debe hacer >:(
         public Issue GetLastIssue()
         {
              return magazine.Issues.LastOrDefault();
