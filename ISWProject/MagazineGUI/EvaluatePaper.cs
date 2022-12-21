@@ -16,8 +16,7 @@ namespace MagazineGUI
     {
         private IMagazineISWService service;
         private User CurrentUser;
-        private List<Paper> Data;
-
+        private string area;
         public EvaluatePaper(IMagazineISWService service)
         {
             InitializeComponent();
@@ -26,16 +25,15 @@ namespace MagazineGUI
 
             CurrentUser = service.GetCurrentUser();
 
-            string area;
             if (service.IsAreaEditor(CurrentUser, out area))
             {
-                Data = service.GetAllEvaluationPendingPapersInAnArea(area);
-                InitializeData(Data);
+                InitializeData();
             }
         }
 
-        public void InitializeData(List<Paper> Data)
+        public void InitializeData()
         {
+            List<Paper> Data = service.GetAllEvaluationPendingPapersInAnArea(area);
             listView1.Items.Clear();
             listView1.Items.AddRange(Data.Select(p =>
             {
@@ -50,7 +48,7 @@ namespace MagazineGUI
 
         private void IndexChanged(object sender, EventArgs e)
         {
-            EvaluateButton.Enabled = listView1.SelectedItems.Count > 0 ? true : false;
+            EvaluateButton.Enabled = listView1.SelectedItems.Count > 0;
         }
 
         private void EvaluateButton_Click(object sender, EventArgs e)
@@ -60,8 +58,8 @@ namespace MagazineGUI
             PaperEvaluation PaperEvaluation = new PaperEvaluation(service, id);
             PaperEvaluation.FormClosed += (s, args) =>
             {
+                InitializeData();
                 this.Show();
-                InitializeData(Data);
             };
             PaperEvaluation.Show();
         }

@@ -381,7 +381,7 @@ namespace Magazine.Services
 
         public List<Paper> GetAllEvaluationPendingPapersInAnArea(string areaName)
         {
-            return magazine.GetAllPublicationPendingPapersInAnArea(areaName);
+            return magazine.GetAllEvaluationPendingPapersInAnArea(areaName);
         }
 
         public ICollection<Paper> GetAllPublishedPapersInTheLastIssue()
@@ -539,7 +539,7 @@ namespace Magazine.Services
 
         public bool IsAreaEditor(User user, out string area)
         {
-            area = null;
+            area = "";
             foreach (Area a in magazine.Areas)
             {
                 if (a.Editor == user)
