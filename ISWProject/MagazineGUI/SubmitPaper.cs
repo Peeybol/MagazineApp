@@ -97,11 +97,6 @@ namespace MagazineGUI
                 coauthorsButton.Enabled = false;
         }
 
-        private void errorLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void TitleTextChanged(object sender, EventArgs e)
         {
             if (titleBox.Text.Length == 0) titleOk = false;

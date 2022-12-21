@@ -70,7 +70,7 @@ namespace MagazineGUI
                 {
                     sb.Append(item.SubItems[NAME].Text + " " +
                         item.SubItems[SURNAME].Text + "\r\n");
-                    ids.Add(Data[item.Index].Id);
+                    ids.Add(Data[item.Index + 1].Id);
                 }
 
                 coauthors.Text += sb.ToString();

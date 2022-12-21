@@ -113,7 +113,6 @@
             this.errorLabel.TabIndex = 6;
             this.errorLabel.Text = "texto de error";
             this.errorLabel.Visible = false;
-            this.errorLabel.Click += new System.EventHandler(this.errorLabel_Click);
             // 
             // passwordInfoButton
             // 
