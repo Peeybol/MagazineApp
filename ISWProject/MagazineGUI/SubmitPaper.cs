@@ -103,10 +103,5 @@ namespace MagazineGUI
             else titleOk = true;
             EnableAcceptButton();
         }
-
-        /*
-         * TODO:
-         * - Botón para añadir coautores. Preguntar si coautores solo se añaden al submitear un paper o después.
-         */
     }
 }

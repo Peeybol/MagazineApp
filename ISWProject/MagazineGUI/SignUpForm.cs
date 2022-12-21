@@ -27,7 +27,6 @@ namespace MagazineGUI
         {
             String id = id_txt.Text; String name = name_txt.Text; String surname = surname_txt.Text;
             String email = email_txt.Text; String user = username_txt.Text; String password = pass_txt.Text;
-            String repPass = repPass_txt.Text;
             String areasOfInterest = aof_txt.Text; bool alerted = spam_checkbox.Checked;
             
             try { service.RegisterUser(id, name, surname, alerted, areasOfInterest, email, user, password); this.Close(); }

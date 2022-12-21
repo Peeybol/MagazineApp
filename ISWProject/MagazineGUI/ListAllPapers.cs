@@ -18,9 +18,6 @@ namespace MagazineGUI
     {
         private IMagazineISWService service;
         private List<Paper> Data;
-
-
-        //CONSTANTS in order to access the subitems in each listviewitem
         private const int ISSUE = 6;
         public ListAllPapers(IMagazineISWService service)
         {
@@ -29,7 +26,6 @@ namespace MagazineGUI
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.HorizontalScroll.Enabled = false;
-            //listView1.Width = listView1.Width - 4 - SystemInformation.VerticalScrollBarWidth;
             User currentUser = service.GetCurrentUser();
             Area a;
             if (service.IsChiefEditor(currentUser))
@@ -56,7 +52,7 @@ namespace MagazineGUI
                     p.EvaluationPendingArea != null ? "pending evaluation" :
                     p.Issue != null ? 
                     p.Issue.PublicationDate != null ? "published" : "selected for publication" :
-                    p.Evaluation.Accepted ? "" : "rejected"
+                    p.Evaluation.Accepted ? "df" : "rejected"
                     );
                 item.SubItems.Add(p.BelongingArea.Name);
                 item.SubItems.Add(p.Issue == null ? "none" : p.Issue.Number + "");

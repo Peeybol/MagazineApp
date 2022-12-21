@@ -100,14 +100,6 @@ namespace Magazine.Entities
 
         public List<Paper> GetAllPublicationPendingPapersInAnArea(string areaName)
         {
-            // por que?
-            //List<Paper> papers = new List<Paper>();
-            //Area area = GetAreaByName(areaName);
-            //foreach (Paper paper in area.PublicationPending)
-            //    papers.Add(paper);
-            //return papers;
-
-
             return GetAreaByName(areaName).PublicationPending.ToList();
         }
 

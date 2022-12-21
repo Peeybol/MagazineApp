@@ -36,7 +36,6 @@ namespace MagazineGUI
             issue_number.Text = lastIssue + "";
             
             ICollection<string> areas = service.GetAllAreasNames();
-            
             areas_comboBox.Items.Clear();
             if(areas != null)
             {

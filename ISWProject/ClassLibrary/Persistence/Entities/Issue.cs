@@ -7,7 +7,6 @@ namespace Magazine.Entities
 {
     public partial class Issue
     {
-        // [Key]
         public int Id { get; set; }
 
         public int Number { get; set; }

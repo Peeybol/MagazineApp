@@ -7,7 +7,7 @@ namespace Magazine.Entities
 {
     public partial class Evaluation
     {
-        public Boolean Accepted
+        public bool Accepted
         {
             get;
             set;
@@ -23,7 +23,6 @@ namespace Magazine.Entities
             set;
         }
 
-        //[Key]
         public int Id
         {
             get;

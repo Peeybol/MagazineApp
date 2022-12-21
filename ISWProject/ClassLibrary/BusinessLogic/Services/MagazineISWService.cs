@@ -235,8 +235,7 @@ namespace Magazine.Services
             if (person != null) return person;
             else throw new ServiceException(resourceManager.GetString("PersonNotExists"));
         }
-        // añadir metodo lanzadera pasandole nombre y apellidos de la persona
-        // añadir método para crear persona en caso de que no exista
+
         public void AddCoauthor(int paperId, string id)
         {
             Paper paper = magazine.GetPaperById(paperId);
@@ -247,7 +246,6 @@ namespace Magazine.Services
             Commit();
         }
 
-        // validate data, check that the paper is not evaluated, if it is accepted move to the paper pending publication list, if rejected remove it from evaluation pending list
         public void EvaluatePaper(bool accepted, string comments, DateTime date, int paperId)
         {
             ValidateLoggedUser(true);
@@ -367,7 +365,6 @@ namespace Magazine.Services
         public List<Paper> GetAllPublicationPendingPapers()
         {
             List<Paper> paperList = new List<Paper>();
-            // TODO - Mover este método a la clase Magazine, mejor que llamar a Areas desde aquí
             foreach (Area area in magazine.Areas)
                 paperList.Concat(area.PublicationPending.ToList<Paper>());
 
@@ -400,7 +397,6 @@ namespace Magazine.Services
             Commit();
         }
 
-        //We obtain the number of the current issue, if the last was publicated we create a new one and we return that number
         public int GetLastIssueNumberAndAddANewOne()
         {
             if (!IsChiefEditor(loggedUser)) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
@@ -419,7 +415,6 @@ namespace Magazine.Services
             else return myIssue.Number;
         }
 
-        // si esto puede devolver null // si que puede y es lo que debe hacer >:(
         public Issue GetLastIssue()
         {
              return magazine.Issues.LastOrDefault();
@@ -511,8 +506,7 @@ namespace Magazine.Services
 
         public List<Paper> ListAllPapers()
         {
-            // esta linea está comentada para poder probar el ListAllPapers sin tener que hacer el login cada vez (HAY QUE DESCOMENTARLA PARA ENTREGAR)
-            //if(loggedUser != magazine.ChiefEditor) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
+            if (loggedUser != magazine.ChiefEditor) throw new ServiceException(resourceManager.GetString("NotChiefEditor"));
             List<Paper> list = new List<Paper>();
 
             foreach (Area a in magazine.Areas)
