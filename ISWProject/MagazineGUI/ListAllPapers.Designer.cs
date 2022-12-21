@@ -60,7 +60,6 @@
             this.listView1.Location = new System.Drawing.Point(-2, -2);
             this.listView1.Margin = new System.Windows.Forms.Padding(0);
             this.listView1.Name = "listView1";
-            this.listView1.Scrollable = false;
             this.listView1.Size = new System.Drawing.Size(1159, 499);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
@@ -69,7 +68,7 @@
             // Paper_id
             // 
             this.Paper_id.Text = "Paper id";
-            this.Paper_id.Width = 122;
+            this.Paper_id.Width = 80;
             // 
             // Title
             // 
@@ -79,7 +78,7 @@
             // Upload_date
             // 
             this.Upload_date.Text = "Upload date";
-            this.Upload_date.Width = 219;
+            this.Upload_date.Width = 140;
             // 
             // Authors
             // 
@@ -89,7 +88,7 @@
             // Paper_state
             // 
             this.Paper_state.Text = "Paper State";
-            this.Paper_state.Width = 113;
+            this.Paper_state.Width = 220;
             // 
             // Area
             // 
@@ -99,7 +98,7 @@
             // Issue
             // 
             this.Issue.Text = "Issue";
-            this.Issue.Width = 175;
+            this.Issue.Width = 65;
             // 
             // filterTextbox
             // 

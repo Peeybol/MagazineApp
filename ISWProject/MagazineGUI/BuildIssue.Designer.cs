@@ -95,12 +95,12 @@
             // col_publicatedId
             // 
             this.col_publicatedId.Text = "ID";
-            this.col_publicatedId.Width = 125;
+            this.col_publicatedId.Width = 69;
             // 
             // col_publicatedTitle
             // 
             this.col_publicatedTitle.Text = "Title";
-            this.col_publicatedTitle.Width = 215;
+            this.col_publicatedTitle.Width = 169;
             // 
             // listview_pendingPapers
             // 
@@ -120,12 +120,12 @@
             // col_pendingId
             // 
             this.col_pendingId.Text = "ID";
-            this.col_pendingId.Width = 125;
+            this.col_pendingId.Width = 69;
             // 
             // col_pendingTitle
             // 
             this.col_pendingTitle.Text = "Title";
-            this.col_pendingTitle.Width = 215;
+            this.col_pendingTitle.Width = 169;
             // 
             // pending_label
             // 

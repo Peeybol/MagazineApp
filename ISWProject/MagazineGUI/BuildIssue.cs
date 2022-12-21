@@ -46,8 +46,6 @@ namespace MagazineGUI
                 areas_comboBox.ResetText();
                 areas_comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             }
-            listview_pendingPapers.Scrollable = false;
-            listview_publicatedPapers.Scrollable = false;
         }
 
         private void Areas_comboBox_SelectedIndexChanged(object sender, EventArgs e)

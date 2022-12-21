@@ -34,6 +34,9 @@ namespace MagazineGUI
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
                 errorLabel.Visible = false;
+                idBox.Text= string.Empty; 
+                nameBox.Text= string.Empty;
+                surnameBox.Text= string.Empty;
             } 
             catch (Exception ex) 
             {

@@ -20,6 +20,7 @@ namespace MagazineGUI
             this.service = service;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            this.FormClosed += (s, args) => Application.Exit();
         }
 
         private void Login_Click(object sender, EventArgs e)

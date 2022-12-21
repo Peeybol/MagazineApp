@@ -28,7 +28,8 @@ namespace MagazineGUI
             this.service = service;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-
+            this.HorizontalScroll.Enabled = false;
+            //listView1.Width = listView1.Width - 4 - SystemInformation.VerticalScrollBarWidth;
             User currentUser = service.GetCurrentUser();
             Area a;
             if (service.IsChiefEditor(currentUser))
@@ -53,7 +54,8 @@ namespace MagazineGUI
                 item.SubItems.Add(
                     p.PublicationPendingArea != null ? "pending publication" :
                     p.EvaluationPendingArea != null ? "pending evaluation" :
-                    p.Issue != null ? "published" :
+                    p.Issue != null ? 
+                    p.Issue.PublicationDate != null ? "published" : "selected for publication" :
                     p.Evaluation.Accepted ? "" : "rejected"
                     );
                 item.SubItems.Add(p.BelongingArea.Name);

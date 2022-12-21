@@ -47,7 +47,6 @@
             this.listView.HideSelection = false;
             this.listView.Location = new System.Drawing.Point(12, 10);
             this.listView.Name = "listView";
-            this.listView.Scrollable = false;
             this.listView.Size = new System.Drawing.Size(333, 329);
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
@@ -61,7 +60,7 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Surname";
-            this.columnHeader2.Width = 240;
+            this.columnHeader2.Width = 210;
             // 
             // columnHeader3
             // 
@@ -96,7 +95,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView);
             this.Name = "ListPerson";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Person List";
             this.ResumeLayout(false);
 
