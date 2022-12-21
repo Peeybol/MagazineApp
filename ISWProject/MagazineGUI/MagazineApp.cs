@@ -46,6 +46,7 @@ namespace MagazineGUI
         private void Signup_Click(object sender, EventArgs e)
         {
             this.Hide();
+            errorLabel.Visible = false;
             SignUpForm signUp = new SignUpForm(service);
             signUp.FormClosed += (s, args) => this.Show();
             signUp.Show();
