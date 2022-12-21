@@ -172,6 +172,7 @@
             this.Controls.Add(this.areaBox);
             this.Controls.Add(this.areaLabel);
             this.Name = "SubmitPaper";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Submit Paper";
             this.ResumeLayout(false);
             this.PerformLayout();

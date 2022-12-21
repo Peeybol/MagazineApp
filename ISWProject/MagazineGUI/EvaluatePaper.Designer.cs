@@ -48,7 +48,7 @@
             this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(9, 10);
-            this.listView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listView1.Margin = new System.Windows.Forms.Padding(2);
             this.listView1.Name = "listView1";
             this.listView1.Scrollable = false;
             this.listView1.Size = new System.Drawing.Size(658, 374);
@@ -82,7 +82,7 @@
             this.EvaluateButton.Enabled = false;
             this.EvaluateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.EvaluateButton.Location = new System.Drawing.Point(580, 388);
-            this.EvaluateButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.EvaluateButton.Margin = new System.Windows.Forms.Padding(2);
             this.EvaluateButton.Name = "EvaluateButton";
             this.EvaluateButton.Size = new System.Drawing.Size(86, 32);
             this.EvaluateButton.TabIndex = 1;
@@ -93,7 +93,7 @@
             // GoBackButton
             // 
             this.GoBackButton.Location = new System.Drawing.Point(10, 388);
-            this.GoBackButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GoBackButton.Margin = new System.Windows.Forms.Padding(2);
             this.GoBackButton.Name = "GoBackButton";
             this.GoBackButton.Size = new System.Drawing.Size(76, 32);
             this.GoBackButton.TabIndex = 2;
@@ -109,8 +109,9 @@
             this.Controls.Add(this.GoBackButton);
             this.Controls.Add(this.EvaluateButton);
             this.Controls.Add(this.listView1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EvaluatePaper";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Evaluate a Paper";
             this.ResumeLayout(false);
 

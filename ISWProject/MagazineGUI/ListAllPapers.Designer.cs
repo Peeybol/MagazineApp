@@ -61,7 +61,7 @@
             this.listView1.Margin = new System.Windows.Forms.Padding(0);
             this.listView1.Name = "listView1";
             this.listView1.Scrollable = false;
-            this.listView1.Size = new System.Drawing.Size(1159, 488);
+            this.listView1.Size = new System.Drawing.Size(1159, 499);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -84,7 +84,7 @@
             // Authors
             // 
             this.Authors.Text = "Authors";
-            this.Authors.Width = 201;
+            this.Authors.Width = 300;
             // 
             // Paper_state
             // 
@@ -137,6 +137,7 @@
             this.Controls.Add(this.filterTextbox);
             this.Controls.Add(this.listView1);
             this.Name = "ListAllPapers";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Paper List";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -50,17 +50,19 @@
             // 
             this.issue_label.AutoSize = true;
             this.issue_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.issue_label.Location = new System.Drawing.Point(287, 21);
+            this.issue_label.Location = new System.Drawing.Point(215, 17);
+            this.issue_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.issue_label.Name = "issue_label";
-            this.issue_label.Size = new System.Drawing.Size(282, 46);
+            this.issue_label.Size = new System.Drawing.Size(231, 37);
             this.issue_label.TabIndex = 0;
             this.issue_label.Text = "Current Issue:";
             // 
             // areas_comboBox
             // 
-            this.areas_comboBox.Location = new System.Drawing.Point(170, 120);
+            this.areas_comboBox.Location = new System.Drawing.Point(128, 98);
+            this.areas_comboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.areas_comboBox.Name = "areas_comboBox";
-            this.areas_comboBox.Size = new System.Drawing.Size(225, 24);
+            this.areas_comboBox.Size = new System.Drawing.Size(170, 21);
             this.areas_comboBox.TabIndex = 1;
             this.areas_comboBox.SelectedIndexChanged += new System.EventHandler(this.Areas_comboBox_SelectedIndexChanged);
             // 
@@ -68,9 +70,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(45, 120);
+            this.label2.Location = new System.Drawing.Point(34, 98);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 20);
+            this.label2.Size = new System.Drawing.Size(85, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "Select Area:";
             // 
@@ -81,9 +84,10 @@
             this.col_publicatedTitle});
             this.listview_publicatedPapers.FullRowSelect = true;
             this.listview_publicatedPapers.HideSelection = false;
-            this.listview_publicatedPapers.Location = new System.Drawing.Point(531, 192);
+            this.listview_publicatedPapers.Location = new System.Drawing.Point(398, 156);
+            this.listview_publicatedPapers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listview_publicatedPapers.Name = "listview_publicatedPapers";
-            this.listview_publicatedPapers.Size = new System.Drawing.Size(346, 378);
+            this.listview_publicatedPapers.Size = new System.Drawing.Size(260, 308);
             this.listview_publicatedPapers.TabIndex = 4;
             this.listview_publicatedPapers.UseCompatibleStateImageBehavior = false;
             this.listview_publicatedPapers.View = System.Windows.Forms.View.Details;
@@ -105,9 +109,10 @@
             this.col_pendingTitle});
             this.listview_pendingPapers.FullRowSelect = true;
             this.listview_pendingPapers.HideSelection = false;
-            this.listview_pendingPapers.Location = new System.Drawing.Point(49, 192);
+            this.listview_pendingPapers.Location = new System.Drawing.Point(37, 156);
+            this.listview_pendingPapers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listview_pendingPapers.Name = "listview_pendingPapers";
-            this.listview_pendingPapers.Size = new System.Drawing.Size(346, 378);
+            this.listview_pendingPapers.Size = new System.Drawing.Size(260, 308);
             this.listview_pendingPapers.TabIndex = 5;
             this.listview_pendingPapers.UseCompatibleStateImageBehavior = false;
             this.listview_pendingPapers.View = System.Windows.Forms.View.Details;
@@ -126,9 +131,10 @@
             // 
             this.pending_label.AutoSize = true;
             this.pending_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pending_label.Location = new System.Drawing.Point(124, 169);
+            this.pending_label.Location = new System.Drawing.Point(93, 137);
+            this.pending_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.pending_label.Name = "pending_label";
-            this.pending_label.Size = new System.Drawing.Size(205, 20);
+            this.pending_label.Size = new System.Drawing.Size(175, 17);
             this.pending_label.TabIndex = 6;
             this.pending_label.Text = "Pending Publication Paper";
             // 
@@ -136,17 +142,19 @@
             // 
             this.publicated_label.AutoSize = true;
             this.publicated_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.publicated_label.Location = new System.Drawing.Point(635, 169);
+            this.publicated_label.Location = new System.Drawing.Point(476, 137);
+            this.publicated_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.publicated_label.Name = "publicated_label";
-            this.publicated_label.Size = new System.Drawing.Size(145, 20);
+            this.publicated_label.Size = new System.Drawing.Size(123, 17);
             this.publicated_label.TabIndex = 7;
             this.publicated_label.Text = "Publicated Papers";
             // 
             // pendingToPublicated_button
             // 
-            this.pendingToPublicated_button.Location = new System.Drawing.Point(113, 576);
+            this.pendingToPublicated_button.Location = new System.Drawing.Point(85, 468);
+            this.pendingToPublicated_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pendingToPublicated_button.Name = "pendingToPublicated_button";
-            this.pendingToPublicated_button.Size = new System.Drawing.Size(207, 31);
+            this.pendingToPublicated_button.Size = new System.Drawing.Size(155, 25);
             this.pendingToPublicated_button.TabIndex = 8;
             this.pendingToPublicated_button.Text = "Move to Publicated Papers";
             this.pendingToPublicated_button.UseVisualStyleBackColor = true;
@@ -154,9 +162,10 @@
             // 
             // moveToPending_button
             // 
-            this.moveToPending_button.Location = new System.Drawing.Point(581, 576);
+            this.moveToPending_button.Location = new System.Drawing.Point(436, 468);
+            this.moveToPending_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.moveToPending_button.Name = "moveToPending_button";
-            this.moveToPending_button.Size = new System.Drawing.Size(258, 31);
+            this.moveToPending_button.Size = new System.Drawing.Size(194, 25);
             this.moveToPending_button.TabIndex = 9;
             this.moveToPending_button.Text = "Move to Pending Publication Papers";
             this.moveToPending_button.UseVisualStyleBackColor = true;
@@ -164,17 +173,19 @@
             // 
             // dateTime
             // 
-            this.dateTime.Location = new System.Drawing.Point(531, 122);
+            this.dateTime.Location = new System.Drawing.Point(398, 99);
+            this.dateTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTime.Name = "dateTime";
-            this.dateTime.Size = new System.Drawing.Size(346, 22);
+            this.dateTime.Size = new System.Drawing.Size(260, 20);
             this.dateTime.TabIndex = 10;
             // 
             // buildIssue_button
             // 
             this.buildIssue_button.Enabled = false;
-            this.buildIssue_button.Location = new System.Drawing.Point(395, 631);
+            this.buildIssue_button.Location = new System.Drawing.Point(296, 513);
+            this.buildIssue_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buildIssue_button.Name = "buildIssue_button";
-            this.buildIssue_button.Size = new System.Drawing.Size(137, 31);
+            this.buildIssue_button.Size = new System.Drawing.Size(103, 25);
             this.buildIssue_button.TabIndex = 11;
             this.buildIssue_button.Text = "Build a new Issue";
             this.buildIssue_button.UseVisualStyleBackColor = true;
@@ -184,17 +195,18 @@
             // 
             this.issue_number.AutoSize = true;
             this.issue_number.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.issue_number.Location = new System.Drawing.Point(585, 21);
+            this.issue_number.Location = new System.Drawing.Point(439, 17);
+            this.issue_number.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.issue_number.Name = "issue_number";
-            this.issue_number.Size = new System.Drawing.Size(108, 46);
+            this.issue_number.Size = new System.Drawing.Size(81, 37);
             this.issue_number.TabIndex = 2;
             this.issue_number.Text = "xxxx";
             // 
             // BuildIssue
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(924, 684);
+            this.ClientSize = new System.Drawing.Size(693, 556);
             this.Controls.Add(this.buildIssue_button);
             this.Controls.Add(this.dateTime);
             this.Controls.Add(this.moveToPending_button);
@@ -207,8 +219,8 @@
             this.Controls.Add(this.issue_number);
             this.Controls.Add(this.areas_comboBox);
             this.Controls.Add(this.issue_label);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BuildIssue";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Build an Issue";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BuildIssue_FormClosing);
             this.ResumeLayout(false);

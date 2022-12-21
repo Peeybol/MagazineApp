@@ -364,7 +364,7 @@ namespace Magazine.Services
             return names;
         }
 
-        public List<Paper> GetAllPendingPapers()
+        public List<Paper> GetAllPublicationPendingPapers()
         {
             List<Paper> paperList = new List<Paper>();
             // TODO - Mover este método a la clase Magazine, mejor que llamar a Areas desde aquí
@@ -374,9 +374,14 @@ namespace Magazine.Services
             return paperList;
         }
 
-        public List<Paper> GetAllPendingPapersInAnArea(string areaName)
+        public List<Paper> GetAllPublicationPendingPapersInAnArea(string areaName)
         {
-            return magazine.GetAllPendingPapersInAnArea(areaName);
+            return magazine.GetAllPublicationPendingPapersInAnArea(areaName);
+        }
+
+        public List<Paper> GetAllEvaluationPendingPapersInAnArea(string areaName)
+        {
+            return magazine.GetAllPublicationPendingPapersInAnArea(areaName);
         }
 
         public ICollection<Paper> GetAllPublishedPapersInTheLastIssue()
@@ -532,14 +537,14 @@ namespace Magazine.Services
             return dal.GetAll<Person>().ToList();
         }
 
-        public bool IsAreaEditor(User user, out Area area)
+        public bool IsAreaEditor(User user, out string area)
         {
             area = null;
             foreach (Area a in magazine.Areas)
             {
                 if (a.Editor == user)
                 {
-                    area = a;
+                    area = a.Name;
                     return true;
                 }
             }

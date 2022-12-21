@@ -146,6 +146,7 @@
             this.Controls.Add(this.idBox);
             this.Controls.Add(this.idLabel);
             this.Name = "RegisterPerson";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register Person";
             this.ResumeLayout(false);
             this.PerformLayout();

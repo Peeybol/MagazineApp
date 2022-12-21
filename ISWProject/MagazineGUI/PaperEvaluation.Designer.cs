@@ -38,7 +38,7 @@
             // AcceptButton
             // 
             this.AcceptButton.Location = new System.Drawing.Point(241, 280);
-            this.AcceptButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AcceptButton.Margin = new System.Windows.Forms.Padding(2);
             this.AcceptButton.Name = "AcceptButton";
             this.AcceptButton.Size = new System.Drawing.Size(74, 32);
             this.AcceptButton.TabIndex = 0;
@@ -49,7 +49,7 @@
             // RejectButton
             // 
             this.RejectButton.Location = new System.Drawing.Point(324, 280);
-            this.RejectButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RejectButton.Margin = new System.Windows.Forms.Padding(2);
             this.RejectButton.Name = "RejectButton";
             this.RejectButton.Size = new System.Drawing.Size(70, 32);
             this.RejectButton.TabIndex = 1;
@@ -60,7 +60,7 @@
             // GoBackButton
             // 
             this.GoBackButton.Location = new System.Drawing.Point(16, 280);
-            this.GoBackButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GoBackButton.Margin = new System.Windows.Forms.Padding(2);
             this.GoBackButton.Name = "GoBackButton";
             this.GoBackButton.Size = new System.Drawing.Size(82, 32);
             this.GoBackButton.TabIndex = 2;
@@ -71,7 +71,7 @@
             // CommentsTextBox
             // 
             this.CommentsTextBox.Location = new System.Drawing.Point(16, 55);
-            this.CommentsTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CommentsTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.CommentsTextBox.Multiline = true;
             this.CommentsTextBox.Name = "CommentsTextBox";
             this.CommentsTextBox.Size = new System.Drawing.Size(379, 200);
@@ -98,8 +98,9 @@
             this.Controls.Add(this.GoBackButton);
             this.Controls.Add(this.RejectButton);
             this.Controls.Add(this.AcceptButton);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PaperEvaluation";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Evaluate a Paper";
             this.ResumeLayout(false);
             this.PerformLayout();

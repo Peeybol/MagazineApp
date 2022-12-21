@@ -52,8 +52,8 @@
             this.AccountToolStripMenuItem});
             this.MenuStrip1.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip1.Name = "MenuStrip1";
-            this.MenuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.MenuStrip1.Size = new System.Drawing.Size(738, 28);
+            this.MenuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.MenuStrip1.Size = new System.Drawing.Size(554, 24);
             this.MenuStrip1.TabIndex = 0;
             this.MenuStrip1.Text = "menuStrip1";
             // 
@@ -64,20 +64,20 @@
             this.EvaluateAPaperToolStripMenuItem,
             this.ListPapersToolStripMenuItem});
             this.ToolStripMenuItem1.Name = "ToolStripMenuItem1";
-            this.ToolStripMenuItem1.Size = new System.Drawing.Size(60, 24);
+            this.ToolStripMenuItem1.Size = new System.Drawing.Size(49, 20);
             this.ToolStripMenuItem1.Text = "Paper";
             // 
             // SubmitPaperToolStripMenuItem
             // 
             this.SubmitPaperToolStripMenuItem.Name = "SubmitPaperToolStripMenuItem";
-            this.SubmitPaperToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
+            this.SubmitPaperToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.SubmitPaperToolStripMenuItem.Text = "Submit Paper";
             this.SubmitPaperToolStripMenuItem.Click += new System.EventHandler(this.SubmitPaperToolStripMenuItem_Click);
             // 
             // EvaluateAPaperToolStripMenuItem
             // 
             this.EvaluateAPaperToolStripMenuItem.Name = "EvaluateAPaperToolStripMenuItem";
-            this.EvaluateAPaperToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
+            this.EvaluateAPaperToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.EvaluateAPaperToolStripMenuItem.Text = "Evaluate a Paper";
             this.EvaluateAPaperToolStripMenuItem.Visible = false;
             this.EvaluateAPaperToolStripMenuItem.Click += new System.EventHandler(this.EvaluateAPaperToolStripMenuItem_Click);
@@ -85,7 +85,7 @@
             // ListPapersToolStripMenuItem
             // 
             this.ListPapersToolStripMenuItem.Name = "ListPapersToolStripMenuItem";
-            this.ListPapersToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
+            this.ListPapersToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.ListPapersToolStripMenuItem.Text = "List Papers";
             this.ListPapersToolStripMenuItem.Visible = false;
             this.ListPapersToolStripMenuItem.Click += new System.EventHandler(this.ListPapersToolStripMenuItem_Click);
@@ -95,14 +95,14 @@
             this.IssueToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.BuildAnIssueToolStripMenuItem});
             this.IssueToolStripMenuItem.Name = "IssueToolStripMenuItem";
-            this.IssueToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.IssueToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.IssueToolStripMenuItem.Text = "Issue";
             this.IssueToolStripMenuItem.Visible = false;
             // 
             // BuildAnIssueToolStripMenuItem
             // 
             this.BuildAnIssueToolStripMenuItem.Name = "BuildAnIssueToolStripMenuItem";
-            this.BuildAnIssueToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+            this.BuildAnIssueToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.BuildAnIssueToolStripMenuItem.Text = "Build an Issue";
             this.BuildAnIssueToolStripMenuItem.Click += new System.EventHandler(this.BuildAnIssueToolStripMenuItem_Click);
             // 
@@ -111,7 +111,7 @@
             this.PeopleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.RegisterPersonToolStripMenuItem});
             this.PeopleToolStripMenuItem.Name = "PeopleToolStripMenuItem";
-            this.PeopleToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
+            this.PeopleToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.PeopleToolStripMenuItem.Text = "People";
             // 
             // RegisterPersonToolStripMenuItem
@@ -126,7 +126,7 @@
             this.AccountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.LogOutToolStripMenuItem});
             this.AccountToolStripMenuItem.Name = "AccountToolStripMenuItem";
-            this.AccountToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
+            this.AccountToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.AccountToolStripMenuItem.Text = "Account";
             // 
             // LogOutToolStripMenuItem
@@ -138,18 +138,19 @@
             // 
             // MainMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::MagazineGUI.Properties.Resources.logo_magazine2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(738, 421);
+            this.ClientSize = new System.Drawing.Size(554, 342);
             this.Controls.Add(this.MenuStrip1);
             this.DoubleBuffered = true;
             this.MainMenuStrip = this.MenuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MainMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "The Dudes Magazine";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.XClicked);
             this.MenuStrip1.ResumeLayout(false);

@@ -53,7 +53,7 @@ namespace MagazineGUI
         private void Areas_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string areaName = (string) areas_comboBox.SelectedItem;
-            ICollection<Paper> pendingPapers = service.GetAllPendingPapersInAnArea(areaName);
+            ICollection<Paper> pendingPapers = service.GetAllPublicationPendingPapersInAnArea(areaName);
             ICollection<Paper> publishedPapers = service.GetAllPublishedPapersInTheLastIssue();
             InitializeData(pendingPapers, publishedPapers);
         }
@@ -103,7 +103,7 @@ namespace MagazineGUI
 
             listview_pendingPapers.Items.Clear();
             string areaName = (string)areas_comboBox.SelectedItem;
-            ICollection<Paper> pendingPapers = service.GetAllPendingPapersInAnArea(areaName);
+            ICollection<Paper> pendingPapers = service.GetAllPublicationPendingPapersInAnArea(areaName);
             listview_pendingPapers.Items.AddRange(pendingPapers.Select(p =>
             {
                 ListViewItem item = new ListViewItem(p.Id + "");

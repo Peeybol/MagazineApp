@@ -15,7 +15,8 @@ namespace Magazine.Services
         bool IsValidEmail(string email);
         int GetLastIssueNumberAndAddANewOne();
         List<string> GetAllAreasNames();
-        List<Paper> GetAllPendingPapersInAnArea(string areaName);
+        List<Paper> GetAllPublicationPendingPapersInAnArea(string areaName);
+        List<Paper> GetAllEvaluationPendingPapersInAnArea(string areaName);
         Paper GetPaperById(int id);
         void BuildAnIssue(DateTime newPublicationDate);
         ICollection<Paper> GetAllPublishedPapersInTheLastIssue();
@@ -198,7 +199,7 @@ namespace Magazine.Services
 
         List<Person> ListAllPersons();
 
-        bool IsAreaEditor(User user, out Area area);
+        bool IsAreaEditor(User user, out string area);
 
         bool IsChiefEditor(User user);
         List<Area> ListAllAreas();
